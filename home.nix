@@ -24,19 +24,19 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  home.packages = [
-    pkgs.bottom
-    pkgs.nnn
-    pkgs.ripgrep
-    pkgs.exa
-    pkgs.fd
-    pkgs.zoxide
-    pkgs.starship
-    pkgs.gh
-    pkgs.bat
-    pkgs.fzf
-    pkgs.niv
-    pkgs.tree
-    pkgs.dua
+  home.packages = with pkgs; [
+    bottom
+    nnn
+    ripgrep
+    exa
+    fd
+    zoxide
+    starship
+    gh
+    bat
+    fzf
+    niv
+    tree
+    dua
   ];
 }
