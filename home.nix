@@ -38,5 +38,6 @@
     niv
     tree
     dua
+    tealdeer
   ];
 }
