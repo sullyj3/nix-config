@@ -22,6 +22,9 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+
+    # todo what if we're on WSL? not sure how to handle this correctly
+    # more generally this is the reason I haven't started moving gui apps into nix yet
     BROWSER = "google-chrome-stable";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
   };
