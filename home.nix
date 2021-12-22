@@ -16,10 +16,12 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
-  programs.git = {
-    enable = true;
-    userName  = "James Sully";
-    userEmail = "sullyj3@gmail.com";
+  programs = {
+    git = {
+      enable = true;
+      userName  = "James Sully";
+      userEmail = "sullyj3@gmail.com";
+    };
   };
 
   # Let Home Manager install and manage itself.
@@ -39,5 +41,9 @@
     dua
     tealdeer
     htop
+
+    neovim
   ];
+
+  xdg.configFile."nvim/init.lua".source = ./config/nvim/init.lua;
 }
