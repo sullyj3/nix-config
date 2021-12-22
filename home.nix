@@ -25,7 +25,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
-    bottom
     nnn
     ripgrep
     exa
@@ -39,5 +38,6 @@
     tree
     dua
     tealdeer
+    htop
   ];
 }
