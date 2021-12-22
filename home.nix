@@ -16,9 +16,20 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
-	# This is a good idea according to https://nixos.wiki/wiki/Home_Manager
-	# the page doesn't really elaborate much as to why
-	targets.genericLinux.enable = true;
+  # This is a good idea according to https://nixos.wiki/wiki/Home_Manager
+  # the page doesn't really elaborate much as to why
+  targets.genericLinux.enable = true;
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    BROWSER = "google-chrome-stable";
+    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+  };
+
+  home.sessionPath = [
+    "/home/james/.cabal/bin"
+    "/home/james/.ghcup/bin"
+  ];
 
   programs = {
     git = {
@@ -26,7 +37,28 @@
       userName  = "James Sully";
       userEmail = "sullyj3@gmail.com";
     };
+    fish = {
+      enable = true;
+      plugins = [{
+        name = "nix-env";
+        src = pkgs.fetchFromGitHub {
+          owner = "lilyball";
+          repo = "nix-env.fish";
+          rev = "7b65bd228429e852c8fdfa07601159130a818cfa";
+          sha256 = "069ybzdj29s320wzdyxqjhmpm9ir5815yx6n522adav0z2nz8vs4";
+        };
+      }];
+      shellInit = ''
+        if status is-interactive
+            zoxide init fish | source
+            starship init fish | source
+        end
+      '';
+    };
   };
+
+  # fish config
+  xdg.configFile."fish/functions".source = ./config/fish/functions;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -50,5 +82,4 @@
   ];
 
   xdg.configFile."nvim/init.lua".source = ./config/nvim/init.lua;
-  xdg.configFile."fish/config.fish".source = ./config/fish/config.fish;
 }
