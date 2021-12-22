@@ -23,7 +23,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
 
-    # todo what if we're on WSL? not sure how to handle this correctly
+    # TODO what if we're on WSL? not sure how to handle this correctly
     # more generally this is the reason I haven't started moving gui apps into nix yet
     BROWSER = "google-chrome-stable";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
@@ -43,6 +43,7 @@
     fish = {
       enable = true;
       plugins = [{
+        # TODO this is only applicable to non NixOS OSes... wat do?
         name = "nix-env";
         src = pkgs.fetchFromGitHub {
           owner = "lilyball";
