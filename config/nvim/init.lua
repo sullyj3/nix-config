@@ -43,6 +43,7 @@ require('packer').startup(function()
   use 'justinmk/vim-sneak'
   use 'wellle/targets.vim'
   use 'jacoborus/tender.vim'
+  use 'LnL7/vim-nix'
 end)
 
 --Set highlight on search
