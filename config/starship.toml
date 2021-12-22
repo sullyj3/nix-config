@@ -1,0 +1,14 @@
+add_newline = false
+
+[character]
+success_symbol = '[⮞](bold green)'
+error_symbol = '[⮞](bold red)'
+vicmd_symbol = '[⮜](bold green)'
+
+[username]
+format = '[$user]($style)@'
+show_always = true
+
+[hostname]
+ssh_only = false
+format = '[$hostname]($style) in '

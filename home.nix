@@ -55,11 +55,17 @@
       shellInit = ''
         if status is-interactive
             zoxide init fish | source
-            starship init fish | source
         end
       '';
     };
+    starship = {
+      enable = true;
+      enableFishIntegration = true;
+    };
   };
+
+  # not sure how to do this with programs.starship.settings:
+  xdg.configFile."starship.toml".source = ./config/starship.toml;
 
   # fish config
   xdg.configFile."fish/functions".source = ./config/fish/functions;
@@ -72,9 +78,6 @@
     exa
     fd
     zoxide
-
-    # TODO move config to home manager
-    starship
 
     gh
     bat
