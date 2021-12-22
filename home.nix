@@ -50,4 +50,5 @@
   ];
 
   xdg.configFile."nvim/init.lua".source = ./config/nvim/init.lua;
+  xdg.configFile."fish/config.fish".source = ./config/fish/config.fish;
 }
