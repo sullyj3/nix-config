@@ -68,11 +68,13 @@
     exa
     fd
     zoxide
+
+    # TODO move config to home manager
     starship
+
     gh
     bat
     fzf
-    niv
     tree
     dua
     tealdeer
