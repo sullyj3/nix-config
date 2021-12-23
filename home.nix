@@ -70,6 +70,7 @@
     zoxide = {
       enable = true;
       enableFishIntegration = true;
+      options = [ "--cmd j" ];
     };
     gh = {
       enable = true;
