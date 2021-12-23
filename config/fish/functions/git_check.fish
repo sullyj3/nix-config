@@ -11,10 +11,9 @@ function git_check
 
   cd $argv[1]
 
-
   git fetch --quiet >/dev/null & disown
   begin
-    # check for staged changes
+    # check for changes
     git diff --quiet --ignore-submodules HEAD
 
     # check for untracked, non ignored files
