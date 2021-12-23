@@ -7,6 +7,7 @@
     sessionVariables.BROWSER = "google-chrome-stable";
     packages = with pkgs; [
       signal-desktop
+      google-chrome
     ];
   };
 
