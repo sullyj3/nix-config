@@ -31,6 +31,22 @@
       "/home/james/.ghcup/bin"
     ];
 
+    shellAliases = {
+      # git stuff
+      gaa = "git add --all";
+      gcv = "git commit --verbose";
+      gca = "git commit --all --verbose";
+      gdiff = "git diff";
+      glo = "git log --oneline";
+      gs = "git status";
+      gss = "git status --short";
+      push = "git push";
+      pull = "git pull";
+
+      hm = "home-manager";
+      ls = "exa";
+    };
+
     packages = with pkgs; [
       du-dust
       glow
