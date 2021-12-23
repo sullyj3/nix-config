@@ -17,7 +17,7 @@ function git_check
     git diff --quiet --ignore-submodules HEAD
 
     # check for untracked, non ignored files
-    and git ls-files --other --directory --exclude-standard | sed q1 >/dev/null
+    and git ls-files --other --directory --exclude-standard | sed -n q1
   end
   or echo "WARNING: $argv[2] has unsynchronized changes"
 
