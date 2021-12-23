@@ -63,10 +63,6 @@
     ];
   };
 
-  # This is a good idea according to https://nixos.wiki/wiki/Home_Manager
-  # the page doesn't really elaborate much as to why
-  targets.genericLinux.enable = true;
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
