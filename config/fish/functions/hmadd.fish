@@ -1,6 +1,6 @@
 function hmadd --description 'add a package to home manager'
 	cp ~/.config/nixpkgs/home.nix ~/.config/nixpkgs/home.nix.bak
-  sed -ri "s/(home.packages = with pkgs; \[)/\1\n    $argv/" ~/.config/nixpkgs/home.nix;
+	sed -ri "s/(home.packages = with pkgs; \[)/\1\n    $argv/" ~/.config/nixpkgs/home.nix;
 	home-manager switch
 
 	if test $status -eq 0
