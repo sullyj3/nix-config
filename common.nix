@@ -11,8 +11,6 @@
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home = {
-    username = "james";
-    homeDirectory = "/home/james";
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
@@ -26,10 +24,6 @@
 
     sessionVariables = {
       EDITOR = "nvim";
-
-      # TODO what if we're on WSL? not sure how to handle this correctly
-      # more generally this is the reason I haven't started moving gui apps into nix yet
-      BROWSER = "google-chrome-stable";
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     };
 
@@ -95,16 +89,6 @@
         git_check $HOME/.config/nixpkgs 'Home manager config'
         git_check $HOME/.config/cheat/cheatsheets/personal 'Cheatsheets'
       '';
-      plugins = [{
-        # TODO this is only applicable to non NixOS OSes... wat do?
-        name = "nix-env";
-        src = pkgs.fetchFromGitHub {
-          owner = "lilyball";
-          repo = "nix-env.fish";
-          rev = "7b65bd228429e852c8fdfa07601159130a818cfa";
-          sha256 = "069ybzdj29s320wzdyxqjhmpm9ir5815yx6n522adav0z2nz8vs4";
-        };
-      }];
     };
     starship = {
       enable = true;
