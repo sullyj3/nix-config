@@ -1,6 +1,13 @@
 { config, pkgs, ... }:
 
 {
+  # true by default, this is here as a reminder.
+  # `man home-configuration.nix`
+  manual.manpages.enable = true;
+
+  # `home-manager-help` opens manual in browser
+  manual.html.enable = true;
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home = {
@@ -45,6 +52,7 @@
 
       hm = "home-manager";
       ls = "exa";
+      l = "exa";
     };
 
     packages = with pkgs; [
