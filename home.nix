@@ -39,6 +39,9 @@
       enable = true;
       userName  = "James Sully";
       userEmail = "sullyj3@gmail.com";
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
     };
     fish = {
       enable = true;
@@ -52,19 +55,31 @@
           sha256 = "069ybzdj29s320wzdyxqjhmpm9ir5815yx6n522adav0z2nz8vs4";
         };
       }];
-      shellInit = ''
-        if status is-interactive
-            zoxide init fish | source
-        end
-      '';
     };
     starship = {
       enable = true;
       enableFishIntegration = true;
     };
+    nnn.enable = true;
+    exa.enable = true;
+    bat.enable = true;
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+    gh = {
+      enable = true;
+      settings = {
+        git_protocol = "ssh";
+      };
+    };
+    fzf.enable = true;
+    fzf.enableFishIntegration = true;
+    htop.enable = true;
   };
 
-  # not sure how to do this with programs.starship.settings:
+  xdg.configFile."cheat/conf.yml".source = ./config/cheat/conf.yml;
+
   xdg.configFile."starship.toml".source = ./config/starship.toml;
 
   # fish config
@@ -73,21 +88,14 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
-    nnn
+    neovim
     ripgrep
-    exa
     fd
-    zoxide
-
-    gh
-    bat
-    fzf
     tree
     dua
-    tealdeer
-    htop
 
-    neovim
+    cheat
+    tealdeer
   ];
 
   xdg.configFile."nvim/init.lua".source = ./config/nvim/init.lua;
