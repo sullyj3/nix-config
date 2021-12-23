@@ -45,6 +45,10 @@
     };
     fish = {
       enable = true;
+      interactiveShellInit = ''
+        git_check $HOME/.config/nixpkgs 'Home manager config'
+        git_check $HOME/.config/cheat/cheatsheets/personal 'Cheatsheets'
+      '';
       plugins = [{
         # TODO this is only applicable to non NixOS OSes... wat do?
         name = "nix-env";
