@@ -22,4 +22,5 @@ This is necessary to get desktop entries (used for icons/entries in application 
 
 ## TODO
 
-I don't have access to fancy fonts on WSL. I should make provisions for that, eg starship wants to use fancy symbols.
+- I don't have access to fancy fonts on WSL. I should make provisions for that, eg starship wants to use fancy symbols.
+- add cheat config
