@@ -10,6 +10,11 @@
 6) In neovim, to install plugins do `:PackerInstall`
 7) If using a non-NixOS GUI distro, add the following line to `~/.profile` ([why](#Why-do-I-need-to-tweak-XDG_DATA_DIRS)):
 	`export XDG_DATA_DIRS="/home/james/.nix-profile/share:$XDG_DATA_DIRS"`
+	TODO this is not quite accurate see ~/.profile on dorian
+8) There's an issue that prevents gh from authenticating correctly when installed with programs.enable. See nix-community/home-manager#1654. The fix is to 
+	1) Edit common.nix, disabling gh and adding it to home.packages
+	2) Authenticate as usual
+	3) Change common.nix back
 
 ## Why do I need to tweak XDG_DATA_DIRS
 
@@ -17,4 +22,4 @@ This is necessary to get desktop entries (used for icons/entries in application 
 
 ## TODO
 
-I don't have access to fancy fonts on WSL. I should make provisions for that, eg starship wants to use foncy symbols.
+I don't have access to fancy fonts on WSL. I should make provisions for that, eg starship wants to use fancy symbols.
