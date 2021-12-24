@@ -14,3 +14,7 @@
 ## Why do I need to tweak XDG_DATA_DIRS
 
 This is necessary to get desktop entries (used for icons/entries in application launchers) for installed graphical applications. See [this comment](https://github.com/nix-community/home-manager/issues/1439#issuecomment-673770925). Hopefully that issue is closed the next time I read this and I can remove this step.
+
+## TODO
+
+I don't have access to fancy fonts on WSL. I should make provisions for that, eg starship wants to use foncy symbols.
