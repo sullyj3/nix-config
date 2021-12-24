@@ -2,20 +2,29 @@
 
 ## Usage
 
-1) Install nix
-2) Install home-manager
-3) Clone into `~/.nixpkgs`
-4) create a new machine specific config by copying eg dorian.nix
-5) `ln -s new_machine_specific_config.nix home.nix`
-6) `home-manager switch`
-7) Set up cheat[^1]. Once it has downloaded community cheatsheets, do
-	`git clone git@github.com:sullyj3/cheatsheets.git ~/.config/cheat/cheatsheets/personal`
-8) If using a non-NixOS GUI distro, add the following line to `~/.profile` ([why](#Why-do-I-need-to-tweak-XDG_DATA_DIRS)):
-	`export XDG_DATA_DIRS=$HOME/.nix-profile/share:$HOME/.share:"${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"`
-9) There's an issue that prevents gh from authenticating correctly when installed with programs.enable. See nix-community/home-manager#1654. The fix is to 
-	1) Edit common.nix, disabling gh and adding it to home.packages
-	2) Authenticate as usual
-	3) Change common.nix back
+1) Install prerequisites:
+	1) Nix - https://nixos.org/manual/nix/stable/installation/installing-binary.html
+	2) home-manager - https://rycee.gitlab.io/home-manager/index.html#ch-installation
+2) ```git clone git@github.com:sullyj3/home-manager-config.git ~/.nixpkgs```
+3) Create a new machine specific config and build it
+	1) `cd ~/.nixpkgs`
+	2) `cp dorian.nix my_new_machine.nix` and edit as appropriate
+	3) `ln -s my_new_machine.nix home.nix`
+	4) `home-manager switch`
+4) Post install steps:
+ 	1) There's an issue that prevents gh from authenticating correctly when installed with programs.enable. See nix-community/home-manager#1654. The workaround is to 
+		1) Edit common.nix, disabling gh and adding it to home.packages
+		2) Authenticate as usual
+		3) Change common.nix back
+	2) Set up cheat[^1]. Once it has downloaded community cheatsheets, do
+
+	```git clone git@github.com:sullyj3/cheatsheets.git ~/.config/cheat/cheatsheets/personal```
+
+	3) If using a non-NixOS GUI distro, add the following line to `~/.profile` ([why](#Why-do-I-need-to-tweak-XDG_DATA_DIRS)):
+
+	```export XDG_DATA_DIRS=$HOME/.nix-profile/share:$HOME/.share:"${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"```
+
+	
 
 ## Why do I need to tweak XDG_DATA_DIRS
 
