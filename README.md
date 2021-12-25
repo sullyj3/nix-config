@@ -12,7 +12,7 @@
 	3) `ln -s my_new_machine.nix home.nix`
 	4) `home-manager switch`
 4) Post install steps:
- 	1) There's an issue that prevents `gh` from authenticating correctly when installed with programs.enable. See [nix-community/home-manager#1654](https://github.com/nix-community/home-manager/issues/1654). The workaround is to 
+ 	1) There's an issue that prevents `gh` from authenticating correctly when installed with programs.enable. See [nix-community/home-manager#1654](https://github.com/nix-community/home-manager/issues/1654) and [cli/cli#4955](https://github.com/cli/cli/issues/4955). The workaround is to 
 		1) Edit `common.nix`, disabling gh and adding it to home.packages
 		2) Authenticate as usual
 		3) Change `common.nix` back
