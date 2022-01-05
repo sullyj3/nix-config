@@ -45,6 +45,7 @@ require('packer').startup(function()
   use 'jacoborus/tender.vim'
   use 'LnL7/vim-nix'
   use 'khaveesh/vim-fish-syntax'
+  use 'iamcco/markdown-preview.nvim'
 end)
 
 --Set highlight on search
