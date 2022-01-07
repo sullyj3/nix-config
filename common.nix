@@ -114,5 +114,6 @@
     "starship.toml".source = ./config/starship.toml;
     "fish/functions".source = ./config/fish/functions;
     "nvim/init.lua".source = ./config/nvim/init.lua;
+    "nvim/ftplugin".source = ./config/nvim/ftplugin;
   };
 }
