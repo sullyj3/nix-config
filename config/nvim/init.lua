@@ -46,6 +46,7 @@ require('packer').startup(function()
   use 'LnL7/vim-nix'
   use 'khaveesh/vim-fish-syntax'
   use 'iamcco/markdown-preview.nvim'
+	use { 'turbio/bracey.vim', run = 'npm install --prefix server' }
 end)
 
 --Set highlight on search
