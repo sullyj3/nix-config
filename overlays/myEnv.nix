@@ -6,6 +6,7 @@ self: super: {
       (self.python310.withPackages (
         ps: with ps; [
           numpy
+          pillow
         ]
       ))
 
