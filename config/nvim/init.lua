@@ -46,6 +46,7 @@ require('packer').startup(function()
   use 'LnL7/vim-nix'
   use 'khaveesh/vim-fish-syntax'
   use 'iamcco/markdown-preview.nvim'
+  use 'alvan/vim-closetag'
 	use { 'turbio/bracey.vim', run = 'npm install --prefix server' }
 end)
 
@@ -226,7 +227,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- Enable the following language servers
 -- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
 -- local servers = { 'hls', 'pyright', 'tsserver' }
-local servers = {'hls'}
+local servers = {'hls', 'html'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
