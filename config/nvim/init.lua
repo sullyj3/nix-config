@@ -48,6 +48,8 @@ require('packer').startup(function()
   use 'iamcco/markdown-preview.nvim'
   use 'alvan/vim-closetag'
 	use { 'turbio/bracey.vim', run = 'npm install --prefix server' }
+  use 'kana/vim-textobj-user'
+  use 'whatyouhide/vim-textobj-xmlattr'
 end)
 
 --Set highlight on search
