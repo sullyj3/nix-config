@@ -62,6 +62,7 @@
       tealdeer
       nodejs
       sumneko-lua-language-server
+      httpie
     ];
   };
 
@@ -88,6 +89,7 @@
         git_check $HOME/.config/cheat/cheatsheets/personal 'Cheatsheets'
       '';
     };
+    nushell.enable = true;
     starship = {
       enable = true;
       enableFishIntegration = true;
