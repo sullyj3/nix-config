@@ -61,6 +61,7 @@
       cheat
       tealdeer
       nodejs
+      sumneko-lua-language-server
     ];
   };
 
