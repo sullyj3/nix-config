@@ -38,18 +38,26 @@ require('packer').startup(function()
   -- --
   -- End kickstart
   -- --
+  -- colors
+  use 'jacoborus/tender.vim'
+
+  -- # General utils --
   use 'vim-utils/vim-line'
   use 'tpope/vim-surround'
   use 'justinmk/vim-sneak'
   use 'wellle/targets.vim'
-  use 'jacoborus/tender.vim'
+  use 'alvan/vim-closetag'
+  use 'whatyouhide/vim-textobj-xmlattr'
+  use 'kana/vim-textobj-user'
+  use 'iamcco/markdown-preview.nvim'
+  -- Live html preview
+  use { 'turbio/bracey.vim', run = 'npm install --prefix server' }
+  -- Session manager
+  use 'tpope/vim-obsession'
+  
+  -- Languages
   use 'LnL7/vim-nix'
   use 'khaveesh/vim-fish-syntax'
-  use 'iamcco/markdown-preview.nvim'
-  use 'alvan/vim-closetag'
-	use { 'turbio/bracey.vim', run = 'npm install --prefix server' }
-  use 'kana/vim-textobj-user'
-  use 'whatyouhide/vim-textobj-xmlattr'
 end)
 
 --Set highlight on search
@@ -229,7 +237,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- Enable the following language servers
 -- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
 -- local servers = { 'hls', 'pyright', 'tsserver' }
-local servers = {'hls', 'html', 'cssls', 'rust_analyzer'}
+local servers = {'hls', 'html', 'cssls', 'rust_analyzer', 'jedi_language_server'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
