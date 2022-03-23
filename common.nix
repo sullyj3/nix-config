@@ -37,6 +37,7 @@
       gaa = "git add --all";
       gcv = "git commit --verbose";
       gca = "git commit --all --verbose";
+      gco = "git checkout";
       gdiff = "git diff";
       glo = "git log --oneline";
       gs = "git status";
