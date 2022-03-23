@@ -58,6 +58,7 @@
       fd
       tree
       dua
+      pgcli
 
       cheat
       tealdeer
