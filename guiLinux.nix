@@ -8,6 +8,9 @@
     packages = with pkgs; [
       signal-desktop
     ];
+    shellAliases = {
+      win = "alacritty --working-directory . &; disown";
+    };
   };
 
 }
