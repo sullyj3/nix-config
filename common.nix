@@ -48,6 +48,10 @@
       hm = "home-manager";
       ls = "exa";
       l = "exa";
+
+      # Useful for viewing multiple small files at once
+      # show filename headers but not the grid
+      bats = "bat --style=header,numbers";
     };
 
     packages = with pkgs; [
