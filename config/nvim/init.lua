@@ -54,10 +54,12 @@ require('packer').startup(function()
   use { 'turbio/bracey.vim', run = 'npm install --prefix server' }
   -- Session manager
   use 'tpope/vim-obsession'
-  
+
   -- Languages
   use 'LnL7/vim-nix'
   use 'khaveesh/vim-fish-syntax'
+  use  { 'unisonweb/unison', branch = 'trunk', rtp = 'editor-support/vim' }
+
 end)
 
 --Set highlight on search
