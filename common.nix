@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
-
+let
+  unison = import (fetchTarball "https://github.com/ceedubs/unison-nix/archive/trunk.tar.gz") {};
+in
 {
   # true by default, this is here as a reminder.
   # `man home-configuration.nix`
@@ -70,6 +72,9 @@
       sumneko-lua-language-server
       httpie
       nix-tree
+
+      # from github.com/ceedubs/unison-nix
+      unison.unison-ucm
     ];
   };
 
