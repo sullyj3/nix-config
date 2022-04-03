@@ -51,6 +51,9 @@ in
       ls = "exa";
       l = "exa";
 
+      # show a tree of all files tracked by git
+      repo = "exa --git-ignore -T";
+
       # Useful for viewing multiple small files at once
       # show filename headers but not the grid
       bats = "bat --style=header,numbers";
