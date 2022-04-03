@@ -50,6 +50,8 @@ require('packer').startup(function()
   use 'whatyouhide/vim-textobj-xmlattr'
   use 'kana/vim-textobj-user'
   use 'iamcco/markdown-preview.nvim'
+	use 'dominikduda/vim_current_word'
+
   -- Live html preview
   use { 'turbio/bracey.vim', run = 'npm install --prefix server' }
   -- Session manager
