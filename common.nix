@@ -85,10 +85,8 @@ in
   programs.home-manager.enable = true;
 
   programs = {
-    broot = {
-      enable = true;
-      enableFishIntegration = true;
-    };
+    broot.enable = true;
+    broot.enableFishIntegration = true;
     git = {
       enable = true;
       userName  = "James Sully";
@@ -97,10 +95,8 @@ in
         init.defaultBranch = "main";
       };
     };
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
+    direnv.enable = true;
+    direnv.nix-direnv.enable = true;
     fish = {
       enable = true;
       interactiveShellInit = ''
@@ -109,10 +105,8 @@ in
       '';
     };
     nushell.enable = true;
-    starship = {
-      enable = true;
-      enableFishIntegration = true;
-    };
+    starship.enable = true;
+    starship.enableFishIntegration = true;
     nnn.enable = true;
     exa.enable = true;
     bat.enable = true;
