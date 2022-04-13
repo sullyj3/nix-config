@@ -58,9 +58,13 @@ require('packer').startup(function()
   use 'tpope/vim-obsession'
 
   -- Languages
+  use 'purescript-contrib/purescript-vim'
   use 'LnL7/vim-nix'
   use 'khaveesh/vim-fish-syntax'
   use  { 'unisonweb/unison', branch = 'trunk', rtp = 'editor-support/vim' }
+  use 'habamax/vim-godot'
+
+  use "b0o/mapx.nvim"
 
 end)
 
@@ -145,8 +149,8 @@ require('telescope').setup {
   },
 }
 --Add leader shortcuts
-vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>sf', [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>sb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>sh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ss', [[<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>]], { noremap = true, silent = true })

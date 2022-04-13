@@ -68,6 +68,7 @@ in
       tree
       dua
       pgcli
+      difftastic
 
       cheat
       tealdeer
@@ -93,6 +94,7 @@ in
       userEmail = "sullyj3@gmail.com";
       extraConfig = {
         init.defaultBranch = "main";
+        diff.external = "difft";
       };
     };
     direnv.enable = true;
