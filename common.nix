@@ -86,7 +86,6 @@ in
   programs.home-manager.enable = true;
 
   programs = {
-    # helix.enable = true;
     broot.enable = true;
     broot.enableFishIntegration = true;
     git = {
@@ -107,7 +106,6 @@ in
         git_check $HOME/.config/cheat/cheatsheets/personal 'Cheatsheets'
       '';
     };
-    # nushell.enable = true;
     starship.enable = true;
     starship.enableFishIntegration = true;
     nnn.enable = true;
