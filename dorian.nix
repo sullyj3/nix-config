@@ -1,3 +1,5 @@
+# Archlabs on laptop
+
 { config, pkgs, ... }:
 
 {
