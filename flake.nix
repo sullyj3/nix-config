@@ -3,9 +3,9 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     unison.url = "github:ceedubs/unison-nix";
@@ -14,17 +14,24 @@
   outputs = { self, nixpkgs, home-manager, unison }:
     let
       system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
       username = "james";
     in {
       homeConfigurations.dorian = home-manager.lib.homeManagerConfiguration {
-        configuration = {
-          imports = [ ./dorian.nix ];
-          nixpkgs.overlays = [ unison.overlay ];
-        };
+        inherit pkgs;
 
-        inherit system username;
-        homeDirectory = "/home/${username}";
-        stateVersion = "22.05";
+        modules = [ 
+          ./dorian.nix
+          ({
+            nixpkgs.overlays = [ unison.overlay ];
+            home = {
+              inherit username;
+              stateVersion = "22.11";
+              homeDirectory = "/home/${username}";
+            };
+          })
+        ];
+
 
       };
     };
