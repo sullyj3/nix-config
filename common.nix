@@ -1,7 +1,4 @@
 { config, pkgs, ... }:
-let
-  unison = import (fetchTarball "https://github.com/ceedubs/unison-nix/archive/trunk.tar.gz") {};
-in
 {
   # true by default, this is here as a reminder.
   # `man home-configuration.nix`
@@ -22,7 +19,6 @@ in
     # You can update Home Manager without changing this value. See
     # the Home Manager release notes for a list of state version
     # changes in each release.
-    stateVersion = "22.05";
 
     sessionVariables = {
       EDITOR = "nvim";
@@ -78,7 +74,7 @@ in
       nix-tree
 
       # from github.com/ceedubs/unison-nix
-      unison.unison-ucm
+      unison-ucm
     ];
   };
 
