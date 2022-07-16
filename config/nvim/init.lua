@@ -40,6 +40,7 @@ require('packer').startup(function()
   -- --
   -- colors
   use 'jacoborus/tender.vim'
+	use 'arcticicestudio/nord-vim'
 
   -- # General utils --
   use 'vim-utils/vim-line'
@@ -92,13 +93,14 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
 --Set colorscheme (order is important here)
-vim.o.termguicolors = true
-vim.g.onedark_terminal_italics = 2
-vim.cmd [[colorscheme tender]]
+-- vim.o.termguicolors = true
+-- vim.g.onedark_terminal_italics = 2
+-- vim.cmd [[colorscheme tender]]
+vim.cmd [[colorscheme nord]]
 
 --Set statusbar
 vim.g.lightline = {
-  colorscheme = 'onedark',
+  colorscheme = 'nord',
   active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } },
   component_function = { gitbranch = 'fugitive#head' },
 }
