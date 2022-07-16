@@ -58,7 +58,7 @@
     packages = with pkgs; [
       du-dust
       glow
-      neovim
+      neovim-nightly
       ripgrep
       fd
       tree

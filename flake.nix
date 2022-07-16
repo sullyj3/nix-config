@@ -9,9 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     unison.url = "github:ceedubs/unison-nix";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, nixpkgs, home-manager, unison }:
+  outputs = { self, nixpkgs, home-manager, unison, neovim-nightly-overlay }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -21,7 +22,7 @@
 
           modules = imports ++ [ 
             ({
-              nixpkgs.overlays = [ unison.overlay ];
+              nixpkgs.overlays = [ unison.overlay neovim-nightly-overlay.overlay ];
               home = {
                 inherit username;
                 stateVersion = "22.11";
