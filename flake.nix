@@ -43,6 +43,6 @@
           inherit username; 
           imports = [ ./common.nix ./genericLinux.nix ]; 
         };
-    };
+      };
   };
 }
