@@ -14,12 +14,9 @@
 
   outputs = { self, nixpkgs, home-manager, unison, neovim-nightly-overlay }:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
       username = "james";
-      mkHomeConfig = { username, imports }: home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
+      mkHomeConfig = { username, system, imports }: home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
           modules = imports ++ [ 
             ({
               nixpkgs.overlays = [ unison.overlay neovim-nightly-overlay.overlay ];
@@ -36,11 +33,14 @@
       homeConfigurations = {
         # Archlabs on laptop
         dorian = mkHomeConfig { 
-          inherit username; imports = [ ./dorian.nix ]; 
+          inherit username;
+          system = "x86_64-linux";
+          imports = [ ./dorian.nix ]; 
         };
         # WSL2 on PC
         mixolydian = mkHomeConfig { 
           inherit username; 
+          system = "x86_64-linux";
           imports = [ ./common.nix ./genericLinux.nix ]; 
         };
       };
