@@ -53,6 +53,7 @@
       # Useful for viewing multiple small files at once
       # show filename headers but not the grid
       bats = "bat --style=header,numbers";
+      todo = "rg -i todo";
     };
 
     packages = with pkgs; [
