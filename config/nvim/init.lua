@@ -237,7 +237,7 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format {async = true}' ]]
 end
 
 -- nvim-cmp supports additional completion capabilities
@@ -247,8 +247,14 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- Enable the following language servers
 -- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
 -- local servers = { 'hls', 'pyright', 'tsserver' }
-local servers = {'hls', 'html', 'cssls', 'rust_analyzer', 'jedi_language_server'}
-for _, lsp in ipairs(servers) do
+
+nvim_lsp['hls'].setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+local other_servers = {'html', 'cssls', 'rust_analyzer', 'jedi_language_server'}
+for _, lsp in ipairs(other_servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
