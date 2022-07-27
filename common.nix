@@ -83,6 +83,7 @@
   programs.home-manager.enable = true;
 
   programs = {
+    aria2.enable = true;
     broot.enable = true;
     broot.enableFishIntegration = true;
     git = {
