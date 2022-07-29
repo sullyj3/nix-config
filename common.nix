@@ -95,6 +95,8 @@
         diff.external = "difft";
       };
     };
+    jq.enable = true;
+    just.enable = true;
     direnv.enable = true;
     direnv.nix-direnv.enable = true;
     fish = {
