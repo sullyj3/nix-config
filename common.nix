@@ -46,6 +46,7 @@
       hm = "home-manager";
       ls = "exa";
       l = "exa";
+      la = "exa -a";
 
       # show a tree of all files tracked by git
       repo = "exa --git-ignore -T";
