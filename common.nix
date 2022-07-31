@@ -23,6 +23,7 @@
     sessionVariables = {
       EDITOR = "nvim";
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+      RIPGREP_CONFIG_PATH = "/home/james/.config/ripgrep/rgrc";
     };
 
     sessionPath = [
@@ -134,5 +135,6 @@
     "fish/functions".source = ./config/fish/functions;
     "nvim/init.lua".source = ./config/nvim/init.lua;
     "nvim/ftplugin".source = ./config/nvim/ftplugin;
+    "ripgrep/ripgreprc".source = ./config/ripgrep/ripgreprc;
   };
 }

@@ -23,6 +23,7 @@
               home = {
                 inherit username;
                 stateVersion = "22.11";
+                # TODO this would be wrong on a Mac
                 homeDirectory = "/home/${username}";
               };
             })
