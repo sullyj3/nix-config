@@ -23,7 +23,7 @@
     sessionVariables = {
       EDITOR = "nvim";
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-      RIPGREP_CONFIG_PATH = "/home/james/.config/ripgrep/rgrc";
+      RIPGREP_CONFIG_PATH = "/home/james/.config/ripgrep/ripgreprc";
     };
 
     sessionPath = [
