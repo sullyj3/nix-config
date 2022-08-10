@@ -92,6 +92,9 @@
       enable = true;
       userName  = "James Sully";
       userEmail = "sullyj3@gmail.com";
+      aliases = {
+        hash = "show --pretty=format:\"%H\" --no-patch";
+      };
       extraConfig = {
         init.defaultBranch = "main";
         diff.external = "difft";
