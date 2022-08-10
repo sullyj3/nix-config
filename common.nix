@@ -68,6 +68,7 @@
       dua
       pgcli
       difftastic
+      tomb
 
       cheat
       tealdeer
