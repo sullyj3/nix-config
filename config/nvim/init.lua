@@ -59,6 +59,7 @@ require('packer').startup(function()
   use 'tpope/vim-obsession'
 
   -- Languages
+	use 'evanleck/vim-svelte'
   use 'purescript-contrib/purescript-vim'
   use 'LnL7/vim-nix'
   use 'khaveesh/vim-fish-syntax'
@@ -351,6 +352,9 @@ cmp.setup {
 -------------------
 -- End Kickstart --
 -------------------
+
+-- vim-svelte
+vim.g.svelte_preprocessors = {'typescript'}
 
 vim.cmd [[ command! Cdhere cd %:p:h]]
 
