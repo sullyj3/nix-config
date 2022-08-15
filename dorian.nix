@@ -12,7 +12,7 @@
     };
     packages = with pkgs; [
       # doesn't seem to work on WSL, leave it here for now
-      nodejs
+      nodejs-18_x
     ];
   };
 }
