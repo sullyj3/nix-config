@@ -4,10 +4,11 @@
 
 {
   # This is a good idea according to https://nixos.wiki/wiki/Home_Manager
-  # the page doesn't really elaborate much as to why
+  # "Home Manager has an option to automatically set some environment variables that will ease usage of software installed with nix on non-NixOS linux (fixing local issues, settings XDG_DATA_DIRS, etc.)"
   targets.genericLinux.enable = true;
 
   # TODO extract to non nixOS module
+  # TODO What the heck is this thing for again?
   programs.fish.plugins = [{
     name = "nix-env";
     src = pkgs.fetchFromGitHub {
