@@ -76,6 +76,7 @@
       sumneko-lua-language-server
       httpie
       nix-tree
+      darkhttpd
 
       # from github.com/ceedubs/unison-nix
       unison-ucm
