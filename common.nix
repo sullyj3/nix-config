@@ -72,7 +72,6 @@
 
       cheat
       tealdeer
-      nodejs
       sumneko-lua-language-server
       httpie
       nix-tree
