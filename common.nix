@@ -77,6 +77,8 @@
       nix-tree
       darkhttpd
 
+      flyctl
+
       # from github.com/ceedubs/unison-nix
       unison-ucm
     ];
@@ -103,8 +105,13 @@
     };
     jq.enable = true;
     just.enable = true;
-    direnv.enable = true;
-    direnv.nix-direnv.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      config = {
+        global.load_dotenv = true;
+      };
+    };
     fish = {
       enable = true;
       interactiveShellInit = ''

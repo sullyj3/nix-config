@@ -73,6 +73,8 @@ end)
 --Set highlight on search
 vim.o.hlsearch = true
 
+vim.o.cmdheight = 0
+
 --Make line numbers default
 vim.wo.number = true
 
