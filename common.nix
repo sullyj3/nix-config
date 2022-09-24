@@ -49,6 +49,8 @@
       l = "exa";
       la = "exa -a";
 
+      nv = "nvim";
+
       # show a tree of all files tracked by git
       repo = "exa --git-ignore -T";
 
