@@ -73,7 +73,8 @@ end)
 --Set highlight on search
 vim.o.hlsearch = true
 
-vim.o.cmdheight = 0
+-- TODO disabling temporarily since it causes a segfault (https://github.com/neovim/neovim/issues/20316)
+-- vim.o.cmdheight = 0
 
 --Make line numbers default
 vim.wo.number = true
