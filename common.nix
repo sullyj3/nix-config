@@ -24,6 +24,7 @@
       EDITOR = "nvim";
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";
       RIPGREP_CONFIG_PATH = "/home/james/.config/ripgrep/ripgreprc";
+      NEOVIDE_MULTIGRID = "true";
     };
 
     sessionPath = [
@@ -49,7 +50,7 @@
       l = "exa";
       la = "exa -a";
 
-      nv = "nvim";
+      nv = "neovide";
 
       # show a tree of all files tracked by git
       repo = "exa --git-ignore -T";

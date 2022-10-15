@@ -20,6 +20,7 @@ require('packer').startup(function()
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use 'nvim-telescope/telescope-file-browser.nvim'
   use 'joshdick/onedark.vim' -- Theme inspired by Atom
   use 'itchyny/lightline.vim' -- Fancier statusline
   -- Add indentation guides even on blank lines
@@ -45,7 +46,9 @@ require('packer').startup(function()
   -- # General utils --
   use 'vim-utils/vim-line'
   use 'tpope/vim-surround'
-  use 'justinmk/vim-sneak'
+  -- use 'justinmk/vim-sneak'
+	use 'ggandor/leap.nvim'
+	use 'ggandor/flit.nvim'
   use 'wellle/targets.vim'
   use 'alvan/vim-closetag'
   use 'whatyouhide/vim-textobj-xmlattr'
@@ -65,10 +68,15 @@ require('packer').startup(function()
   use 'khaveesh/vim-fish-syntax'
   use  { 'unisonweb/unison', branch = 'trunk', rtp = 'editor-support/vim' }
   use 'habamax/vim-godot'
+	use 'ziglang/zig.vim'
 
   use "b0o/mapx.nvim"
 
 end)
+
+if vim.g.neovide ~= nil then
+	vim.o.guifont = 'DejaVuSansMono Nerd font:h7'
+end
 
 --Set highlight on search
 vim.o.hlsearch = true
@@ -144,7 +152,12 @@ require('gitsigns').setup {
 }
 
 -- Telescope
-require('telescope').setup {
+require("telescope").setup {
+	extensions = {
+		file_browser = {
+			hijack_netrw = true,
+		},
+	},
   defaults = {
     mappings = {
       i = {
@@ -154,6 +167,7 @@ require('telescope').setup {
     },
   },
 }
+require("telescope").load_extension "file_browser"
 --Add leader shortcuts
 vim.api.nvim_set_keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]], { noremap = true, silent = true })
@@ -244,9 +258,7 @@ local on_attach = function(_, bufnr)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format {async = true}' ]]
 end
 
--- nvim-cmp supports additional completion capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Enable the following language servers
 -- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
@@ -362,10 +374,12 @@ vim.g.svelte_preprocessors = {'typescript'}
 vim.cmd [[ command! Cdhere cd %:p:h]]
 
 -- vim-sneak
-vim.cmd [[map f <Plug>Sneak_f]]
-vim.cmd [[map F <Plug>Sneak_F]]
-vim.cmd [[map t <Plug>Sneak_t]]
-vim.cmd [[map T <Plug>Sneak_T]]
+-- vim.cmd [[map f <Plug>Sneak_f]]
+-- vim.cmd [[map F <Plug>Sneak_F]]
+-- vim.cmd [[map t <Plug>Sneak_t]]
+-- vim.cmd [[map T <Plug>Sneak_T]]
+require('leap').add_default_mappings()
+require('flit').setup()
 
 vim.o.cursorline = true
 vim.o.tabstop = 2
