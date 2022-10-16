@@ -75,7 +75,7 @@ require('packer').startup(function()
 end)
 
 if vim.g.neovide ~= nil then
-	vim.o.guifont = 'DejaVuSansMono Nerd font:h7'
+	vim.o.guifont = 'DejaVuSansMono Nerd font:h6.7'
 end
 
 --Set highlight on search
