@@ -103,7 +103,7 @@
       };
       extraConfig = {
         init.defaultBranch = "main";
-        diff.external = "difft";
+        # diff.external = "difft";
       };
     };
     jq.enable = true;
