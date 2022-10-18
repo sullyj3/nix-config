@@ -76,6 +76,7 @@ end)
 
 if vim.g.neovide ~= nil then
 	vim.o.guifont = 'DejaVuSansMono Nerd font:h6.7'
+	vim.g.neovide.neovide_scroll_animation_length = 0.5
 end
 
 --Set highlight on search
