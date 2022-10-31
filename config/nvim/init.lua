@@ -42,6 +42,7 @@ require('packer').startup(function()
   -- colors
   use 'jacoborus/tender.vim'
 	use 'arcticicestudio/nord-vim'
+	use 'sainnhe/everforest'
 
   -- # General utils --
   use 'vim-utils/vim-line'
@@ -106,14 +107,20 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
 --Set colorscheme (order is important here)
--- vim.o.termguicolors = true
+if vim.fn.has("termguicolors") == 1 then
+	vim.o.termguicolors = true
+end
 -- vim.g.onedark_terminal_italics = 2
 -- vim.cmd [[colorscheme tender]]
-vim.cmd [[colorscheme nord]]
+-- vim.cmd [[colorscheme nord]]
+
+vim.g.everforest_background = 'hard'
+
+vim.cmd [[colorscheme everforest]]
 
 --Set statusbar
 vim.g.lightline = {
-  colorscheme = 'nord',
+  colorscheme = 'everforest',
   active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } },
   component_function = { gitbranch = 'fugitive#head' },
 }
