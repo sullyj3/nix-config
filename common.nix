@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   # true by default, this is here as a reminder.
   # `man home-configuration.nix`
@@ -7,18 +7,18 @@
   # `home-manager-help` opens manual in browser
   manual.html.enable = true;
 
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
   home = {
-
-    # This value determines the Home Manager release that your
-    # configuration is compatible with. This helps avoid breakage
-    # when a new Home Manager release introduces backwards
-    # incompatible changes.
-    #
-    # You can update Home Manager without changing this value. See
-    # the Home Manager release notes for a list of state version
-    # changes in each release.
+    activation.cleanupOldProfile = lib.hm.dag.entryAfter ["writeBoundary"] (
+      ''
+        if [[ -e "$HOME/.nix-profile"/manifest.json ]] ; then
+          nix profile list \
+            | { grep 'home-manager-path$' || test $? = 1; } \
+            | awk -F ' ' '{ print $4 }' \
+            | cut -d ' ' -f 4 \
+            | xargs -t nix profile remove
+        fi
+      ''
+    );
 
     sessionVariables = {
       EDITOR = "nvim";
