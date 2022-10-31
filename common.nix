@@ -107,7 +107,10 @@
       };
     };
     jq.enable = true;
-    just.enable = true;
+    just = {
+      enable = true;
+      enableFishIntegration = true;
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
