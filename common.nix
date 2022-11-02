@@ -80,6 +80,8 @@
       nix-tree
       darkhttpd
 
+      # source code line counter
+      scc
       flyctl
 
       # from github.com/ceedubs/unison-nix
