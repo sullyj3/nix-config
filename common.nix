@@ -50,29 +50,29 @@
     };
 
     packages = with pkgs; [
-      du-dust
-      glow
+      cbqn # array language
+
+      du-dust                     # space usage 
+      dua                         # space usage 
+      glow                        # console md viewer
       neovim-nightly
       ripgrep
-      fd
+      fd                          # ergonomic bfs find
       tree
-      dua
-      pgcli
+      pgcli                       # postgres cli
       difftastic
-      tomb
+      tomb                        # encryption
 
-      cheat
-      tealdeer
+      cheat                       # create cheat sheets for commands
+      tealdeer                    # brief example driven man pages
       sumneko-lua-language-server
       httpie
       nix-tree
-      darkhttpd
+      darkhttpd                   # small http server
 
-      # source code line counter
-      scc
+      scc                         # source code line counter
       flyctl
 
-      # from github.com/ceedubs/unison-nix
       unison-ucm
     ];
   };

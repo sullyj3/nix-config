@@ -70,15 +70,22 @@ require('packer').startup(function()
   use  { 'unisonweb/unison', branch = 'trunk', rtp = 'editor-support/vim' }
   use 'habamax/vim-godot'
 	use 'ziglang/zig.vim'
+	use { 'mlochbaum/BQN', rtp = 'editors/vim' }
+	use 'https://git.sr.ht/~detegr/nvim-bqn'
 
   use "b0o/mapx.nvim"
 
 end)
 
+vim.filetype.add({ extension = { bqn = 'bqn'}})
+
 if vim.g.neovide ~= nil then
 	vim.o.guifont = 'DejaVuSansMono Nerd font:h6.7'
 	vim.g.neovide_scroll_animation_length = 0.5
 end
+
+-- Case insensitive file tab completion in command line mode
+vim.o.wildignorecase = true
 
 --Set highlight on search
 vim.o.hlsearch = true
