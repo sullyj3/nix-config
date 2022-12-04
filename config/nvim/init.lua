@@ -12,6 +12,12 @@ vim.cmd [[
   augroup end
 ]]
 
+-- Replace Haskell symbols with unicode
+vim.cmd [[
+	autocmd BufWritePre *.hs %! sed -e 's/::/∷/g' -e 's/->/→/g' -e 's/=>/⇒/g'
+]]
+
+
 local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
@@ -72,6 +78,7 @@ require('packer').startup(function()
 	use 'ziglang/zig.vim'
 	use { 'mlochbaum/BQN', rtp = 'editors/vim' }
 	use 'https://git.sr.ht/~detegr/nvim-bqn'
+	use 'sj2tpgk/vim-oil'
 
   use "b0o/mapx.nvim"
 

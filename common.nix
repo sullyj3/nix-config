@@ -52,6 +52,7 @@
     packages = with pkgs; [
       cbqn # array language
       oil # shell
+      just
 
       du-dust                     # space usage 
       dua                         # space usage 
@@ -98,10 +99,6 @@
       };
     };
     jq.enable = true;
-    just = {
-      enable = true;
-      enableFishIntegration = true;
-    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
