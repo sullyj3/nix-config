@@ -14,7 +14,7 @@ vim.cmd [[
 
 -- Replace Haskell symbols with unicode
 vim.cmd [[
-	autocmd BufWritePre *.hs %! sed -e 's/::/∷/g' -e 's/->/→/g' -e 's/=>/⇒/g'
+	autocmd BufWritePre *.hs %! sed -e 's/::/∷/g' -e 's/->/→/g' -e 's/=>/⇒/g' -e 's/<-/←/g'
 ]]
 
 
