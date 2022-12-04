@@ -51,6 +51,7 @@
 
     packages = with pkgs; [
       cbqn # array language
+      oil # shell
 
       du-dust                     # space usage 
       dua                         # space usage 
