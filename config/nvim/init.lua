@@ -12,13 +12,6 @@ vim.cmd [[
   augroup end
 ]]
 
--- Replace Haskell symbols with unicode
--- TOO ANNOYING
--- vim.cmd [[
--- 	autocmd BufWritePre *.hs %! sed -e 's/::/∷/g' -e 's/->/→/g' -e 's/=>/⇒/g' -e 's/<-/←/g'
--- ]]
-
-
 local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
@@ -48,21 +41,23 @@ require('packer').startup(function()
   -- --
   -- colors
   use 'jacoborus/tender.vim'
-	use 'arcticicestudio/nord-vim'
-	use 'sainnhe/everforest'
+  use 'arcticicestudio/nord-vim'
+  use 'sainnhe/everforest'
 
   -- # General utils --
   use 'vim-utils/vim-line'
   use 'tpope/vim-surround'
   -- use 'justinmk/vim-sneak'
-	use 'ggandor/leap.nvim'
-	use 'ggandor/flit.nvim'
+  use 'ggandor/leap.nvim'
+  use 'ggandor/flit.nvim'
   use 'wellle/targets.vim'
   use 'alvan/vim-closetag'
   use 'whatyouhide/vim-textobj-xmlattr'
   use 'kana/vim-textobj-user'
   use 'iamcco/markdown-preview.nvim'
-	use 'dominikduda/vim_current_word'
+  use 'dominikduda/vim_current_word'
+	
+	use 'github/copilot.vim'
 
   -- Live html preview
   use { 'turbio/bracey.vim', run = 'npm install --prefix server' }
@@ -70,26 +65,26 @@ require('packer').startup(function()
   use 'tpope/vim-obsession'
 
   -- Languages
-	use 'evanleck/vim-svelte'
+  use 'evanleck/vim-svelte'
   use 'purescript-contrib/purescript-vim'
   use 'LnL7/vim-nix'
   use 'khaveesh/vim-fish-syntax'
-  use  { 'unisonweb/unison', branch = 'trunk', rtp = 'editor-support/vim' }
+  use { 'unisonweb/unison', branch = 'trunk', rtp = 'editor-support/vim' }
   use 'habamax/vim-godot'
-	use 'ziglang/zig.vim'
-	use { 'mlochbaum/BQN', rtp = 'editors/vim' }
-	use 'https://git.sr.ht/~detegr/nvim-bqn'
-	use 'sj2tpgk/vim-oil'
+  use 'ziglang/zig.vim'
+  use { 'mlochbaum/BQN', rtp = 'editors/vim' }
+  use 'https://git.sr.ht/~detegr/nvim-bqn'
+  use 'sj2tpgk/vim-oil'
 
   use "b0o/mapx.nvim"
 
 end)
 
-vim.filetype.add({ extension = { bqn = 'bqn'}})
+vim.filetype.add({ extension = { bqn = 'bqn' } })
 
 if vim.g.neovide ~= nil then
-	vim.o.guifont = 'DejaVuSansMono Nerd font:h6.7'
-	vim.g.neovide_scroll_animation_length = 0.5
+  vim.o.guifont = 'DejaVuSansMono Nerd font:h6.7'
+  vim.g.neovide_scroll_animation_length = 0.5
 end
 
 -- Case insensitive file tab completion in command line mode
@@ -123,7 +118,7 @@ vim.wo.signcolumn = 'yes'
 
 --Set colorscheme (order is important here)
 if vim.fn.has("termguicolors") == 1 then
-	vim.o.termguicolors = true
+  vim.o.termguicolors = true
 end
 -- vim.g.onedark_terminal_italics = 2
 -- vim.cmd [[colorscheme tender]]
@@ -176,11 +171,11 @@ require('gitsigns').setup {
 
 -- Telescope
 require("telescope").setup {
-	extensions = {
-		file_browser = {
-			hijack_netrw = true,
-		},
-	},
+  extensions = {
+    file_browser = {
+      hijack_netrw = true,
+    },
+  },
   defaults = {
     mappings = {
       i = {
@@ -192,15 +187,24 @@ require("telescope").setup {
 }
 require("telescope").load_extension "file_browser"
 --Add leader shortcuts
-vim.api.nvim_set_keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>sb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>sh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ss', [[<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>sd', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>f', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>so', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>m', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]],
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><space>',
+  [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>sb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]],
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>sh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]],
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ss', [[<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>]]
+  , { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>sd', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]],
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>f', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]],
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>so',
+  [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>m', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]],
+  { noremap = true, silent = true })
 
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
@@ -268,7 +272,8 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl',
+    '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
@@ -277,7 +282,8 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so',
+    [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format {async = true}' ]]
 end
 
@@ -288,11 +294,17 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- local servers = { 'hls', 'pyright', 'tsserver' }
 
 nvim_lsp['hls'].setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    haskell = {
+      formattingProvider = "stylish-haskell",
+      checkParents = "AlwaysCheck"
+    }
+  }
 }
 
-local other_servers = {'html', 'cssls', 'rust_analyzer', 'jedi_language_server'}
+local other_servers = { 'html', 'cssls', 'rust_analyzer', 'jedi_language_server' }
 for _, lsp in ipairs(other_servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -392,7 +404,7 @@ cmp.setup {
 -------------------
 
 -- vim-svelte
-vim.g.svelte_preprocessors = {'typescript'}
+vim.g.svelte_preprocessors = { 'typescript' }
 
 vim.cmd [[ command! Cdhere cd %:p:h]]
 
@@ -407,3 +419,4 @@ require('flit').setup()
 vim.o.cursorline = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
+
