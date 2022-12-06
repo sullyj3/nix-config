@@ -420,3 +420,6 @@ vim.o.cursorline = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 
+-- copilot
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
