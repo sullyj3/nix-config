@@ -56,9 +56,25 @@ require('packer').startup(function()
   use 'kana/vim-textobj-user'
   use 'iamcco/markdown-preview.nvim'
   use 'dominikduda/vim_current_word'
-	
-	use 'github/copilot.vim'
 
+	use {
+		"zbirenbaum/copilot.lua",
+		event = "VimEnter",
+		config = function()
+			vim.defer_fn(function()
+				require('copilot').setup {
+					suggestion = { auto_trigger = true }
+				}
+			end, 100)
+		end,
+	}
+	use {
+		"zbirenbaum/copilot-cmp",
+		after = { "copilot.lua" },
+		config = function ()
+			require("copilot_cmp").setup()
+		end
+	}
   -- Live html preview
   use { 'turbio/bracey.vim', run = 'npm install --prefix server' }
   -- Session manager
@@ -419,7 +435,3 @@ require('flit').setup()
 vim.o.cursorline = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
-
--- copilot
-vim.g.copilot_no_tab_map = true
-vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
