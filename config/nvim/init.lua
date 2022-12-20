@@ -277,7 +277,7 @@ require('nvim-treesitter.configs').setup {
 
 -- LSP settings
 local nvim_lsp = require 'lspconfig'
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   local opts = { noremap = true, silent = true }
@@ -301,6 +301,21 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so',
     [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format {async = true}' ]]
+
+  local function map(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local cmd = vim.api.nvim_command
+
+  if client.server_capabilities.codeLensProvider then
+    map("n", "<leader>l", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
+    cmd [[augroup LspCodelensAutoGroup]]
+    cmd [[au!]]
+    cmd [[au BufEnter <buffer> lua vim.lsp.codelens.refresh()]]
+    cmd [[au CursorHold <buffer> lua vim.lsp.codelens.refresh()]]
+    cmd [[au InsertLeave <buffer> lua vim.lsp.codelens.refresh()]]
+    cmd [[augroup end]]
+  else
+    print('no')
+  end
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
