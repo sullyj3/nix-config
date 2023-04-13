@@ -93,6 +93,7 @@ require('packer').startup(function()
   use 'sj2tpgk/vim-oil'
 
   use "b0o/mapx.nvim"
+	use "gpanders/nvim-parinfer"
 
 end)
 
