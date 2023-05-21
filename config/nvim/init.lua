@@ -91,6 +91,7 @@ require('packer').startup(function()
   use { 'mlochbaum/BQN', rtp = 'editors/vim' }
   use 'https://git.sr.ht/~detegr/nvim-bqn'
   use 'sj2tpgk/vim-oil'
+	use 'bakpakin/janet.vim'
 
   use "b0o/mapx.nvim"
 	use "gpanders/nvim-parinfer"
