@@ -18,6 +18,7 @@
     sessionPath = [
       "/home/james/.cabal/bin"
       "/home/james/.ghcup/bin"
+      "/home/james/.elan/bin"
     ];
 
     shellAliases = {
