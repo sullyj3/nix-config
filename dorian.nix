@@ -12,8 +12,7 @@
     };
     packages = with pkgs; [
       # doesn't seem to work on WSL, leave it here for now
-      # copilot doesn't support node 18 as of december 2022
-      nodejs-16_x
+      nodejs_20
     ];
   };
 }
