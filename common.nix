@@ -52,7 +52,6 @@
 
     packages = with pkgs; [
       cbqn # array language
-      oil # shell
       just
 
       du-dust                     # space usage 
@@ -74,10 +73,12 @@
       darkhttpd                   # small http server
 
       scc                         # source code line counter
-      flyctl
 
-      unison-ucm
       streamlink
+
+      # oil # shell
+      # unison-ucm
+      # flyctl
     ];
   };
 
