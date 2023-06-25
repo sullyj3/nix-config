@@ -345,16 +345,12 @@ for _, lsp in ipairs(other_servers) do
   }
 end
 
--- Example custom server
--- local sumneko_root_path = vim.fn.getenv 'HOME' .. '/.local/bin/sumneko_lua' -- Change to your sumneko root installation
--- local sumneko_binary = sumneko_root_path .. '/bin/Linux/lua-language-server'
-
 -- Make runtime files discoverable to the server
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
-require('lspconfig').sumneko_lua.setup {
+require('lspconfig').lua_ls.setup {
   -- cmd = { sumneko_binary, '-E', sumneko_root_path .. '/main.lua' },
   on_attach = on_attach,
   capabilities = capabilities,
