@@ -10,6 +10,7 @@
     ];
     shellAliases = {
       win = "alacritty --working-directory . &; disown";
+      feh = "feh --draw-filename --force-aliasing --auto-zoom --sort filename --version-sort";
     };
   };
 
