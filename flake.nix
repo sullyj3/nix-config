@@ -12,36 +12,32 @@
 
   outputs = { self, nixpkgs, home-manager }:
     let
-      username = "james";
-      mkHomeConfig = { username, system, imports }: home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
-          modules = imports ++ [ 
-            ({
-              nixpkgs.overlays = [
-
-              ];
-              home = {
-                inherit username;
+      mkLinuxHomeConfig = { imports }: home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        modules = imports ++ [ 
+          ({
+            nixpkgs.overlays = [ ];
+            home = 
+              let 
+                username = "james";
+              in
+              {
+                username = username;
                 stateVersion = "22.11";
-                # TODO this would be wrong on a Mac
                 homeDirectory = "/home/${username}";
               };
-            })
-          ];
-        };
+          })
+        ];
+      };
 
     in {
       homeConfigurations = {
         # Archlabs on laptop
-        dorian = mkHomeConfig { 
-          inherit username;
-          system = "x86_64-linux";
+        dorian = mkLinuxHomeConfig { 
           imports = [ ./dorian.nix ]; 
         };
         # WSL2 on PC
-        mixolydian = mkHomeConfig { 
-          inherit username; 
-          system = "x86_64-linux";
+        mixolydian = mkLinuxHomeConfig { 
           imports = [ ./common.nix ./genericLinux.nix ]; 
         };
       };
