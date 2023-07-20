@@ -38,7 +38,7 @@
         };
         # WSL2 on PC
         "james@mixolydian" = mkLinuxHomeConfig { 
-          imports = [ ./common.nix ./genericLinux.nix ]; 
+          imports = [ ./home.nix ./genericLinux.nix ]; 
         };
       };
   };

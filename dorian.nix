@@ -3,7 +3,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./common.nix ./genericLinux.nix ./guiLinux.nix ];
+  imports = [ ./home.nix ./genericLinux.nix ./guiLinux.nix ];
 
   home = {
     shellAliases = {
