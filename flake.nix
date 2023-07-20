@@ -8,18 +8,18 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    unison.url = "github:ceedubs/unison-nix";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, nixpkgs, home-manager, unison, neovim-nightly-overlay }:
+  outputs = { self, nixpkgs, home-manager }:
     let
       username = "james";
       mkHomeConfig = { username, system, imports }: home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
           modules = imports ++ [ 
             ({
-              nixpkgs.overlays = [ unison.overlay neovim-nightly-overlay.overlay ];
+              nixpkgs.overlays = [
+
+              ];
               home = {
                 inherit username;
                 stateVersion = "22.11";

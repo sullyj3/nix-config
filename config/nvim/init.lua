@@ -85,7 +85,6 @@ require('packer').startup(function()
   use 'purescript-contrib/purescript-vim'
   use 'LnL7/vim-nix'
   use 'khaveesh/vim-fish-syntax'
-  use { 'unisonweb/unison', branch = 'trunk', rtp = 'editor-support/vim' }
   use 'habamax/vim-godot'
   use 'ziglang/zig.vim'
   use { 'mlochbaum/BQN', rtp = 'editors/vim' }

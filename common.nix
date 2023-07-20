@@ -57,7 +57,7 @@
       du-dust                     # space usage 
       dua                         # space usage 
       glow                        # console md viewer
-      neovim-nightly
+      neovim
       ripgrep
       fd                          # ergonomic bfs find
       tree
@@ -75,10 +75,6 @@
       scc                         # source code line counter
 
       streamlink
-
-      # oil # shell
-      # unison-ucm
-      # flyctl
     ];
   };
 
