@@ -23,7 +23,7 @@
               in
               {
                 username = username;
-                stateVersion = "22.11";
+                stateVersion = "23.11";
                 homeDirectory = "/home/${username}";
               };
           })
