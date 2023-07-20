@@ -33,11 +33,11 @@
     in {
       homeConfigurations = {
         # Archlabs on laptop
-        dorian = mkLinuxHomeConfig { 
+        "james@dorian" = mkLinuxHomeConfig { 
           imports = [ ./dorian.nix ]; 
         };
         # WSL2 on PC
-        mixolydian = mkLinuxHomeConfig { 
+        "james@mixolydian" = mkLinuxHomeConfig { 
           imports = [ ./common.nix ./genericLinux.nix ]; 
         };
       };
