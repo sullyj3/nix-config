@@ -75,6 +75,7 @@
       scc                         # source code line counter
 
       streamlink
+      nix-output-monitor
     ];
   };
 
