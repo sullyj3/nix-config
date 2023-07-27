@@ -3,6 +3,8 @@
 {
   imports = [];
 
+  targets.genericLinux.enable = true;
+
   home = {
     sessionVariables = {
       EDITOR = "nvim";

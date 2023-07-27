@@ -40,6 +40,10 @@
         "james@mixolydian" = mkLinuxHomeConfig { 
           imports = [ ./home.nix ./genericLinux.nix ]; 
         };
+
+        basics = mkLinuxHomeConfig {
+          imports = [ ./basics.nix ];
+        };
       };
   };
 }
