@@ -54,7 +54,7 @@
     };
     fish = {
       interactiveShellInit = ''
-        git_check $HOME/.config/nixpkgs 'Home manager config'
+        git_check $HOME/.config/home-manager 'Home manager config'
         git_check $HOME/.config/cheat/cheatsheets/personal 'Cheatsheets'
       '';
     };
