@@ -61,7 +61,7 @@ in
     };
     fish = {
       interactiveShellInit = ''
-        git_check $HOME/.config/home-manager 'Home manager config'
+        git_check ${homeConfigLocation} 'Nix config repository'
         git_check $HOME/.config/cheat/cheatsheets/personal 'Cheatsheets'
       '';
     };
