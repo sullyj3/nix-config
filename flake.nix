@@ -41,6 +41,11 @@
           imports = [ ./home.nix ./genericLinux.nix ]; 
         };
 
+        # NixOS test vm
+        "james@semibreve" = mkLinuxHomeConfig {
+          imports = [ ./semibreve.nix ];
+        };
+
         basics = mkLinuxHomeConfig {
           imports = [ ./basics.nix ];
         };
