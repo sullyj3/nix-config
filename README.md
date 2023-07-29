@@ -5,13 +5,13 @@
 1) Install prerequisites:
 	1) Nix - https://nixos.org/manual/nix/stable/installation/installing-binary.html
 	2) home-manager - https://rycee.gitlab.io/home-manager/index.html#ch-installation
-2) ```git clone git@github.com:sullyj3/home-manager-config.git ~/.config/home-manager/```
-3) Create a new machine specific config and build it
-	1) `cd ~/.nixpkgs`
-	2) `cp dorian.nix my_new_machine.nix` and edit as appropriate
-	3) `ln -s my_new_machine.nix home.nix`
-	4) `home-manager switch`
-4) Post install steps:
+2) ```git clone git@github.com:sullyj3/nix-config.git```
+3) ```mkdir -p ~/.config/home-manager```
+4) symlink /etc/nixos/flake.nix and ~/.config/home-manager/flake.nix to this flake.nix
+5) Create new machine specific configs as needed in flake outputs
+6) If on nixos: `sudo nixos-rebuild switch`. This will automatically choose the config from nixosConfigurations that matches the hostname.
+7) `home-manager switch`. This will choose the home-configuration named `user@hostname`.
+6) Post install steps:
 	1) Set up `cheat`[^1]. Once it has downloaded community cheatsheets, do
 
 	```git clone git@github.com:sullyj3/cheatsheets.git ~/.config/cheat/cheatsheets/personal```
