@@ -4,7 +4,7 @@ let
   link = config.lib.file.mkOutOfStoreSymlink;
   homeDirectory = config.home.homeDirectory;
   # Hard coding this path is not ideal. Revisit if a better solution is found.
-  homeConfigLocation = "${homeDirectory}/.config/home-manager";
+  homeConfigLocation = "${homeDirectory}/nix-config";
 in
 {
   imports = [ ./basics.nix ];

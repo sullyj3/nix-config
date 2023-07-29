@@ -1,8 +1,7 @@
 {
-  description = "Home Manager configuration of James Sully";
+  description = "Nix configuration of James Sully";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -31,6 +30,11 @@
       };
 
     in {
+      nixosConfigurations.semibreve = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ./semibreve/configuration.nix ];
+      };
+
       homeConfigurations = {
         # Archlabs on laptop
         "james@dorian" = mkLinuxHomeConfig { 
@@ -50,5 +54,5 @@
           imports = [ ./basics.nix ];
         };
       };
-  };
+    };
 }
