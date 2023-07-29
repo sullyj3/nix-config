@@ -1,4 +1,11 @@
 { config, pkgs, lib, ... }:
+
+let
+  link = config.lib.file.mkOutOfStoreSymlink;
+  homeDirectory = config.home.homeDirectory;
+  # Hard coding this path is not ideal. Revisit if a better solution is found.
+  homeConfigLocation = "${homeDirectory}/.config/home-manager";
+in
 {
   imports = [ ./basics.nix ];
 
@@ -72,7 +79,7 @@
 
   xdg.configFile = {
     "cheat/conf.yml".source = ./config/cheat/conf.yml;
-    "nvim/init.lua".source = ./config/nvim/init.lua;
+    "nvim/init.lua".source = link "${homeConfigLocation}/config/nvim/init.lua";
     "nvim/ftplugin".source = ./config/nvim/ftplugin;
   };
 }
