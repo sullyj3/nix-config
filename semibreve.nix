@@ -5,5 +5,10 @@
 {
   imports = [ ./home.nix ];
 
-  # home = { };
+  home = { 
+    packages = [
+      pkgs.xclip
+    ];
+  };
+
 }
