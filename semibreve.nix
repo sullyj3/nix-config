@@ -21,6 +21,8 @@
       (pkgs.polybar.override {
         i3Support = true;
       })
+      pkgs.xfce.exo
+      pkgs.xfce.xfce4-screenshooter
     ];
   };
 

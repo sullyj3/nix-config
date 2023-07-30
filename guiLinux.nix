@@ -18,8 +18,6 @@ in
       win = "alacritty --working-directory . &; disown";
       nv = "neovide";
     };
-
-    packages = [ pkgs.xfce.exo ];
   };
 
   xdg.configFile = {
