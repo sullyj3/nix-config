@@ -3,7 +3,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./home.nix ];
+  imports = [ ./home.nix ./guiLinux.nix ];
 
   home = { 
     sessionVariables = {
