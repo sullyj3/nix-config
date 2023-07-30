@@ -1,7 +1,13 @@
 # for linux systems with a gui (ie, no WSL)
 
 { config, pkgs, ... }:
-
+  # todo figure out how to extract this stuff into a module
+let
+  link = config.lib.file.mkOutOfStoreSymlink;
+  homeDirectory = config.home.homeDirectory;
+  # Hard coding this path is not ideal. Revisit if a better solution is found.
+  homeConfigLocation = "${homeDirectory}/nix-config";
+in
 {
   home = {
     sessionVariables = {
@@ -14,4 +20,7 @@
     };
   };
 
+  xdg.configFile = {
+    "i3/config".source = link "${homeConfigLocation}/config/i3/config";
+  };
 }
