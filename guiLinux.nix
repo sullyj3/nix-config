@@ -22,5 +22,9 @@ in
 
   xdg.configFile = {
     "i3/config".source = link "${homeConfigLocation}/config/i3/config";
+    "polybar" = {
+      source = ./config/polybar;
+      recursive = true;
+    };
   };
 }

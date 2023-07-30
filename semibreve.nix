@@ -18,6 +18,9 @@
       pkgs.xclip
       pkgs.file
       pkgs.alacritty
+      (pkgs.polybar.override {
+        i3Support = true;
+      })
     ];
   };
 
