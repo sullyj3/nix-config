@@ -10,13 +10,13 @@
     yyp.url = "github:sullyj3/yyp";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, yyp, ... }@inputs:
     let
       mkLinuxHomeConfig = { imports }: home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = imports ++ [ 
           ({
-            nixpkgs.overlays = [ inputs.yyp.overlay ];
+            nixpkgs.overlays = [ yyp.overlays.default ];
             home = 
               let 
                 username = "james";

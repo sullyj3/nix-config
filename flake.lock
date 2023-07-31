@@ -98,11 +98,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1690789455,
-        "narHash": "sha256-y1bgNkRB/UmjugEwqfHFdFwza55z6sZsZhRtN96DxWA=",
+        "lastModified": 1690801651,
+        "narHash": "sha256-yBVyN5ZYd4SjxJSrjAMAk72TUR3eWsm7eXh2RWu5GzY=",
         "owner": "sullyj3",
         "repo": "yyp",
-        "rev": "7767803e108963a3f2ced814b7180b445ab7300e",
+        "rev": "3589a6b95707d57e3553d00172f67b4503a88841",
         "type": "github"
       },
       "original": {
