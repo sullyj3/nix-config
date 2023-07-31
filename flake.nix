@@ -7,15 +7,16 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    yyp.url = "github:sullyj3/yyp";
   };
 
-  outputs = { self, nixpkgs, home-manager }:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       mkLinuxHomeConfig = { imports }: home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = imports ++ [ 
           ({
-            nixpkgs.overlays = [ ];
+            nixpkgs.overlays = [ inputs.yyp.overlay ];
             home = 
               let 
                 username = "james";

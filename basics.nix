@@ -37,6 +37,9 @@
       # show filename headers but not the grid
       bats = "bat --style=header,numbers";
       todo = "rg -i todo";
+
+      yy = "yyp yank";
+      p = "yyp put";
     };
 
     packages = with pkgs; [
@@ -45,6 +48,8 @@
       fd                          # ergonomic bfs find
       tree
       httpie
+
+      yyp
     ];
   };
 
