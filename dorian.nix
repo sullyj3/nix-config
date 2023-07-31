@@ -20,4 +20,7 @@
       signal-desktop
     ];
   };
+
+  # programs.nushell.enable = true;
+  # programs.zoxide.enableNushellIntegration = true;
 }
