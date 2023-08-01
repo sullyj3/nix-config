@@ -13,6 +13,7 @@
   outputs = { self, nixpkgs, home-manager, yyp, ... }@inputs:
     let
       mkLinuxHomeConfig = { imports }: home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = { inherit nixpkgs; };
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = imports ++ [ 
           ({

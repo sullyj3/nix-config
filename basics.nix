@@ -1,10 +1,17 @@
-{ config, pkgs, ... }:
+{ config, nixpkgs, pkgs, ... }:
 
 {
   imports = [];
 
   targets.genericLinux.enable = true;
   nix.package = pkgs.nixVersions.nix_2_17;
+
+  # pin nixpkgs to version we're using for this configuration
+  # in user registry (~/.config/nix/registry.json)
+  # I think this allows us not to have to download the nixpkgs flake every 
+  # time we run eg `nix shell nixpkgs#whatever`
+  nix.registry.nixpkgs.flake = nixpkgs;
+  
   nix.settings = {
     keep-derivations = true;
     keep-outputs = true;
