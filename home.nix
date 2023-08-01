@@ -74,7 +74,7 @@ in
     };
     fzf.enable = true;
     fzf.enableFishIntegration = true;
-    htop.enable = true;
+    btop.enable = true;
   };
 
   xdg.configFile = {
