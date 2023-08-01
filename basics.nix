@@ -28,7 +28,6 @@
     sessionVariables = {
       EDITOR = "nvim";
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-      RIPGREP_CONFIG_PATH = "/home/james/.config/ripgrep/ripgreprc";
     };
 
     shellAliases = {
@@ -63,7 +62,6 @@
 
     packages = with pkgs; [
       neovim
-      ripgrep
       fd                          # ergonomic bfs find
       tree
       httpie
@@ -97,6 +95,10 @@
         init.defaultBranch = "main";
       };
     };
+    ripgrep = {
+      enable = true;
+      arguments = [ "--smart-case" ];
+    };
   };
 
   xdg.configFile = {
@@ -108,7 +110,6 @@
     # see: https://github.com/nix-community/home-manager/blob/ff5133843c26979f8abb5dd801b32f40287692fa/modules/programs/fish.nix#L32
     # see: https://fishshell.com/docs/current/cmds/function.html
     "fish/functions".source = ./config/fish/functions;
-    "ripgrep/ripgreprc".source = ./config/ripgrep/ripgreprc;
   };
 
 }
