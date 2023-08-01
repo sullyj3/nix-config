@@ -44,6 +44,7 @@ in
 
       streamlink
       nix-output-monitor
+      ouch                        # easy to use compression tool
     ];
   };
 
