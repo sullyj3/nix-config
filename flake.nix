@@ -7,7 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    yyp.url = "github:sullyj3/yyp";
+    yyp = {
+      url = "github:sullyj3/yyp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, yyp, ... }@inputs:
