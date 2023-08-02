@@ -4,7 +4,7 @@
   imports = [];
 
   targets.genericLinux.enable = true;
-  nix.package = pkgs.nixVersions.nix_2_17;
+  nix.package = pkgs.nixVersions.nix_2_16;
 
   # pin nixpkgs to version we're using for this configuration
   # in user registry (~/.config/nix/registry.json)
