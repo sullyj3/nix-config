@@ -1,4 +1,4 @@
-{ config, nixpkgs, pkgs, ... }:
+{ config, pkgs, ... }:
 let 
   username = "james";
 in
@@ -7,11 +7,6 @@ in
 
   nix.package = pkgs.nixVersions.nix_2_16;
 
-  # pin nixpkgs to version we're using for this configuration
-  # in user registry (~/.config/nix/registry.json)
-  # I think this allows us not to have to download the nixpkgs flake every 
-  # time we run eg `nix shell nixpkgs#whatever`
-  nix.registry.nixpkgs.flake = nixpkgs;
   
   nix.settings = {
     keep-derivations = true;

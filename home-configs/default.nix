@@ -6,15 +6,27 @@ let
   ];
 
   mkLinuxHomeConfig = { imports }: home-manager.lib.homeManagerConfiguration {
-    extraSpecialArgs = { inherit nixpkgs; };
     pkgs = nixpkgs.legacyPackages."x86_64-linux";
     modules = imports ++ [ 
       ./basics.nix
-      ({ nixpkgs.overlays = overlays; })
+      ({ 
+        nixpkgs.overlays = overlays;
+
+        # pin nixpkgs to version we're using for this configuration
+        # in user registry (~/.config/nix/registry.json)
+        # I think this allows us not to have to download the nixpkgs flake every 
+        # time we run eg `nix shell nixpkgs#whatever`
+        nix.registry.nixpkgs.flake = nixpkgs;
+
+      })
     ];
   };
 in
 {
+  basics = mkLinuxHomeConfig {
+    imports = [];
+  };
+
   # Archlabs on laptop
   "james@dorian" = mkLinuxHomeConfig { 
     imports = [ ./dorian.nix ]; 
@@ -27,9 +39,5 @@ in
   # NixOS test vm
   "james@semibreve" = mkLinuxHomeConfig {
     imports = [ ./semibreve.nix ];
-  };
-
-  basics = mkLinuxHomeConfig {
-    imports = [ ./basics.nix ];
   };
 }
