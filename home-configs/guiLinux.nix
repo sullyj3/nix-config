@@ -3,10 +3,7 @@
 { config, pkgs, ... }:
   # todo figure out how to extract this stuff into a module
 let
-  link = config.lib.file.mkOutOfStoreSymlink;
-  homeDirectory = config.home.homeDirectory;
-  # Hard coding this path is not ideal. Revisit if a better solution is found.
-  homeConfigLocation = "${homeDirectory}/nix-config/home-configs";
+  myLib = import ./myLib.nix { inherit config; };
 in
 {
   home = {
@@ -22,7 +19,7 @@ in
   };
 
   xdg.configFile = {
-    "i3/config".source = link "${homeConfigLocation}/config/i3/config";
+    "i3/config".source = myLib.link "${myLib.homeConfigLocation}/config/i3/config";
     "polybar" = {
       source = ./config/polybar;
       recursive = true;

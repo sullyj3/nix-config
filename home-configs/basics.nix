@@ -1,12 +1,12 @@
 { config, pkgs, ... }:
 let 
   username = "james";
+  myLib = import ./myLib { inherit config; };
 in
 {
   imports = [];
 
   nix.package = pkgs.nixVersions.nix_2_16;
-
   
   nix.settings = {
     keep-derivations = true;

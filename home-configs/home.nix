@@ -3,12 +3,8 @@
 # For lighter configs use ./basics.nix
 
 { config, pkgs, lib, ... }:
-
 let
-  link = config.lib.file.mkOutOfStoreSymlink;
-  homeDirectory = config.home.homeDirectory;
-  # Hard coding this path is not ideal. Revisit if a better solution is found.
-  homeConfigLocation = "${homeDirectory}/nix-config/home-configs";
+  myLib = import ./myLib.nix { inherit config; };
 in
 {
   # true by default, this is here as a reminder.
@@ -64,7 +60,7 @@ in
     };
     fish = {
       interactiveShellInit = ''
-        git_check ${homeConfigLocation} 'Nix config repository'
+        git_check ${myLib.homeConfigLocation} 'Nix config repository'
         git_check $HOME/.config/cheat/cheatsheets/personal 'Cheatsheets'
       '';
     };
@@ -82,7 +78,7 @@ in
 
   xdg.configFile = {
     "cheat/conf.yml".source = ./config/cheat/conf.yml;
-    "nvim/init.lua".source = link "${homeConfigLocation}/config/nvim/init.lua";
+    "nvim/init.lua".source = myLib.link "${myLib.homeConfigLocation}/config/nvim/init.lua";
     "nvim/ftplugin".source = ./config/nvim/ftplugin;
   };
 }
