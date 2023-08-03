@@ -22,6 +22,7 @@
       # doesn't seem to work on WSL, leave it here for now
       nodejs_20
       signal-desktop
+      litecli
     ];
   };
 
