@@ -11,6 +11,7 @@
       "${modulesPath}/profiles/qemu-guest.nix"
     ];
   
+  nix.settings.trusted-users = ["root" "@wheel"];
   nix.settings.extra-experimental-features = ["nix-command" "flakes"];
 
   # Bootloader.
