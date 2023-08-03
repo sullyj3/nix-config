@@ -4,7 +4,7 @@ let
   link = config.lib.file.mkOutOfStoreSymlink;
   homeDirectory = config.home.homeDirectory;
   # Hard coding this path is not ideal. Revisit if a better solution is found.
-  homeConfigLocation = "${homeDirectory}/nix-config";
+  homeConfigLocation = "${homeDirectory}/nix-config/home-configs";
 in
 {
   imports = [ ./basics.nix ];

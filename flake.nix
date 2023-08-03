@@ -42,29 +42,7 @@
       };
 
     in {
-      nixosConfigurations.semibreve = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./semibreve/configuration.nix ];
-      };
-
-      homeConfigurations = {
-        # Archlabs on laptop
-        "james@dorian" = mkLinuxHomeConfig { 
-          imports = [ ./dorian.nix ]; 
-        };
-        # WSL2 on PC
-        "james@mixolydian" = mkLinuxHomeConfig { 
-          imports = [ ./home.nix ./genericLinux.nix ]; 
-        };
-
-        # NixOS test vm
-        "james@semibreve" = mkLinuxHomeConfig {
-          imports = [ ./semibreve.nix ];
-        };
-
-        basics = mkLinuxHomeConfig {
-          imports = [ ./basics.nix ];
-        };
-      };
+      nixosConfigurations = (import ./nixos-configs) { inherit nixpkgs; };
+      homeConfigurations = (import ./home-configs) { inherit mkLinuxHomeConfig; };
     };
 }
