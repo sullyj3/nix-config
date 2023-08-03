@@ -19,7 +19,7 @@ in
   };
 
   xdg.configFile = {
-    "i3/config".source = myLib.link "${myLib.homeConfigLocation}/config/i3/config";
+    "i3/config".source = myLib.link "${myLib.xdgConfigLocation}/i3/config";
     "polybar" = {
       source = ./config/polybar;
       recursive = true;

@@ -78,7 +78,7 @@ in
 
   xdg.configFile = {
     "cheat/conf.yml".source = ./config/cheat/conf.yml;
-    "nvim/init.lua".source = myLib.link "${myLib.homeConfigLocation}/config/nvim/init.lua";
+    "nvim/init.lua".source = myLib.link "${myLib.xdgConfigLocation}/nvim/init.lua";
     "nvim/ftplugin".source = ./config/nvim/ftplugin;
   };
 }
