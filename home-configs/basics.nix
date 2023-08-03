@@ -65,6 +65,8 @@ in
 
       yy = "yyp yank";
       p = "yyp put";
+
+      space = "df -H|rg '/$'|tr -s ' '|cut -d ' ' -f 5";
     };
 
     packages = with pkgs; [
