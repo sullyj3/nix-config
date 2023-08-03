@@ -61,7 +61,7 @@ in
     fish = {
       interactiveShellInit = ''
         git_check ${myLib.homeConfigLocation} 'Nix config repository'
-        git_check ${myLib.homeConfigLocation}/.config/cheat/cheatsheets/personal 'Cheatsheets'
+        git_check ${config.home.homeDirectory}/.config/cheat/cheatsheets/personal 'Cheatsheets'
       '';
     };
     nnn.enable = true;
