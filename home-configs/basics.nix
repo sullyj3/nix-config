@@ -1,9 +1,10 @@
 { config, nixpkgs, pkgs, ... }:
-
+let 
+  username = "james";
+in
 {
   imports = [];
 
-  targets.genericLinux.enable = true;
   nix.package = pkgs.nixVersions.nix_2_16;
 
   # pin nixpkgs to version we're using for this configuration
@@ -32,6 +33,10 @@
   };
 
   home = {
+    username = username;
+    stateVersion = "23.11";
+    homeDirectory = "/home/${username}";
+
     sessionVariables = {
       EDITOR = "nvim";
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";

@@ -1,3 +1,7 @@
+# This module contains niceties and is relatively heavyweight, it shouldn't 
+# necessarily be included in all configs (eg remote servers).
+# For lighter configs use ./basics.nix
+
 { config, pkgs, lib, ... }:
 
 let
@@ -7,8 +11,6 @@ let
   homeConfigLocation = "${homeDirectory}/nix-config/home-configs";
 in
 {
-  imports = [ ./basics.nix ];
-
   # true by default, this is here as a reminder.
   # `man home-configuration.nix`
   manual.manpages.enable = true;
