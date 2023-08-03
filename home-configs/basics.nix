@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let 
   username = "james";
-  myLib = import ./myLib { inherit config; };
+  myLib = import ./myLib.nix { inherit config; };
 in
 {
   imports = [];
@@ -30,7 +30,7 @@ in
   home = {
     username = username;
     stateVersion = "23.11";
-    homeDirectory = "/home/${username}";
+    homeDirectory = /home + "/${username}";
 
     sessionVariables = {
       EDITOR = "nvim";
@@ -108,15 +108,16 @@ in
     };
   };
 
-  xdg.configFile = {
-    "starship.toml".source = ./config/starship.toml;
+  xdg.configFile = 
+  {
+    "starship.toml".source = myLib.xdgConf + "/starship.toml";
     # Todo migrate to programs.fish.functions. Having the 
-    # ./config/fish/functions directory be a store path is messing with the 
+    # fish/functions directory be a store path is messing with the 
     # installation of plugins with functions via programs.fish.plugins
     # see: https://rycee.gitlab.io/home-manager/options.html#opt-programs.fish.functions
     # see: https://github.com/nix-community/home-manager/blob/ff5133843c26979f8abb5dd801b32f40287692fa/modules/programs/fish.nix#L32
     # see: https://fishshell.com/docs/current/cmds/function.html
-    "fish/functions".source = ./config/fish/functions;
+    "fish/functions".source = myLib.xdgConf + "/fish/functions";
   };
 
 }

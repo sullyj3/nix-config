@@ -61,7 +61,7 @@ in
     fish = {
       interactiveShellInit = ''
         git_check ${myLib.homeConfigLocation} 'Nix config repository'
-        git_check $HOME/.config/cheat/cheatsheets/personal 'Cheatsheets'
+        git_check ${myLib.homeConfigLocation}/.config/cheat/cheatsheets/personal 'Cheatsheets'
       '';
     };
     nnn.enable = true;
@@ -77,8 +77,8 @@ in
   };
 
   xdg.configFile = {
-    "cheat/conf.yml".source = ./config/cheat/conf.yml;
-    "nvim/init.lua".source = myLib.link "${myLib.xdgConfigLocation}/nvim/init.lua";
-    "nvim/ftplugin".source = ./config/nvim/ftplugin;
+    "cheat/conf.yml".source = myLib.xdgConf + /cheat/conf.yml;
+    "nvim/init.lua".source = myLib.link myLib.xdgConf + /nvim/init.lua;
+    "nvim/ftplugin".source = myLib.xdgConf + /nvim/ftplugin;
   };
 }

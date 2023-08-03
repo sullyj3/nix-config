@@ -19,9 +19,9 @@ in
   };
 
   xdg.configFile = {
-    "i3/config".source = myLib.link "${myLib.xdgConfigLocation}/i3/config";
+    "i3/config".source = myLib.link (myLib.xdgConf + "/i3/config");
     "polybar" = {
-      source = ./config/polybar;
+      source = myLib.xdgConf + "/polybar";
       recursive = true;
     };
   };
