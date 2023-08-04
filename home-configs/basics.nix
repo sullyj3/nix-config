@@ -12,6 +12,7 @@ in
     keep-derivations = true;
     keep-outputs = true;
     experimental-features = ["nix-command" "flakes" "repl-flake"];
+    max-jobs = "auto";
     substituters = [
       "https://cache.nixos.org"
       "https://nix-community.cachix.org"
