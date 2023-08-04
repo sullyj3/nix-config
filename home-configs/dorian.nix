@@ -26,17 +26,16 @@
     ];
   };
 
-  programs.jujutsu.enable = true;
   programs = {
-    # jujutsu = {
-    #   enable = true;
-    #   enableFishIntegration = true;
-      # settings = {
-      #   user.name = "James Sully";
-      #   user.email = "sullyj3@gmail.com";
-      #   ui.default-command = "log";
-      # };
-    # };
+    jujutsu = {
+      enable = true;
+      enableFishIntegration = true;
+      settings = {
+        user.name = "James Sully";
+        user.email = "sullyj3@gmail.com";
+        ui.default-command = "log";
+      };
+    };
     # nushell.enable = true;
     # zoxide.enableNushellIntegration = true;
   };
