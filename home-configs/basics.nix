@@ -121,6 +121,7 @@ in
     # see: https://github.com/nix-community/home-manager/blob/ff5133843c26979f8abb5dd801b32f40287692fa/modules/programs/fish.nix#L32
     # see: https://fishshell.com/docs/current/cmds/function.html
     "fish/functions".source = myLib.xdgConf + "/fish/functions";
+    "git/ignore".source = myLib.xdgConf + "/git/ignore";
   };
 
 }
