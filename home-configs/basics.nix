@@ -68,6 +68,8 @@ in
       p = "yyp put";
 
       space = "df -H|rg '/$'|tr -s ' '|cut -d ' ' -f 5";
+
+      nps = "nix search nixpkgs";
     };
 
     packages = with pkgs; [
