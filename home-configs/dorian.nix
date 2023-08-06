@@ -36,8 +36,8 @@
         ui.default-command = "log";
       };
     };
-    # nushell.enable = true;
-    # zoxide.enableNushellIntegration = true;
+    nushell.enable = true;
+    zoxide.enableNushellIntegration = true;
   };
 
 }
