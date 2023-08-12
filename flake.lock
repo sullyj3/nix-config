@@ -52,7 +52,6 @@
       },
       "original": {
         "owner": "nix-community",
-        "ref": "fix/4298",
         "repo": "home-manager",
         "type": "github"
       }
