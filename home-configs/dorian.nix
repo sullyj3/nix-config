@@ -23,6 +23,9 @@
       nodejs_20
       signal-desktop
       litecli
+
+      texlive.combined.scheme-small
+      pandoc
     ];
   };
 
