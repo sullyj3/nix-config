@@ -33,7 +33,6 @@ set $right semicolon
 #         status_command i3status
 # }
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id conky
 exec_always --no-startup-id /usr/bin/i3wsr
 
 ###############     Autostart      ##################
