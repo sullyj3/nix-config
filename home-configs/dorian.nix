@@ -26,6 +26,7 @@
 
       texlive.combined.scheme-small
       pandoc
+      yai
     ];
   };
 
