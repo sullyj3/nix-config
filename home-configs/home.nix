@@ -59,6 +59,10 @@ in
       };
     };
     fish = {
+      shellInit = ''
+        # ocaml env setup
+        source /home/james/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+      '';
       interactiveShellInit = ''
         git_check ${myLib.homeConfigLocation} 'Nix config repository'
         git_check ${config.home.homeDirectory}/.config/cheat/cheatsheets/personal 'Cheatsheets'
