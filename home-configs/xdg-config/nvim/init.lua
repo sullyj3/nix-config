@@ -385,7 +385,7 @@ nvim_lsp['hls'].setup {
   }
 }
 
-local other_servers = { 'html', 'cssls', 'rust_analyzer', 'jedi_language_server' }
+local other_servers = { 'html', 'cssls', 'rust_analyzer', 'jedi_language_server', 'gdscript' }
 for _, lsp in ipairs(other_servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
