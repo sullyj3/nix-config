@@ -22,6 +22,7 @@ in
     ];
 
     packages = with pkgs; [
+      cachix
       cbqn # array language
       just
 
