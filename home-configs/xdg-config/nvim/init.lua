@@ -1,3 +1,11 @@
+-- TODO switch to fennel? see https://github.com/Olical/nfnl
+-- TODO split into modules
+-- TODO figure out why packer->use->config doesn't seem to work for nvim-navbuddy
+	-- once we figure that out start moving all the .setup calls into the use calls
+-- TODO migrate to new style mappings (vim.keymap.set instead of vim.api.nvim_set_keymap)
+--   - this allows providing lua functions as rhs instead of having write '<cmd>lua ...<CR>'
+--   - probably best to setup a function which defaults to norermap and silent
+
 -- Install packer
 local ensure_packer = function()
   local fn = vim.fn
@@ -26,7 +34,10 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' -- Package manager
   use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
-  use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
+	use {
+		'numToStr/Comment.nvim',
+		config = function() require('Comment').setup() end
+	}
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use 'nvim-telescope/telescope-file-browser.nvim'
@@ -37,7 +48,13 @@ require('packer').startup(function(use)
   -- Add git related info in the signs columns and popups
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   -- Highlight, edit, and navigate code using a fast incremental parsing library
-  use 'nvim-treesitter/nvim-treesitter'
+  use {
+		'nvim-treesitter/nvim-treesitter',
+		run = function()
+			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+			ts_update()
+		end,
+	}
   -- Additional textobjects for treesitter
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
@@ -45,9 +62,6 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
-  -- --
-  -- End kickstart
-  -- --
   -- colors
   use 'jacoborus/tender.vim'
   use 'arcticicestudio/nord-vim'
@@ -57,7 +71,13 @@ require('packer').startup(function(use)
   use 'vim-utils/vim-line'
   use 'tpope/vim-surround'
   -- use 'justinmk/vim-sneak'
-  use 'ggandor/leap.nvim'
+	-- vim-sneak replacement. Jump to character pairs, using hints only if 
+	-- ambiguous
+  use {
+		'ggandor/leap.nvim',
+		requires = { 'tpope/vim-repeat' },
+	}
+	-- f/t for leap.nvim
   use 'ggandor/flit.nvim'
   use 'wellle/targets.vim'
   use 'alvan/vim-closetag'
@@ -65,6 +85,22 @@ require('packer').startup(function(use)
   use 'kana/vim-textobj-user'
   use 'iamcco/markdown-preview.nvim'
   use 'dominikduda/vim_current_word'
+	-- Display current location in buffer in statusline or winbar
+	use {
+		'SmiteshP/nvim-navic',
+		requires = "neovim/nvim-lspconfig",
+	}
+	-- Popup window for navigating buffer
+  use {
+    "SmiteshP/nvim-navbuddy",
+    requires = {
+        "neovim/nvim-lspconfig",
+        "SmiteshP/nvim-navic",
+        "MunifTanjim/nui.nvim",
+        "numToStr/Comment.nvim",        -- Optional
+        "nvim-telescope/telescope.nvim" -- Optional
+		},
+	}
 
 	use {
 		"zbirenbaum/copilot.lua",
@@ -103,6 +139,7 @@ require('packer').startup(function(use)
 
   use "b0o/mapx.nvim"
 	use "gpanders/nvim-parinfer"
+	use "tpope/vim-repeat"
 
 end)
 
@@ -184,6 +221,10 @@ vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
 vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
+require 'nvim-navic'.setup {
+	click = true,
+}
+
 -- Gitsigns
 require('gitsigns').setup {
   signs = {
@@ -215,6 +256,8 @@ require('gitsigns').setup {
       return '<Ignore>'
     end, {expr=true})
 
+		-- TODO figure out what all this shit does and whether it's compatible with
+		-- jutjutsu's stageless paradigm
     -- -- Actions
     -- map('n', '<leader>hs', gs.stage_hunk)
     -- map('n', '<leader>hr', gs.reset_hunk)
@@ -274,6 +317,7 @@ vim.api.nvim_set_keymap('n', '<leader>m', [[<cmd>lua require('telescope.builtin'
 
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
+---@diagnostic disable-next-line: missing-fields
 require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true, -- false will disable the whole extension
@@ -329,8 +373,17 @@ require('nvim-treesitter.configs').setup {
 local nvim_lsp = require 'lspconfig'
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
   local opts = { noremap = true, silent = true }
+
+	-- attach navic and navbuddy
+	if client.server_capabilities.documentSymbolProvider then
+		require('nvim-navic').attach(client, bufnr)
+		vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+
+		require('nvim-navbuddy').attach(client, bufnr)
+		vim.keymap.set('n', '<leader>n', '<cmd>Navbuddy<CR>', vim.tbl_extend("force", opts, { buffer = true }))
+	end
+
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
@@ -348,7 +401,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so',
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d',
     [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format {async = true}' ]]
 
@@ -379,7 +432,7 @@ nvim_lsp['hls'].setup {
   capabilities = capabilities,
   settings = {
     haskell = {
-      formattingProvider = "stylish-haskell",
+      formattingProvider = "fourmolu",
       checkParents = "AlwaysCheck"
     }
   }
@@ -434,6 +487,7 @@ local luasnip = require 'luasnip'
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
+---@diagnostic disable-next-line: missing-fields
 cmp.setup {
   snippet = {
     expand = function(args)

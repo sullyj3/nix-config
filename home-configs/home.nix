@@ -21,6 +21,10 @@ in
       "/home/james/.elan/bin"
     ];
 
+    shellAliases = {
+      nvim-test-config = "nvim -u ${myLib.homeConfigLocation}/xdg-config/nvim/init.lua";
+    };
+
     packages = with pkgs; [
       cachix
       cbqn # array language
