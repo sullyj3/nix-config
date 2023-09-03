@@ -8,27 +8,30 @@ return {
 				topdelete = { hl = 'GitGutterDelete', text = '‾' },
 				changedelete = { hl = 'GitGutterChange', text = '~' },
 			},
-			on_attach = function(bufnr)
+			on_attach = function()
 				local gs = package.loaded.gitsigns
-
-				local function map(mode, l, r, opts)
-					opts = opts or {}
-					opts.buffer = bufnr
-					vim.keymap.set(mode, l, r, opts)
-				end
+				local utils = require 'utils'
 
 				-- Navigation
-				map('n', ']c', function()
-					if vim.wo.diff then return ']c' end
-					vim.schedule(function() gs.next_hunk() end)
-					return '<Ignore>'
-					end, {expr=true})
+				utils.buf_nmap(
+					']c',
+					function()
+						if vim.wo.diff then return ']c' end
+						vim.schedule(function() gs.next_hunk() end)
+						return '<Ignore>'
+					end,
+					{expr=true}
+				)
 
-				map('n', '[c', function()
-					if vim.wo.diff then return '[c' end
-					vim.schedule(function() gs.prev_hunk() end)
-					return '<Ignore>'
-					end, {expr=true})
+				utils.buf_nmap(
+					'[c',
+					function()
+						if vim.wo.diff then return '[c' end
+						vim.schedule(function() gs.prev_hunk() end)
+						return '<Ignore>'
+					end,
+					{expr=true}
+				)
 
 				-- TODO figure out what all this shit does and whether it's compatible with
 				-- jutjutsu's stageless paradigm

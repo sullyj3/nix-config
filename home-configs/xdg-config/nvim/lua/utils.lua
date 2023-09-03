@@ -13,4 +13,8 @@ end
 function M.nmap(lhs, rhs, opts)
 	M.map('n', lhs, rhs, opts)
 end
+
+function M.buf_nmap(lhs, rhs, opts)
+	M.map('n', lhs, rhs, opts)
+end
 return M

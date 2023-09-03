@@ -1,66 +1,56 @@
-local M = {}
-function M.configure()
+local utils = require 'utils'
 
-	-- TODO rename
-	local nvim_lsp = require 'lspconfig'
-	local on_attach = function(client, bufnr)
-		vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-		local opts = { noremap = true, silent = true }
+local function on_attach(client, bufnr)
+	vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-		-- attach navic and navbuddy
-		if client.server_capabilities.documentSymbolProvider then
-			require('nvim-navic').attach(client, bufnr)
-			vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+	-- attach navic and navbuddy
+	if client.server_capabilities.documentSymbolProvider then
+		require('nvim-navic').attach(client, bufnr)
+		vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 
-			require('nvim-navbuddy').attach(client, bufnr)
-			vim.keymap.set('n', '<leader>n', '<cmd>Navbuddy<CR>', vim.tbl_extend("force", opts, { buffer = true }))
-		end
-
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl',
-			'<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d',
-			[[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
-		vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format {async = true}' ]]
-
-		-- TODO factor out all map helpers
-		local function map(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-		local cmd = vim.api.nvim_command
-
-		if client.server_capabilities.codeLensProvider then
-			map("n", "<leader>l", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
-			cmd [[augroup LspCodelensAutoGroup]]
-			cmd [[au!]]
-			cmd [[au BufEnter <buffer> lua vim.lsp.codelens.refresh()]]
-			cmd [[au CursorHold <buffer> lua vim.lsp.codelens.refresh()]]
-			cmd [[au InsertLeave <buffer> lua vim.lsp.codelens.refresh()]]
-			cmd [[augroup end]]
-		else
-			print('no')
-		end
+		require('nvim-navbuddy').attach(client, bufnr)
+		utils.buf_nmap('<leader>n', vim.cmd.Navbuddy)
 	end
 
+	utils.buf_nmap('gD', vim.lsp.buf.declaration)
+	utils.buf_nmap('gd', vim.lsp.buf.definition)
+	utils.buf_nmap('K', vim.lsp.buf.hover)
+	utils.buf_nmap('gi', vim.lsp.buf.implementation)
+	utils.buf_nmap('<C-k>', vim.lsp.buf.signature_help)
+	utils.buf_nmap('<leader>wa', vim.lsp.buf.add_workspace_folder)
+	utils.buf_nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder)
+	utils.buf_nmap('<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end)
+	utils.buf_nmap('<leader>D', vim.lsp.buf.type_definition)
+	utils.buf_nmap('<leader>rn', vim.lsp.buf.rename)
+	utils.buf_nmap('gr', vim.lsp.buf.references)
+	utils.buf_nmap('<leader>ca', vim.lsp.buf.code_action)
+	utils.buf_nmap('<leader>e', vim.diagnostic.open_float)
+	utils.buf_nmap('[d', vim.diagnostic.goto_prev)
+	utils.buf_nmap(']d', vim.diagnostic.goto_next)
+	utils.buf_nmap('<leader>q', vim.diagnostic.setloclist)
+	utils.buf_nmap('<leader>d', require('telescope.builtin').lsp_document_symbols)
+
+	vim.api.nvim_create_user_command('Format', function() vim.lsp.buf.format { async = true } end)
+
+	if client.server_capabilities.codeLensProvider then
+		utils.buf_nmap('<leader>l', vim.lsp.codelens.run)
+		vim.cmd [[augroup LspCodelensAutoGroup]]
+		vim.cmd [[au!]]
+		vim.cmd [[au BufEnter <buffer> lua vim.lsp.codelens.refresh()]]
+		vim.cmd [[au CursorHold <buffer> lua vim.lsp.codelens.refresh()]]
+		vim.cmd [[au InsertLeave <buffer> lua vim.lsp.codelens.refresh()]]
+		vim.cmd [[augroup end]]
+	else
+		print('CodeLens not supported by language server')
+	end
+end
+
+local M = {}
+function M.configure()
+	local lspconfig = require 'lspconfig'
 	local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-	-- Enable the following language servers
-	-- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
-	-- local servers = { 'hls', 'pyright', 'tsserver' }
-
-	nvim_lsp['hls'].setup {
+	lspconfig.hls.setup {
 		on_attach = on_attach,
 		capabilities = capabilities,
 		settings = {
@@ -73,7 +63,7 @@ function M.configure()
 
 	local other_servers = { 'html', 'cssls', 'rust_analyzer', 'jedi_language_server', 'gdscript' }
 	for _, lsp in ipairs(other_servers) do
-		nvim_lsp[lsp].setup {
+		lspconfig[lsp].setup {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		}
@@ -84,7 +74,7 @@ function M.configure()
 	table.insert(runtime_path, 'lua/?.lua')
 	table.insert(runtime_path, 'lua/?/init.lua')
 
-	require('lspconfig').lua_ls.setup {
+	lspconfig.lua_ls.setup {
 		-- cmd = { sumneko_binary, '-E', sumneko_root_path .. '/main.lua' },
 		on_attach = on_attach,
 		capabilities = capabilities,
@@ -112,4 +102,5 @@ function M.configure()
 		},
 	}
 end
+
 return M

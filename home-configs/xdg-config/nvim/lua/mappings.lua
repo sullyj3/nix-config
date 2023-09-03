@@ -1,9 +1,11 @@
+local utils = require 'utils'
+
 -- Remap space as leader key
 -- Needs to come before any <leader> mappings (eg in plugin configuations)
-vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
+utils.map('', '<Space>', '<Nop>')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 --Remap for dealing with word wrap
-vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
-vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
+utils.nmap('k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
+utils.nmap('j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
