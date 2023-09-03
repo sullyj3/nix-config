@@ -1,4 +1,5 @@
 local M = {}
+local utils = require 'utils'
 
 M.configure = function()
 	local telescope = require 'telescope'
@@ -18,25 +19,18 @@ M.configure = function()
 		},
 	}
 	telescope.load_extension "file_browser"
-	--Add leader shortcuts
-	vim.api.nvim_set_keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]],
-		{ noremap = true, silent = true })
-	vim.api.nvim_set_keymap('n', '<leader><space>',
-		[[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]], { noremap = true, silent = true })
-	vim.api.nvim_set_keymap('n', '<leader>sb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]],
-		{ noremap = true, silent = true })
-	vim.api.nvim_set_keymap('n', '<leader>sh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]],
-		{ noremap = true, silent = true })
-	vim.api.nvim_set_keymap('n', '<leader>ss', [[<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>]]
-		, { noremap = true, silent = true })
-	vim.api.nvim_set_keymap('n', '<leader>sd', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]],
-		{ noremap = true, silent = true })
-	vim.api.nvim_set_keymap('n', '<leader>f', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]],
-		{ noremap = true, silent = true })
-	vim.api.nvim_set_keymap('n', '<leader>so',
-		[[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
-	vim.api.nvim_set_keymap('n', '<leader>m', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]],
-		{ noremap = true, silent = true })
+
+	local telescope_builtin = require 'telescope.builtin'
+
+	utils.nmap('<leader>b', telescope_builtin.buffers)
+	utils.nmap('<leader><space>', function() telescope_builtin.find_files { previewer = false } end)
+	utils.nmap('<leader>sb', telescope_builtin.current_buffer_fuzzy_find)
+	utils.nmap('<leader>sh', telescope_builtin.help_tags)
+	utils.nmap('<leader>ss', telescope_builtin.lsp_dynamic_workspace_symbols)
+	utils.nmap('<leader>sd', telescope_builtin.grep_string)
+	utils.nmap('<leader>f', telescope_builtin.live_grep)
+	utils.nmap('<leader>so', function() telescope_builtin.tags { only_current_buffer = true } end)
+	utils.nmap('<leader>m', telescope_builtin.oldfiles)
 end
 
 return M

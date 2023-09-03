@@ -37,7 +37,7 @@ require('packer').startup(function(use)
   use {
 		'nvim-telescope/telescope.nvim',
 		requires = { 'nvim-lua/plenary.nvim' },
-		config = require'plugins.telescope'.configure
+		config = function() require'plugins.telescope'.configure() end
 	}
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'joshdick/onedark.vim' -- Theme inspired by Atom
