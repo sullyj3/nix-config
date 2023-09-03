@@ -1,5 +1,5 @@
-local M = {}
-function M.configure()
-	vim.filetype.add({ extension = { bqn = 'bqn' } })
+-- [nfnl] Compiled from fnl/plugins/bqn.fnl by https://github.com/Olical/nfnl, do not edit.
+local function _1_()
+  return vim.filetype.add({extension = {bqn = "bqn"}})
 end
-return M
+return {configure = _1_}

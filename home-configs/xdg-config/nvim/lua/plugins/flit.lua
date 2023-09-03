@@ -1,5 +1,7 @@
-local M = {}
-function M.configure()
-	require('flit').setup()
+-- [nfnl] Compiled from fnl/plugins/flit.fnl by https://github.com/Olical/nfnl, do not edit.
+local function configure()
+  local _let_1_ = require("flit")
+  local setup = _let_1_["setup"]
+  return setup()
 end
-return M
+return {configure = configure}

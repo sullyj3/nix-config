@@ -41,6 +41,8 @@ in
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     };
 
+
+    # TODO add 'bakup'
     shellAliases = {
       # git stuff
       gaa = "git add --all";

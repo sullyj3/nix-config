@@ -1,11 +1,7 @@
-local utils = require 'utils'
-
--- Remap space as leader key
--- Needs to come before any <leader> mappings (eg in plugin configuations)
-utils.map('', '<Space>', '<Nop>')
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
---Remap for dealing with word wrap
-utils.nmap('k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
-utils.nmap('j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+-- [nfnl] Compiled from fnl/mappings.fnl by https://github.com/Olical/nfnl, do not edit.
+local utils = require("utils")
+utils.map("", "<Space>", "<Nop>")
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+utils.nmap("k", "v:count == 0 ? 'gk' : 'k'", {expr = true})
+return utils.nmap("j", "v:count == 0 ? 'gj' : 'j'", {expr = true})
