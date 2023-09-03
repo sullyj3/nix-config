@@ -6,16 +6,8 @@ end
 -- Case insensitive file tab completion in command line mode
 vim.o.wildignorecase = true
 
---Set highlight on search
 vim.o.hlsearch = true
-
--- TODO disabling temporarily since it causes a segfault (https://github.com/neovim/neovim/issues/20316)
--- vim.o.cmdheight = 0
-
---Make line numbers default
 vim.wo.number = true
-
---Enable mouse mode
 vim.o.mouse = 'a'
 
 --Wrapped lines start at same indentation
@@ -32,16 +24,14 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
---Set colorscheme (order is important here)
+--Set colorscheme (needs to come after colorscheme is installed)
 if vim.fn.has("termguicolors") == 1 then
   vim.o.termguicolors = true
 end
 -- vim.g.onedark_terminal_italics = 2
 -- vim.cmd [[colorscheme tender]]
 -- vim.cmd [[colorscheme nord]]
-
 vim.g.everforest_background = 'hard'
-
 vim.cmd.colorscheme 'everforest'
 
 -- Set completeopt to have a better completion experience
