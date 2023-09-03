@@ -45,7 +45,7 @@ require('packer').startup(function(use)
   use {
 		'itchyny/lightline.vim',
 		after = 'everforest',
-		config = require'plugins.lightline'.configure
+		config = function() require'plugins.lightline'.configure() end
 	}
   -- Add indentation guides even on blank lines
   use 'lukas-reineke/indent-blankline.nvim'
@@ -53,7 +53,7 @@ require('packer').startup(function(use)
   use {
 		'lewis6991/gitsigns.nvim',
 		requires = { 'nvim-lua/plenary.nvim' },
-		config = require'plugins.gitsigns'.configure
+		config = function() require'plugins.gitsigns'.configure() end
 	}
   -- Highlight, edit, and navigate code using a fast incremental parsing library
   use {
@@ -62,7 +62,7 @@ require('packer').startup(function(use)
 			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
 			ts_update()
 		end,
-		config = require'plugins.nvim-treesitter'.configure
+		config = function() require'plugins.nvim-treesitter'.configure() end
 	}
   -- Additional textobjects for treesitter
   use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -70,12 +70,12 @@ require('packer').startup(function(use)
   use {
 		'neovim/nvim-lspconfig',
 		after = { 'nvim-navic', 'nvim-navbuddy', 'telescope.nvim', 'cmp-nvim-lsp' },
-		config = require'plugins.nvim-lspconfig'.configure
+		config = function() require'plugins.nvim-lspconfig'.configure() end
 	}
 	-- Autocompletion plugin
   use {
 		'hrsh7th/nvim-cmp',
-		config = require'plugins.nvim-cmp'.configure
+		config = function() require'plugins.nvim-cmp'.configure() end
 	}
   use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'
@@ -93,14 +93,14 @@ require('packer').startup(function(use)
   use {
 		'ggandor/leap.nvim',
 		requires = { 'tpope/vim-repeat' },
-		config = require'plugins.leap'.configure
+		config = function() require'plugins.leap'.configure() end
 	}
 	-- f/t for leap.nvim
   use {
 		'ggandor/flit.nvim',
 		requires = { 'ggandor/leap.nvim' },
 		after = { 'leap.nvim' },
-		config = require'plugins.flit'.configure
+		config = function() require'plugins.flit'.configure() end
 	}
   use 'wellle/targets.vim'
   use 'alvan/vim-closetag'
@@ -112,7 +112,7 @@ require('packer').startup(function(use)
 	use {
 		'SmiteshP/nvim-navic',
 		requires = "neovim/nvim-lspconfig",
-		config = require'plugins.nvim-navic'.configure
+		config = function() require'plugins.nvim-navic'.configure() end
 	}
 	-- Popup window for navigating buffer
   use {
@@ -128,12 +128,12 @@ require('packer').startup(function(use)
 	use {
 		"zbirenbaum/copilot.lua",
 		event = "VimEnter",
-		config = require'plugins.copilot'.configure,
+		config = function() require'plugins.copilot'.configure() end
 	}
 	use {
 		"zbirenbaum/copilot-cmp",
 		after = { "copilot.lua" },
-		config = require'plugins.copilot-cmp'.configure,
+		config = function() require'plugins.copilot-cmp'.configure() end
 	}
   -- Live html preview
   use { 'turbio/bracey.vim', run = 'npm install --prefix server' }
@@ -143,7 +143,7 @@ require('packer').startup(function(use)
   -- Languages
   use {
 		'evanleck/vim-svelte',
-		config = require'plugins.vim-svelte'.configure
+		config = function() require'plugins.vim-svelte'.configure() end
 	}
   use 'purescript-contrib/purescript-vim'
   use 'LnL7/vim-nix'
@@ -153,7 +153,7 @@ require('packer').startup(function(use)
   use {
 		'mlochbaum/BQN',
 		rtp = 'editors/vim',
-		config = require'plugins.bqn'.configure
+		config = function() require'plugins.bqn'.configure() end
 	}
   use 'https://git.sr.ht/~detegr/nvim-bqn'
   use 'sj2tpgk/vim-oil'
