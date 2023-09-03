@@ -141,6 +141,8 @@ require('packer').startup(function(use)
   use 'tpope/vim-obsession'
 
   -- Languages
+	-- fennel
+	use "Olical/nfnl"
   use {
 		'evanleck/vim-svelte',
 		config = function() require'plugins.vim-svelte'.configure() end
