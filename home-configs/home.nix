@@ -87,8 +87,6 @@ in
 
   xdg.configFile = {
     "cheat/conf.yml".source = myLib.xdgConf + /cheat/conf.yml;
-    # "nvim/init.lua".source = myLib.link myLib.xdgConf + /nvim/init.lua;
-    # "nvim/ftplugin".source = myLib.xdgConf + /nvim/ftplugin;
     "nvim" = {
       source = myLib.xdgConf + /nvim;
       recursive = true;
