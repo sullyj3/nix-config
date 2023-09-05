@@ -32,7 +32,7 @@ in
     imports = [ ./dorian.nix ]; 
   };
   # WSL2 on PC
-  "james@mixolydian" = mkLinuxHomeConfig { 
+  "james@Mixolydian" = mkLinuxHomeConfig { 
     imports = [ ./home.nix ./genericLinux.nix ]; 
   };
 
