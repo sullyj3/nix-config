@@ -140,6 +140,13 @@ require('packer').startup(function(use)
   -- Session manager
   use 'tpope/vim-obsession'
 
+	-- Fancy UI
+	use {
+		'folke/noice.nvim',
+		requires = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' },
+		config = function() require'plugins.noice'.configure() end
+	}
+
   -- Languages
 	-- fennel
 	use "Olical/nfnl"
