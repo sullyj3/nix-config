@@ -40,7 +40,7 @@ local function on_attach(client, bufnr)
   local function _5_()
     return vim.lsp.buf.format({async = true})
   end
-  vim.api.nvim_create_user_command("Format", _5_)
+  vim.api.nvim_create_user_command("Format", _5_, {desc = "Format the file using LSP provided formatter"})
   if client.server_capabilities.codeLensProvider then
     buf_nmap("<leader>l", vim.lsp.codelens.run)
     vim.cmd("augroup LspCodelensAutoGroup")

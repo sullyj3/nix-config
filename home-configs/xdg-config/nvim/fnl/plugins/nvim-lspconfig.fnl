@@ -34,7 +34,9 @@
   (buf_nmap "]d" vim.diagnostic.goto_next)
   (buf_nmap :<leader>q vim.diagnostic.setloclist)
   (buf_nmap :<leader>d telescope-builtin.lsp_document_symbols)
-  (vim.api.nvim_create_user_command :Format #(vim.lsp.buf.format {:async true}))
+  (vim.api.nvim_create_user_command :Format 
+                                    #(vim.lsp.buf.format {:async true})
+                                    {:desc "Format the file using LSP provided formatter"})
   (if client.server_capabilities.codeLensProvider
       (do
         (buf_nmap :<leader>l vim.lsp.codelens.run)
