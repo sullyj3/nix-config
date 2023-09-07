@@ -3,8 +3,6 @@
 - [ ] add tstkstack
 - [ ] solve nfnl bootstrapping issue (see github discussion 
 - [ ] jujutsu
-    - [ ] add declarative jujutsu config to avoid having to set up user.name and user.email
-    - [ ] figure out how to add jj aliases (desc -> describe)
     - [ ] make setting branch and pushing a little easier somehow
     - [ ] remove jujutsu flake when next version released on nixpkgs
 - [ ] eliminate requirement to have nix-config directory in specific location

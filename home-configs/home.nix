@@ -91,6 +91,9 @@ in
         user.name = "James Sully";
         user.email = "sullyj3@gmail.com";
         ui.default-command = "log";
+        aliases = {
+          desc = ["describe"];
+        };
       };
     };
     fzf.enable = true;
