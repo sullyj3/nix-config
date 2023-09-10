@@ -57,12 +57,12 @@ in
       pull = "git pull";
 
       hm = "home-manager";
-      ls = "exa";
-      l = "exa";
-      la = "exa -a";
+      ls = "eza";
+      l = "eza";
+      la = "eza -a";
 
       # show a tree of all files tracked by git
-      repo = "exa --git-ignore -T";
+      repo = "eza --git-ignore -T";
 
       # Useful for viewing multiple small files at once
       # show filename headers but not the grid
@@ -82,7 +82,7 @@ in
       fd                          # ergonomic bfs find
       tree
       httpie
-
+      eza
       yyp
     ];
   };
@@ -94,7 +94,6 @@ in
     fish.enable = true;
     starship.enable = true;
     starship.enableFishIntegration = true;
-    exa.enable = true;
     bat.enable = true;
     zoxide = {
       enable = true;
