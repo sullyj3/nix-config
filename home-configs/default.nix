@@ -40,4 +40,9 @@ in
   "james@semibreve" = mkLinuxHomeConfig {
     imports = [ ./semibreve.nix ];
   };
+
+  # Raspberry Pi
+  "james@locrian" = mkLinuxHomeConfig {
+    imports = [ ./locrian.nix ];
+  };
 }
