@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ -d "$HOME/.local/bin" ] && (! echo $PATH | grep -q "$HOME/.local/bin"); then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+nitrogen --restore &
+
+picom &
+
+# System tray
+nm-applet &
+volumeicon &
+blueberry-tray &
+
+# pressing super alone simulates Alt-F1
+ksuperkey -e 'Super_L=Alt_L|F1' &

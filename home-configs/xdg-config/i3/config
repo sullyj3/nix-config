@@ -1,3 +1,5 @@
+exec_always i3-msg 'debuglog on; shmlog on; shmlog_size 5M'
+
 # border & title
 for_window [class="^.*"] border pixel 2, title_format "<b> %class >> %title </b>"
 

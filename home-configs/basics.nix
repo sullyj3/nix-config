@@ -38,7 +38,8 @@ in
 
     sessionVariables = {
       EDITOR = "nvim";
-      MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+      # this is doing weird things, disable for now
+      # MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     };
 
 

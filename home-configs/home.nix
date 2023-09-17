@@ -19,6 +19,7 @@ in
       "/home/james/.cabal/bin"
       "/home/james/.ghcup/bin"
       "/home/james/.elan/bin"
+      "/home/james/.local/bin"
     ];
 
     shellAliases = {
