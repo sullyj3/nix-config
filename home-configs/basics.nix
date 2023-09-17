@@ -45,6 +45,9 @@ in
 
     # TODO add 'bakup'
     shellAliases = {
+      del = "trash-put";
+      rm = "echo 'use `del` instead. If you really want to rm, use `command rm`'";
+
       # git stuff
       gaa = "git add --all";
       gcv = "git commit --verbose";
@@ -84,6 +87,9 @@ in
       tree
       httpie
       eza
+      trash-cli
+
+      # mine
       yyp
     ];
   };
