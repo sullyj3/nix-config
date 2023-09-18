@@ -6,7 +6,7 @@ in
 {
   imports = [];
 
-  nix.package = pkgs.nixVersions.nix_2_16;
+  nix.package = pkgs.nixVersions.nix_2_17;
   
   nix.settings = {
     keep-derivations = true;
@@ -82,6 +82,7 @@ in
     };
 
     packages = with pkgs; [
+      config.nix.package
       neovim
       fd                          # ergonomic bfs find
       tree
