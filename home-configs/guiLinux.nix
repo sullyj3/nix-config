@@ -1,11 +1,9 @@
 # for linux systems with a gui (ie, no WSL)
 
 { config, pkgs, ... }:
-  # todo figure out how to extract this stuff into a module
-let
-  myLib = import ./myLib.nix { inherit config; };
-in
-{
+# todo figure out how to extract this stuff into a module
+let myLib = import ./myLib.nix { inherit config; };
+in {
   home = {
     sessionVariables = {
       NEOVIDE_MULTIGRID = "true";

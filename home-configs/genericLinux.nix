@@ -15,14 +15,13 @@
   # functions (like nvm.fish) silently fail.
   # may have to refactor to use programs.fish.functions
   # this is a little irritating, since we won't get syntax highlighting
-  programs.fish.plugins = [
-    { name = "nvm";
-      src = pkgs.fetchFromGitHub {
-        owner = "jorgebucaran";
-        repo = "nvm.fish";
-        rev = "9db8eaf6e3064a962bca398edd42162f65058ae8";
-        sha256 = "1sffqgvqw4vwljrfkf828mp2gxrvvbcwf2v6chj73rd27s5ajh1f";
-      };
-    }
-  ];
+  programs.fish.plugins = [{
+    name = "nvm";
+    src = pkgs.fetchFromGitHub {
+      owner = "jorgebucaran";
+      repo = "nvm.fish";
+      rev = "9db8eaf6e3064a962bca398edd42162f65058ae8";
+      sha256 = "1sffqgvqw4vwljrfkf828mp2gxrvvbcwf2v6chj73rd27s5ajh1f";
+    };
+  }];
 }

@@ -1,12 +1,10 @@
-# This module contains niceties and is relatively heavyweight, it shouldn't 
+# This module contains niceties and is relatively heavyweight, it shouldn't
 # necessarily be included in all configs (eg remote servers).
 # For lighter configs use ./basics.nix
 
 { config, pkgs, lib, ... }:
-let
-  myLib = import ./myLib.nix { inherit config; };
-in
-{
+let myLib = import ./myLib.nix { inherit config; };
+in {
   # true by default, this is here as a reminder.
   # `man home-configuration.nix`
   manual.manpages.enable = true;
@@ -23,7 +21,8 @@ in
     ];
 
     shellAliases = {
-      nvim-test-config = "nvim -u ${myLib.homeConfigLocation}/xdg-config/nvim/init.lua";
+      nvim-test-config =
+        "nvim -u ${myLib.homeConfigLocation}/xdg-config/nvim/init.lua";
 
       # jujutsu
       js = "jj status";
@@ -35,24 +34,24 @@ in
       cbqn # array language
       just
 
-      du-dust                     # space usage 
-      dua                         # space usage 
-      glow                        # console md viewer
-      pgcli                       # postgres cli
+      du-dust # space usage
+      dua # space usage
+      glow # console md viewer
+      pgcli # postgres cli
       difftastic
-      tomb                        # encryption
+      tomb # encryption
 
-      cheat                       # create cheat sheets for commands
-      tealdeer                    # brief example driven man pages
+      cheat # create cheat sheets for commands
+      tealdeer # brief example driven man pages
       sumneko-lua-language-server
       nix-tree
-      darkhttpd                   # small http server
+      darkhttpd # small http server
 
-      scc                         # source code line counter
+      scc # source code line counter
 
       streamlink
       nix-output-monitor
-      ouch                        # easy to use compression tool
+      ouch # easy to use compression tool
     ];
   };
 
@@ -64,9 +63,7 @@ in
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-      config = {
-        global.load_dotenv = true;
-      };
+      config = { global.load_dotenv = true; };
     };
     fish = {
       shellInit = ''
@@ -81,9 +78,7 @@ in
     nnn.enable = true;
     gh = {
       enable = true;
-      settings = {
-        git_protocol = "ssh";
-      };
+      settings = { git_protocol = "ssh"; };
     };
     jujutsu = {
       enable = true;
@@ -92,9 +87,7 @@ in
         user.name = "James Sully";
         user.email = "sullyj3@gmail.com";
         ui.default-command = "log";
-        aliases = {
-          desc = ["describe"];
-        };
+        aliases = { desc = [ "describe" ]; };
       };
     };
     fzf.enable = true;

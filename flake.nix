@@ -19,21 +19,12 @@
   };
 
   outputs = { self, nixpkgs, systems, home-manager, ... }@inputs:
-    let 
-      forEachSystem = nixpkgs.lib.genAttrs (import systems);
-    in
-    {
+    let forEachSystem = nixpkgs.lib.genAttrs (import systems);
+    in {
       nixosConfigurations = import ./nixos-configs { inherit nixpkgs; };
       homeConfigurations = import ./home-configs inputs;
-      devShells = forEachSystem 
-        (system: 
-          let
-            pkgs = nixpkgs.legacyPackages.${system};
-          in
-          {
-            default = pkgs.mkShell {
-              buildInputs = [ pkgs.nixfmt ];
-            };
-          });
+      devShells = forEachSystem (system:
+        let pkgs = nixpkgs.legacyPackages.${system};
+        in { default = pkgs.mkShell { buildInputs = [ pkgs.nixfmt ]; }; });
     };
 }

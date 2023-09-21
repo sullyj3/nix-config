@@ -5,14 +5,13 @@
 { config, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      "${modulesPath}/profiles/qemu-guest.nix"
-    ];
-  
-  nix.settings.trusted-users = ["root" "@wheel"];
-  nix.settings.extra-experimental-features = ["nix-command" "flakes"];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    "${modulesPath}/profiles/qemu-guest.nix"
+  ];
+
+  nix.settings.trusted-users = [ "root" "@wheel" ];
+  nix.settings.extra-experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -90,9 +89,7 @@
     description = "James Sully";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.fish;
-    packages = with pkgs; [
-      midori
-    ];
+    packages = with pkgs; [ midori ];
   };
 
   security.sudo.wheelNeedsPassword = false;
@@ -105,10 +102,7 @@
       EDITOR = "nvim";
       TERMINAL = "alacritty";
     };
-    systemPackages = with pkgs; [
-      neovim
-      wget
-    ];
+    systemPackages = with pkgs; [ neovim wget ];
   };
 
   programs.fish.enable = true;

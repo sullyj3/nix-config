@@ -1,17 +1,16 @@
 { config, pkgs, lib, ... }:
-let 
+let
   username = "james";
   myLib = import ./myLib.nix { inherit config; };
-in
-{
-  imports = [];
+in {
+  imports = [ ];
 
   nix.package = pkgs.nix;
-  
+
   nix.settings = {
     keep-derivations = true;
     keep-outputs = true;
-    experimental-features = ["nix-command" "flakes" "repl-flake"];
+    experimental-features = [ "nix-command" "flakes" "repl-flake" ];
     max-jobs = "auto";
     substituters = [
       "https://cache.nixos.org"
@@ -36,10 +35,11 @@ in
     stateVersion = "23.11";
     homeDirectory = /home + "/${username}";
 
-    activation.recordNixAndHMPaths = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      $DRY_RUN_CMD echo ${config.nix.package} > ${config.home.homeDirectory}/tmp/latest-nix
-      $DRY_RUN_CMD echo ${pkgs.home-manager} > ${config.home.homeDirectory}/tmp/latest-home-manager
-    '';
+    activation.recordNixAndHMPaths =
+      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        $DRY_RUN_CMD echo ${config.nix.package} > ${config.home.homeDirectory}/tmp/latest-nix
+        $DRY_RUN_CMD echo ${pkgs.home-manager} > ${config.home.homeDirectory}/tmp/latest-home-manager
+      '';
 
     enableNixpkgsReleaseCheck = true;
 
@@ -49,11 +49,11 @@ in
       # MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     };
 
-
     # TODO add 'bakup'
     shellAliases = {
       del = "trash-put";
-      rm = "echo 'use `del` instead. If you really want to rm, use `command rm`'";
+      rm =
+        "echo 'use `del` instead. If you really want to rm, use `command rm`'";
 
       # git stuff
       gaa = "git add --all";
@@ -91,7 +91,7 @@ in
     packages = with pkgs; [
       config.nix.package
       neovim
-      fd                          # ergonomic bfs find
+      fd # ergonomic bfs find
       tree
       httpie
       eza
@@ -117,14 +117,10 @@ in
     };
     git = {
       enable = true;
-      userName  = "James Sully";
+      userName = "James Sully";
       userEmail = "sullyj3@gmail.com";
-      aliases = {
-        hash = "show --pretty=format:\"%H\" --no-patch";
-      };
-      extraConfig = {
-        init.defaultBranch = "main";
-      };
+      aliases = { hash = ''show --pretty=format:"%H" --no-patch''; };
+      extraConfig = { init.defaultBranch = "main"; };
     };
     ripgrep = {
       enable = true;
@@ -132,8 +128,7 @@ in
     };
   };
 
-  xdg.configFile = 
-  {
+  xdg.configFile = {
     "starship.toml".source = myLib.xdgConf + "/starship.toml";
     # Todo migrate to programs.fish.functions. Having the 
     # fish/functions directory be a store path is messing with the 
