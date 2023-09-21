@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let 
   username = "james";
   myLib = import ./myLib.nix { inherit config; };
@@ -6,7 +6,7 @@ in
 {
   imports = [];
 
-  nix.package = pkgs.nixVersions.nix_2_17;
+  nix.package = pkgs.nix;
   
   nix.settings = {
     keep-derivations = true;
@@ -35,6 +35,11 @@ in
     username = username;
     stateVersion = "23.11";
     homeDirectory = /home + "/${username}";
+
+    activation.recordNixAndHMPaths = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      $DRY_RUN_CMD echo ${config.nix.package} > ${config.home.homeDirectory}/tmp/latest-nix
+      $DRY_RUN_CMD echo ${pkgs.home-manager} > ${config.home.homeDirectory}/tmp/latest-home-manager
+    '';
 
     enableNixpkgsReleaseCheck = true;
 
