@@ -61,7 +61,8 @@
                           :rust_analyzer
                           :jedi_language_server
                           :gdscript
-                          :ocamllsp])
+                          :ocamllsp
+                          :tsserver])
     (each [_ lsp (ipairs other-servers)]
       (let [config (. lspconfig lsp)]
         (config.setup {: capabilities :on_attach on-attach})))
