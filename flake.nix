@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    systems.url = "github:nix-systems/default";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,9 +18,22 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, systems, home-manager, ... }@inputs:
+    let 
+      forEachSystem = nixpkgs.lib.genAttrs (import systems);
+    in
     {
       nixosConfigurations = import ./nixos-configs { inherit nixpkgs; };
       homeConfigurations = import ./home-configs inputs;
+      devShells = forEachSystem 
+        (system: 
+          let
+            pkgs = nixpkgs.legacyPackages.${system};
+          in
+          {
+            default = pkgs.mkShell {
+              buildInputs = [ pkgs.nixfmt ];
+            };
+          });
     };
 }
