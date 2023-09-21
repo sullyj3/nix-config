@@ -36,6 +36,8 @@ in
     stateVersion = "23.11";
     homeDirectory = /home + "/${username}";
 
+    enableNixpkgsReleaseCheck = true;
+
     sessionVariables = {
       EDITOR = "nvim";
       # this is doing weird things, disable for now
