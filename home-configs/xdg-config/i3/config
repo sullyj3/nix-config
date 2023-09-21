@@ -183,6 +183,7 @@ bindsym $Mod+Shift+Right move right 10px
 # layout toggle, keycode 23 is Tab
 #bindcode Mod1+23 layout toggle tabbed split
 #bindcode $Mod+23 layout toggle splitv splith
+bindcode $Mod+23 layout toggle tabbed splitv splith
 bindcode Mod1+23 exec --no-startup-id rofi_run -w
 
 # switch to workspace with urgent window
