@@ -128,6 +128,8 @@ in {
     };
   };
 
+  services.ssh-agent.enable = true;
+
   xdg.configFile = {
     "starship.toml".source = myLib.xdgConf + "/starship.toml";
     # Todo migrate to programs.fish.functions. Having the 
