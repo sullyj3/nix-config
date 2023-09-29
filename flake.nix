@@ -16,10 +16,15 @@
       url = "github:martinvonz/jj";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    uiua = {
+      url = "github:uiua-lang/uiua";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, systems, home-manager, ... }@inputs:
-    let forEachSystem = nixpkgs.lib.genAttrs (import systems);
+  let 
+    forEachSystem = nixpkgs.lib.genAttrs (import systems);
     in {
       nixosConfigurations = import ./nixos-configs { inherit nixpkgs; };
       homeConfigurations = import ./home-configs inputs;

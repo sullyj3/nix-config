@@ -1,6 +1,6 @@
 # Archlabs on laptop
 
-{ config, pkgs, ... }:
+{ config, pkgs, specialArgs, ... }:
 
 {
   imports = [ ./home.nix ./genericLinux.nix ./guiLinux.nix ];
@@ -26,6 +26,8 @@
 
       # just want this for vipe, a command that lets you edit piped text in $EDITOR
       moreutils
+    ] ++ [
+      specialArgs.uiua
     ];
   };
 
