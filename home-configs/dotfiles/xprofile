@@ -9,7 +9,7 @@ nitrogen --restore &
 picom &
 
 # System tray
-nm-applet &
+nm-applet --no-agent &
 volumeicon &
 blueberry-tray &
 
