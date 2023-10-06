@@ -52,6 +52,7 @@ in {
       streamlink
       nix-output-monitor
       ouch # easy to use compression tool
+      choose # simple cut/awk alternative
     ];
   };
 
