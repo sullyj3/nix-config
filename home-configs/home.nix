@@ -45,7 +45,7 @@ in {
       tealdeer # brief example driven man pages
       sumneko-lua-language-server
       nix-tree
-      darkhttpd # small http server
+      miniserve # small http server
 
       scc # source code line counter
 
