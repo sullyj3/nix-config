@@ -171,4 +171,10 @@ require('packer').startup(function(use)
 	use "gpanders/nvim-parinfer"
 	use "tpope/vim-repeat"
 
+	use {
+		'google/executor.nvim',
+		requires = { 'MunifTanjim/nui.nvim' },
+		config = function() require'plugins.executor'.configure() end
+	}
+
 end)
