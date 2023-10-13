@@ -69,7 +69,7 @@ require('packer').startup(function(use)
 	-- Collection of configurations for built-in LSP client
   use {
 		'neovim/nvim-lspconfig',
-		after = { 'nvim-navic', 'nvim-navbuddy', 'telescope.nvim', 'cmp-nvim-lsp' },
+		after = { 'nvim-navic', 'nvim-navbuddy', 'telescope.nvim', 'cmp-nvim-lsp', "lean.nvim" },
 		config = function() require'plugins.nvim-lspconfig'.configure() end
 	}
 	-- Autocompletion plugin
@@ -84,6 +84,7 @@ require('packer').startup(function(use)
   use 'jacoborus/tender.vim'
   use 'arcticicestudio/nord-vim'
   use 'sainnhe/everforest'
+
 
   -- # General utils --
   use 'vim-utils/vim-line'
@@ -148,6 +149,7 @@ require('packer').startup(function(use)
 	}
 
   -- Languages
+	use 'Julian/lean.nvim'
 	-- fennel
 	use "Olical/nfnl"
   use {

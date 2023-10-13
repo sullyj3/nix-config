@@ -4,4 +4,5 @@ utils.map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 utils.nmap("k", "v:count == 0 ? 'gk' : 'k'", {expr = true})
-return utils.nmap("j", "v:count == 0 ? 'gj' : 'j'", {expr = true})
+utils.nmap("j", "v:count == 0 ? 'gj' : 'j'", {expr = true})
+return utils.nmap("<leader><tab>", ":bnext<CR>")

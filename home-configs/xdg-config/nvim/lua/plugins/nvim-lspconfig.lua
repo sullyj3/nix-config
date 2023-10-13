@@ -67,6 +67,8 @@ local function configure()
     local runtime_path = concat(vim.split(package.path, ";"), {"lua/?.lua", "lua/?/init.lua"})
     lspconfig.lua_ls.setup({capabilities = capabilities, on_attach = on_attach, settings = {Lua = {diagnostics = {globals = {"vim"}}, runtime = {path = runtime_path, version = "LuaJIT"}, telemetry = {enable = false}, workspace = {library = vim.api.nvim_get_runtime_file("", true)}}}})
   end
-  return lspconfig.fennel_language_server.setup({capabilities = capabilities, on_attach = on_attach, root_dir = lspconfig.util.root_pattern("fnl"), settings = {fennel = {diagnostics = {globals = {"vim"}}, workspace = {library = vim.api.nvim_list_runtime_paths()}}}})
+  lspconfig.fennel_language_server.setup({capabilities = capabilities, on_attach = on_attach, root_dir = lspconfig.util.root_pattern("fnl"), settings = {fennel = {diagnostics = {globals = {"vim"}}, workspace = {library = vim.api.nvim_list_runtime_paths()}}}})
+  local lean = require("lean")
+  return lean.setup({lsp = {on_attach = on_attach}, mappings = true})
 end
 return {configure = configure}

@@ -10,3 +10,5 @@
 (utils.nmap "k" "v:count == 0 ? 'gk' : 'k'" {:expr true})
 (utils.nmap "j" "v:count == 0 ? 'gj' : 'j'" {:expr true})
 
+(utils.nmap "<leader><tab>" ":bnext<CR>")
+
