@@ -4,8 +4,9 @@ local _local_1_ = utils
 local nmap = _local_1_["nmap"]
 local telescope = require("telescope")
 local telescope_builtin = require("telescope.builtin")
+local telescope_actions = require("telescope.actions")
 local function configure()
-  telescope.setup({defaults = {mappings = {i = {["<C-u>"] = false, ["<C-d>"] = false}}}, extensions = {file_browser = {hijack_netrw = true}}})
+  telescope.setup({defaults = {mappings = {i = {["<C-d>"] = telescope_actions.delete_buffer, ["<C-u>"] = false}, n = {["<C-d>"] = telescope_actions.delete_buffer}}, extensions = {file_browser = {hijack_netrw = true}}}})
   telescope.load_extension("file_browser")
   nmap("<leader>b", telescope_builtin.buffers)
   local function _2_()
