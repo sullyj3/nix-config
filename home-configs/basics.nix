@@ -140,6 +140,7 @@ in {
     # see: https://fishshell.com/docs/current/cmds/function.html
     "fish/functions".source = myLib.xdgConf + "/fish/functions";
     "git/ignore".source = myLib.xdgConf + "/git/ignore";
+    "tmux/tmux.conf".source = myLib.xdgConf + "/tmux/tmux.conf";
   };
 
 }

@@ -34,12 +34,12 @@ function tmux_start_processes
     end
 
     # Start the first process in a new tmux session
-    tmux new-session -d -s $SESSION_NAME "$commands[1]"
+    tmux new-session -d -s $SESSION_NAME "fish -C \"$commands[1]\""
 
     # Start the other processes in new panes
     for i in (seq 2 (count $commands))
-        tmux split-window -h "$commands[$i]"
-        tmux select-layout tiled
+        tmux split-window -h "fish -C \"$commands[$i]\""
+        tmux select-layout even-vertical
     end
 
     # Attach to the tmux session
