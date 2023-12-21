@@ -14,10 +14,10 @@ in {
 
   home = {
     sessionPath = [
+      "/home/james/.local/bin"
       "/home/james/.cabal/bin"
       "/home/james/.ghcup/bin"
       "/home/james/.elan/bin"
-      "/home/james/.local/bin"
     ];
 
     shellAliases = {
@@ -53,6 +53,7 @@ in {
       nix-output-monitor
       ouch # easy to use compression tool
       choose # simple cut/awk alternative
+      oil # shell
     ];
   };
 

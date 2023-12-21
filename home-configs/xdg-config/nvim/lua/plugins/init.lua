@@ -180,3 +180,5 @@ require('packer').startup(function(use)
 	}
 
 end)
+
+vim.filetype.add { extension = { an = 'ante' } }

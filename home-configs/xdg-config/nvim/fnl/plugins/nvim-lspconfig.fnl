@@ -62,7 +62,8 @@
                           :jedi_language_server
                           :gdscript
                           :ocamllsp
-                          :tsserver])
+                          :tsserver
+                          :svelte])
     (each [_ lsp (ipairs other-servers)]
       (let [config (. lspconfig lsp)]
         (config.setup {: capabilities :on_attach on-attach})))
