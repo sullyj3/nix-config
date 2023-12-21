@@ -1,6 +1,6 @@
 { nixpkgs, home-manager, ... }@inputs:
 let
-  overlays = with inputs; [ yyp.overlays.default jj.overlays.default ];
+  overlays = with inputs; [ yyp.overlays.default ];
 
   mkLinuxHomeConfig = { imports }:
     home-manager.lib.homeManagerConfiguration {

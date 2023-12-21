@@ -32,7 +32,7 @@ in {
 
   home = {
     username = username;
-    stateVersion = "23.11";
+    stateVersion = "24.05";
     homeDirectory = /home + "/${username}";
 
     activation.recordNixAndHMPaths =

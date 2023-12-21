@@ -13,3 +13,4 @@
     - [ ] switch Packer -> Lazy
     - [ ] rewrite plugins/init.lua in fennel
     - [ ] switch to coq_nvim for completion
+- [ ] add svelte language server

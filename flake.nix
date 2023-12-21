@@ -2,7 +2,7 @@
   description = "Nix configuration of James Sully";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -10,10 +10,6 @@
     };
     yyp = {
       url = "github:sullyj3/yyp";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    jj = {
-      url = "github:martinvonz/jj";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     uiua = {
