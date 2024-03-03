@@ -54,6 +54,8 @@ in {
       ouch # easy to use compression tool
       choose # simple cut/awk alternative
       oil # shell
+      tmsu # tag based file system
+      instaloader # instagram downloader
     ];
   };
 
