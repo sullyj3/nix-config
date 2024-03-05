@@ -31,24 +31,35 @@ function tag
         nohup $comm "$f" > /dev/null 2>&1 &
         set -l gui_pid $last_pid
 
+
         # prompt user for tags to add
         echo "Enter tags to add. (leave blank to skip, 'q' to quit)"
         read -P "> " user_input
-        if test -z "$user_input"
-            continue
-        else if string match "q" "$user_input"
-            return
-        end
 
-        # add tags to file
-        echo "tmsu tag --tags" \""$user_input"\" "$f"
-        tmsu tag --tags "$user_input" "$f"
+        # this boolean flag nonsense is necessary to avoid duplicating the 
+        # process termination stanza, because fish doesn't have locally scoped
+        # functions and I don't want to pollute the global namespace
+        # https://github.com/fish-shell/fish-shell/issues/1799
+        set -l should_exit 0
+        if string match "q" "$user_input"
+            set should_exit 1
+        else if test -z "$user_input"
+            # If no input, skip this file
+        else
+            # add tags to file
+            echo "tmsu tag --tags" \""$user_input"\" "$f"
+            tmsu tag --tags "$user_input" "$f"
+        end
 
         # terminate the background process if it's still running
         # this could potentially close the wrong process if the OS has wrapped 
         # the PID space in the meantime, but it's unlikely
         if ps -p $gui_pid > /dev/null
             kill $gui_pid
+        end
+
+        if test $should_exit -eq 1
+            return
         end
 
         # blank line for readability
