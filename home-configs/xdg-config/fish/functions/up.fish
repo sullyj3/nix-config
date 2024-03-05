@@ -1,8 +1,9 @@
 function up
     echo "Enter number to navigate up to that directory"
 
-    set current_dir (pwd)
-    set dirs $current_dir
+    # Start with the parent of the current directory
+    set -l current_dir (dirname (pwd))
+    set -l dirs $current_dir
 
     # Collect parent directories up to the root
     while test "$current_dir" != "/"
