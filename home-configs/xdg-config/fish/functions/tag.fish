@@ -33,8 +33,13 @@ function tag
 
 
         # prompt user for tags to add
-        echo "Enter tags to add. (leave blank to skip, 'q' to quit)"
-        read -P "> " user_input
+        set -l choices_tmp (mktemp)
+        tmsu tags | cat - (echo 'q'| psub) > $choices_tmp
+        set -l user_input (fzf --multi --bind 'tab:toggle+end-of-line+unix-line-discard' \
+            --preview 'cat {+f}' \
+            --header 'Enter tags to add. (leave blank to skip, 'q' to quit)' \
+            < $choices_tmp)
+        command rm $choices_tmp
 
         # this boolean flag nonsense is necessary to avoid duplicating the 
         # process termination stanza, because fish doesn't have locally scoped
