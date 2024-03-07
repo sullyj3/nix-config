@@ -173,6 +173,8 @@ require('packer').startup(function(use)
 	use "gpanders/nvim-parinfer"
 	use "tpope/vim-repeat"
 
+	use "tikhomirov/vim-glsl"
+
 	use {
 		'google/executor.nvim',
 		requires = { 'MunifTanjim/nui.nvim' },

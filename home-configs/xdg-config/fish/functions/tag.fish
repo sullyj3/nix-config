@@ -24,7 +24,6 @@ function tag
             continue
         end
 
-        echo "Current tags:" (tmsu tags "$f")
 
         # open file in appropriate gui program in background
         # nohup ensures script can continue running concurrently
@@ -35,9 +34,13 @@ function tag
         # prompt user for tags to add
         set -l choices_tmp (mktemp)
         tmsu tags | cat - (echo 'q'| psub) > $choices_tmp
+
+        set -l current_tags (tmsu tags --name never "$f")
+
+        # todo maybe the filename and current tags should go in the preview. Can we get colors there?
         set -l user_input (fzf --multi --bind 'tab:toggle+end-of-line+unix-line-discard' \
             --preview 'cat {+f}' \
-            --header 'Enter tags to add. (leave blank to skip, 'q' to quit)' \
+            --header='File: '$f\n'Current tags: '"$current_tags"\n"Enter tags to add (leave blank to skip, 'q' to quit)" \
             < $choices_tmp)
         command rm $choices_tmp
 
