@@ -86,7 +86,6 @@ in {
     };
     jujutsu = {
       enable = true;
-      enableFishIntegration = true;
       settings = {
         user.name = "James Sully";
         user.email = "sullyj3@gmail.com";

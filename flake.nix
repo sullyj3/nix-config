@@ -12,10 +12,6 @@
       url = "github:sullyj3/yyp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    uiua = {
-      url = "github:uiua-lang/uiua";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, systems, home-manager, ... }@inputs:

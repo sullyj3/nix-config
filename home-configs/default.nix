@@ -18,7 +18,7 @@ let
 
         })
       ];
-      extraSpecialArgs = { uiua = inputs.uiua.packages.x86_64-linux.default; };
+      extraSpecialArgs = { };
     };
 in {
   basics = mkLinuxHomeConfig { imports = [ ]; };
