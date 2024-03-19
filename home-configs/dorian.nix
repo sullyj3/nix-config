@@ -28,6 +28,7 @@
       moreutils
 
       uiua
+      helix # text editor
     ] ++ [
       # specialArgs.whatever
     ];
