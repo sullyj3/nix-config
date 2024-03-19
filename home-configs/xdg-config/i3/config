@@ -229,7 +229,10 @@ bindsym $Mod+Control+Shift+minus gaps outer all     minus 5
 
 # focus, floating, & sticky
 for_window [class="(?i)(?:qt5ct|pinentry)"]          floating enable, focus
-for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
+
+# braindead idea, triggers every time visit a web page with one
+# of these in the title
+# for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
 for_window [window_role="(?i)(?:pop-up|setup)"]      floating enable
 
 # for_window [class="feh"]                             floating enable
