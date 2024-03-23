@@ -7,11 +7,12 @@ in {
   home = {
     sessionVariables = {
       NEOVIDE_MULTIGRID = "true";
-      TERMINAL = "alacritty";
+      TERMINAL = "wezterm";
     };
 
     shellAliases = {
-      win = "alacritty --working-directory . &; disown";
+      # win = "alacritty --working-directory . &; disown";
+      win = "wezterm start --cwd=.";
       nv = "neovide";
     };
   };

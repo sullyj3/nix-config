@@ -72,8 +72,8 @@ bindsym $Mod+e          exec --no-startup-id exo-open --launch FileManager
 bindsym $Mod+t          exec --no-startup-id ticktick
 bindsym $Mod+o          exec --no-startup-id obsidian
 # bindsym $Mod+Return     exec --no-startup-id exo-open --launch TerminalEmulator
-# bindsym $Mod+Return     exec --no-startup-id i3-sensible-terminal
-bindsym $Mod+Return     exec --no-startup-id alacritty
+bindsym $Mod+Return     exec --no-startup-id i3-sensible-terminal
+# bindsym $Mod+Return     exec --no-startup-id alacritty
 
 # logout script
 bindsym $Mod+x exec --no-startup-id rofi_run -l

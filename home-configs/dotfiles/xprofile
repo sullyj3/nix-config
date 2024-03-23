@@ -4,6 +4,8 @@ if [ -d "$HOME/.local/bin" ] && (! echo $PATH | grep -q "$HOME/.local/bin"); the
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
+export TERMINAL=wezterm
+
 nitrogen --restore &
 
 picom &
