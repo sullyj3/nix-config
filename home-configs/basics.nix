@@ -45,6 +45,7 @@ in {
 
     sessionVariables = {
       EDITOR = "nvim";
+      XDG_DATA_HOME = "${config.home.homeDirectory}/.local/share";
       # this is doing weird things, disable for now
       # MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     };
@@ -52,8 +53,8 @@ in {
     # TODO add 'bakup'
     shellAliases = {
       del = "trash-put";
-      rm =
-        "echo 'use `del` instead. If you really want to rm, use `command rm`'";
+      # this interferes with other programs that provide fish shell integrations which use `rm`
+      # rm = "echo 'use `del` instead. If you really want to rm, use `command rm`'";
 
       # git stuff
       gaa = "git add --all";

@@ -37,7 +37,11 @@
   programs = {
     nushell.enable = true;
     zoxide.enableNushellIntegration = true;
-
+    # file browser with previews and zoxide integration
+    yazi = {
+      enable = true;
+      enableFishIntegration = true; # `ya` function switches to cwd on exit
+    };
     comodoro = {
       enable = true;
       settings = {
