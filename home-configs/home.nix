@@ -14,7 +14,9 @@ in {
 
   home = {
     sessionPath = [
-      "/home/james/.local/bin"
+      # this is now prepended in ~/.profile, rather than appended here, to 
+      # ensure binaries in there take precedence over system ones.
+      # "/home/james/.local/bin" 
       "/home/james/.cabal/bin"
       "/home/james/.ghcup/bin"
       "/home/james/.elan/bin"
