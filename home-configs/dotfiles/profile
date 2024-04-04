@@ -1,0 +1,8 @@
+# For now, this *isn't* redundant with `home.sessionPath`, because 
+# home-manager *appends* to the path whereas we want to *prepend* to the path.
+# This is because in case of command name conflicts between system installed 
+# and user installed binaries, we want the user installed ones to take 
+# precedence
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
