@@ -58,6 +58,7 @@
                                                :formattingProvider :fourmolu}}})
     (local other-servers [:html
                           :cssls
+                          :clangd
                           :rust_analyzer
                           :jedi_language_server
                           :gdscript

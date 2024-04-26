@@ -58,7 +58,7 @@ local function configure()
   local cmp_nvim_lsp = require("cmp_nvim_lsp")
   local capabilities = cmp_nvim_lsp.default_capabilities()
   lspconfig.hls.setup({capabilities = capabilities, on_attach = on_attach, settings = {haskell = {checkParents = "AlwaysCheck", formattingProvider = "fourmolu"}}})
-  local other_servers = {"html", "cssls", "rust_analyzer", "jedi_language_server", "gdscript", "ocamllsp", "tsserver", "svelte"}
+  local other_servers = {"html", "cssls", "clangd", "rust_analyzer", "jedi_language_server", "gdscript", "ocamllsp", "tsserver", "svelte"}
   for _, lsp in ipairs(other_servers) do
     local config = lspconfig[lsp]
     config.setup({capabilities = capabilities, on_attach = on_attach})
