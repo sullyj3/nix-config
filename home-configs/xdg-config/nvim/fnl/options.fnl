@@ -27,8 +27,8 @@
 (when (= (vim.fn.has "termguicolors") 1)
   (set vim.o.termguicolors true))
 
-(set vim.g.everforest_background "hard")
-(vim.cmd.colorscheme "everforest")
+; (set vim.g.everforest_background "hard")
+(vim.cmd.colorscheme "kanagawa")
 
 ; Set completeopt to have a better completion experience
 (set vim.o.completeopt "menuone,noselect")

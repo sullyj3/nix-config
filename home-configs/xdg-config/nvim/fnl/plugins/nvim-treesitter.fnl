@@ -4,7 +4,8 @@
   (treesitter-configs.setup
     {:highlight {:enable true}
      :incremental_selection {:enable true
-                             :keymaps {:init-selection "gnn"
+                             :keymaps {
+                                       ; :init-selection "gnn"
                                        :node_incremental "grn"
                                        :scope_incremental "grc"
                                        :node_decremental "grm"}}

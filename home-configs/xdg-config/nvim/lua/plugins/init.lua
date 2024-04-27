@@ -41,12 +41,14 @@ require('packer').startup(function(use)
 	}
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'joshdick/onedark.vim' -- Theme inspired by Atom
+
 	-- Fancier statusline
-  use {
-		'itchyny/lightline.vim',
-		after = 'everforest',
-		config = function() require'plugins.lightline'.configure() end
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+		config = function() require'lualine'.setup() end
 	}
+
   -- Add indentation guides even on blank lines
   use 'lukas-reineke/indent-blankline.nvim'
   -- Add git related info in the signs columns and popups
@@ -84,6 +86,7 @@ require('packer').startup(function(use)
   use 'jacoborus/tender.vim'
   use 'arcticicestudio/nord-vim'
   use 'sainnhe/everforest'
+	use 'rebelot/kanagawa.nvim'
 
 
   -- # General utils --

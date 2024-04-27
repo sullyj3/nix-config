@@ -18,8 +18,7 @@ if (vim.fn.has("termguicolors") == 1) then
   vim.o.termguicolors = true
 else
 end
-vim.g.everforest_background = "hard"
-vim.cmd.colorscheme("everforest")
+vim.cmd.colorscheme("kanagawa")
 vim.o.completeopt = "menuone,noselect"
 vim.o.cursorline = true
 vim.o.tabstop = 2
