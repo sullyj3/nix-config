@@ -12,3 +12,6 @@
 
 (utils.nmap "<leader><tab>" ":bnext<CR>")
 
+; system paste
+(utils.nmap "<leader>v" "\"+p")
+

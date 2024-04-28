@@ -5,4 +5,5 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 utils.nmap("k", "v:count == 0 ? 'gk' : 'k'", {expr = true})
 utils.nmap("j", "v:count == 0 ? 'gj' : 'j'", {expr = true})
-return utils.nmap("<leader><tab>", ":bnext<CR>")
+utils.nmap("<leader><tab>", ":bnext<CR>")
+return utils.nmap("<leader>v", "\"+p")
