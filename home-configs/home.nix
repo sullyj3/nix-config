@@ -58,6 +58,8 @@ in {
       oil # shell
       tmsu # tag based file system
       instaloader # instagram downloader
+
+      devenv
     ];
   };
 
