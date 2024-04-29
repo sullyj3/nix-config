@@ -94,6 +94,7 @@ in {
         user.name = "James Sully";
         user.email = "sullyj3@gmail.com";
         ui.default-command = "log";
+        ui.diff-editor = ":builtin";
         aliases = { desc = [ "describe" ]; };
       };
     };
