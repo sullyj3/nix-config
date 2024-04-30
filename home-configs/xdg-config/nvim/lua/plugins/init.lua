@@ -177,6 +177,7 @@ require('packer').startup(function(use)
 	use "tpope/vim-repeat"
 
 	use "tikhomirov/vim-glsl"
+	use "imsnif/kdl.vim"
 
 	use {
 		'google/executor.nvim',
