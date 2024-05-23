@@ -13,14 +13,17 @@ in {
   manual.html.enable = true;
 
   home = {
-    sessionPath = [
-      # this is now prepended in ~/.profile, rather than appended here, to 
-      # ensure binaries in there take precedence over system ones.
-      # "/home/james/.local/bin" 
-      "/home/james/.cabal/bin"
-      "/home/james/.ghcup/bin"
-      "/home/james/.elan/bin"
-    ];
+    
+    # sessionPath is currently broken. Paths are appended, rather than prepended, which means
+    # that system binaries take precedence over user ones. I've moved this down to
+    # fish's shellInit for now.
+
+    # sessionPath = [
+    #   # "/home/james/.local/bin" 
+    #   "/home/james/.cabal/bin"
+    #   "/home/james/.ghcup/bin"
+    #   "/home/james/.elan/bin"
+    # ];
 
     shellAliases = {
       nvim-test-config =
@@ -77,6 +80,11 @@ in {
       shellInit = ''
         # ocaml env setup
         source /home/james/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+
+        fish_add_path '~/.local/bin'
+        fish_add_path '~/.cabal/bin'
+        fish_add_path '~/.ghcup/bin'
+        fish_add_path '~/.elan/bin'
       '';
       interactiveShellInit = ''
         git_check ${myLib.homeConfigLocation} 'Nix config repository'
