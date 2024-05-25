@@ -11,8 +11,5 @@ nm-applet --no-agent &
 volumeicon &
 blueberry-tray &
 
-# pressing super alone simulates Alt-F1
-ksuperkey -e 'Super_L=Alt_L|F1' &
-
 # swap caps lock and escape
 setxkbmap -option caps:swapescape
