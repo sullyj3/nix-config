@@ -80,15 +80,16 @@ in {
       shellInit = ''
         # ocaml env setup
         source /home/james/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-
-        fish_add_path '~/.local/bin'
-        fish_add_path '~/.cabal/bin'
-        fish_add_path '~/.ghcup/bin'
-        fish_add_path '~/.elan/bin'
       '';
       interactiveShellInit = ''
         git_check ${myLib.homeConfigLocation} 'Nix config repository'
         git_check ${config.home.homeDirectory}/.config/cheat/cheatsheets/personal 'Cheatsheets'
+      '';
+      shellInitLast = ''
+        fish_add_path '~/.local/bin'
+        fish_add_path '~/.ghcup/bin'
+        fish_add_path '~/.cabal/bin'
+        fish_add_path '~/.elan/bin'
       '';
     };
     nnn.enable = true;
