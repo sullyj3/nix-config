@@ -1,3 +1,28 @@
+
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$directory\
+
+$git_branch\
+$git_state\
+$git_metrics\
+$git_status\
+
+$nix_shell\
+$direnv\
+$env_var\
+$custom\
+$cmd_duration\
+
+$line_break\
+$jobs\
+$battery\
+$container\
+$character"""
+
 add_newline = false
 
 [character]
@@ -12,3 +37,10 @@ show_always = true
 [hostname]
 ssh_only = false
 format = '[$hostname]($style) in '
+
+[git_metrics]
+disabled = false
+
+[[battery.display]]
+threshold = 20
+
