@@ -16,27 +16,21 @@ $direnv\
 $env_var\
 $custom\
 $cmd_duration\
-
 $line_break\
 $jobs\
 $battery\
 $container\
 $character"""
 
-add_newline = false
+add_newline = true
 
 [character]
-success_symbol = '[⮞](bold green)'
-error_symbol = '[⮞](bold red)'
-vicmd_symbol = '[⮜](bold green)'
+success_symbol = '[▷](bold green)'
+error_symbol = '[✖](bold red)'
+vicmd_symbol = '[◁](bold green)'
 
 [username]
 format = '[$user]($style)@'
-show_always = true
-
-[hostname]
-ssh_only = false
-format = '[$hostname]($style) in '
 
 [git_metrics]
 disabled = false
@@ -44,3 +38,7 @@ disabled = false
 [[battery.display]]
 threshold = 20
 
+[nix_shell]
+format = 'via [$symbol $state( \($name\))]($style) '
+# default symbol seems to cause formatting bug
+symbol = '❄'
