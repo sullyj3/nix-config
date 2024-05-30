@@ -172,6 +172,7 @@ require('packer').startup(function(use)
   use 'https://git.sr.ht/~detegr/nvim-bqn'
   use 'sj2tpgk/vim-oil'
 	use 'bakpakin/janet.vim'
+	use 'nickel-lang/vim-nickel'
 
 	use "gpanders/nvim-parinfer"
 	use "tpope/vim-repeat"
