@@ -65,13 +65,14 @@
                           :ocamllsp
                           :tsserver
                           :svelte
-                          :zls
-                          ])
+                          :zls])
+                          
                           
     (each [_ lsp (ipairs other-servers)]
       (let [config (. lspconfig lsp)]
         (config.setup {: capabilities :on_attach on-attach})))
 
+    ; Lua
     (let [ runtime-path 
            (concat (vim.split package.path ";") [:lua/?.lua :lua/?/init.lua])]
       (lspconfig.lua_ls.setup 
@@ -83,12 +84,15 @@
                           :telemetry {:enable false}
                           :workspace {:library (vim.api.nvim_get_runtime_file ""
                                                                               true)}}}}))
+    ; Fennel
     (lspconfig.fennel_language_server.setup 
       {: capabilities
        :on_attach on-attach
        :root_dir (lspconfig.util.root_pattern :fnl)
        :settings {:fennel {:diagnostics {:globals [:vim]}
                            :workspace {:library (vim.api.nvim_list_runtime_paths)}}}})
+
+    ; Lean
     (local lean (require :lean))
     (lean.setup { :lsp { :on_attach on-attach}
                   :mappings true})))
