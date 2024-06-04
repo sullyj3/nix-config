@@ -10,7 +10,7 @@ in {
   nix.settings = {
     keep-derivations = true;
     keep-outputs = true;
-    experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+    experimental-features = [ "nix-command" "flakes" ];
     max-jobs = "auto";
     substituters = [
       "https://cache.nixos.org"
@@ -28,6 +28,8 @@ in {
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     ];
+    extra-platforms = [ "aarch64-linux" ];
+    extra-sandbox-paths = [ "/usr/bin/qemu-aarch64-static" ];
   };
 
   home = {
