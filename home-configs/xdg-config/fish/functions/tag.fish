@@ -16,7 +16,7 @@ function tag
 
         set -l comm echo "bug: command not set"
         if string match -e '.jpg' -- $f
-            set comm feh -.
+            set comm imv -s shrink
         else if string match -e '.mp4' -- $f
             set comm mpv --loop --mute
         else
