@@ -64,6 +64,7 @@
                           :gdscript
                           :ocamllsp
                           :tsserver
+                          :ocamllsp
                           :svelte
                           :zls])
                           
