@@ -36,7 +36,9 @@ require "hotpot"
 -- <leader> mappings in plugin configurations
 require 'mappings'
 
-local plugins = {"rktjmp/hotpot.nvim"}
-require("lazy").setup(plugins)
+local plugins = {
+	"rktjmp/hotpot.nvim",
+	"atweiden/vim-fennel"
+}
 
-require "say-hello"
+require("lazy").setup(plugins)
