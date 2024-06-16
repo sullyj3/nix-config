@@ -12,7 +12,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	})
 end
 
--- Bootstrap hotpot into lazy plugin dir if it does not exist yet.
+-- Bootstrap hotpot (fennel compiler)
 local hotpotpath = vim.fn.stdpath("data") .. "/lazy/hotpot.nvim"
 if not vim.loop.fs_stat(hotpotpath) then
 	vim.notify("Bootstrapping hotpot.nvim...", vim.log.levels.INFO)
@@ -29,16 +29,10 @@ end
 
 vim.opt.rtp:prepend({hotpotpath, lazypath})
 
--- Make fennel work
-require "hotpot"
+-- This allows us to write the rest of our config in fennel
+require 'hotpot'
 
 -- Setting <leader>, which occurs in 'mappings' needs to come before any 
 -- <leader> mappings in plugin configurations
 require 'mappings'
-
-local plugins = {
-	"rktjmp/hotpot.nvim",
-	"atweiden/vim-fennel"
-}
-
-require("lazy").setup(plugins)
+require 'plugins'
