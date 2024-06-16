@@ -101,9 +101,12 @@ in {
 
   xdg.configFile = {
     "cheat/conf.yml".source = myLib.xdgConf + /cheat/conf.yml;
+    # "nvim" = {
+    #   source = myLib.xdgConf + /nvim;
+    #   recursive = true;
+    # };
     "nvim" = {
-      source = myLib.xdgConf + /nvim;
-      recursive = true;
+      source = myLib.link (myLib.homeConfigLocation + "/xdg-config/nvim-2024");
     };
   };
 }
