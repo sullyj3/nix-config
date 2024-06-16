@@ -1,4 +1,5 @@
 
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	vim.fn.system({
@@ -11,7 +12,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	})
 end
 
--- Bootstap hotpot into lazy plugin dir if it does not exist yet.
+-- Bootstrap hotpot into lazy plugin dir if it does not exist yet.
 local hotpotpath = vim.fn.stdpath("data") .. "/lazy/hotpot.nvim"
 if not vim.loop.fs_stat(hotpotpath) then
 	vim.notify("Bootstrapping hotpot.nvim...", vim.log.levels.INFO)
@@ -28,7 +29,12 @@ end
 
 vim.opt.rtp:prepend({hotpotpath, lazypath})
 
+-- Make fennel work
 require "hotpot"
+
+-- Setting <leader>, which occurs in 'mappings' needs to come before any 
+-- <leader> mappings in plugin configurations
+require 'mappings'
 
 local plugins = {"rktjmp/hotpot.nvim"}
 require("lazy").setup(plugins)
