@@ -34,4 +34,7 @@ in {
 
   # Raspberry Pi
   "james@locrian" = mkLinuxHomeConfig { imports = [ ./locrian.nix ]; };
+
+  # NixOS desktop
+  "james@phrygian" = mkLinuxHomeConfig { imports = [ ./phrygian.nix ]; };
 }
