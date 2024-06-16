@@ -87,6 +87,10 @@ in {
       space = "df -H|rg '/$'|tr -s ' '|cut -d ' ' -f 5";
 
       nps = "nix search nixpkgs";
+
+      # jujutsu
+      js = "jj status";
+      jl = "jj log";
     };
 
     packages = with pkgs; [
@@ -126,6 +130,17 @@ in {
     ripgrep = {
       enable = true;
       arguments = [ "--smart-case" ];
+    };
+    jujutsu = {
+      enable = true;
+      settings = {
+        user.name = "James Sully";
+        user.email = "sullyj3@gmail.com";
+        ui.default-command = "log";
+        ui.pager = "bat -p";
+        ui.diff-editor = ":builtin";
+        aliases = { desc = [ "describe" ]; };
+      };
     };
   };
 

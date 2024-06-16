@@ -29,9 +29,6 @@ in {
       nvim-test-config =
         "nvim -u ${myLib.homeConfigLocation}/xdg-config/nvim/init.lua";
 
-      # jujutsu
-      js = "jj status";
-      jl = "jj log";
     };
 
     packages = with pkgs; [
@@ -96,16 +93,6 @@ in {
     gh = {
       enable = true;
       settings = { git_protocol = "ssh"; };
-    };
-    jujutsu = {
-      enable = true;
-      settings = {
-        user.name = "James Sully";
-        user.email = "sullyj3@gmail.com";
-        ui.default-command = "log";
-        ui.diff-editor = ":builtin";
-        aliases = { desc = [ "describe" ]; };
-      };
     };
     fzf.enable = true;
     fzf.enableFishIntegration = true;
