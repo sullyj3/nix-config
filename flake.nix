@@ -27,6 +27,6 @@
       homeConfigurations = import ./home-configs inputs;
       devShells = forEachSystem (system:
         let pkgs = nixpkgs.legacyPackages.${system};
-        in { default = pkgs.mkShell { buildInputs = [ pkgs.nixfmt ]; }; });
+        in { default = pkgs.mkShell { buildInputs = [ pkgs.nixfmt-rfc-style ]; }; });
     };
 }
