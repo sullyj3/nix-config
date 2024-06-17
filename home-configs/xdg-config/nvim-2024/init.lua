@@ -25,6 +25,7 @@ if not vim.loop.fs_stat(hotpotpath) then
 		"https://github.com/rktjmp/hotpot.nvim.git",
 		hotpotpath,
 	})
+	vim.notify("Bootstrapping hotpot.nvim... Done", vim.log.levels.INFO)
 end
 
 vim.opt.rtp:prepend({hotpotpath, lazypath})
