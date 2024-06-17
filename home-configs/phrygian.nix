@@ -6,6 +6,10 @@ let myLib = import ./myLib.nix { inherit config; };
 in {
   imports = [ ./basics.nix ./home.nix ./guiLinux.nix ];
 
+  home.shellAliases = {
+    nr = "nixos-rebuild";
+  };
+
   xdg.configFile = {
     niri.source = myLib.link (myLib.homeConfigLocation + "/xdg-config/niri");
     waybar.source = myLib.link (myLib.homeConfigLocation + "/xdg-config/waybar");
