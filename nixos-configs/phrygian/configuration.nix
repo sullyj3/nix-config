@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
@@ -13,6 +13,7 @@
   nix.settings.extra-experimental-features = [ "nix-command" "flakes" ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
 
   boot.loader.systemd-boot.enable = true;
 
@@ -45,6 +46,8 @@
     wayland = true;
   };
 
+  services.displayManager.sessionPackages = [ pkgs.niri-unstable ];
+
   services.xserver.desktopManager.gnome.enable = true;
 
   services.xserver.xkb.options = "caps:swapescape";
@@ -76,7 +79,6 @@
     pkgs.neovim
     pkgs.git
 
-    pkgs.niri
     pkgs.wofi
     pkgs.wezterm
 
@@ -98,6 +100,10 @@
 
   programs = {
     fish.enable = true;
+    niri = {
+      enable = true;
+      package = pkgs.niri-unstable;
+    };
   };
 
   # List services that you want to enable:
