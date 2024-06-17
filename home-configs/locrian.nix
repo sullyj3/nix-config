@@ -3,5 +3,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./basics.nix ./genericLinux.nix ];
+  imports = [
+    ./basics.nix
+    ./genericLinux.nix
+  ];
 }

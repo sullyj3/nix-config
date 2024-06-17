@@ -2,15 +2,27 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-  nix.settings.trusted-users = [ "root" "@wheel" ];
-  nix.settings.extra-experimental-features = [ "nix-command" "flakes" ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
+  nix.settings.extra-experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
@@ -18,7 +30,7 @@
   boot.loader.systemd-boot.enable = true;
 
   networking.hostName = "phrygian"; # Define your hostname.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Australia/Melbourne";
@@ -69,8 +81,7 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     initialPassword = "password";
     shell = pkgs.fish;
-    packages = [
-    ];
+    packages = [ ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -142,6 +153,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
-

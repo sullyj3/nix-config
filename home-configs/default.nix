@@ -2,7 +2,8 @@
 let
   overlays = with inputs; [ yyp.overlays.default ];
 
-  mkLinuxHomeConfig = { imports }:
+  mkLinuxHomeConfig =
+    { imports }:
     home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       modules = imports ++ [
@@ -15,19 +16,23 @@ let
           # I think this allows us not to have to download the nixpkgs flake every 
           # time we run eg `nix shell nixpkgs#whatever`
           nix.registry.nixpkgs.flake = nixpkgs;
-
         })
       ];
       extraSpecialArgs = { };
     };
-in {
+in
+{
   basics = mkLinuxHomeConfig { imports = [ ]; };
 
   # Archlabs on laptop
   "james@dorian" = mkLinuxHomeConfig { imports = [ ./dorian.nix ]; };
   # WSL2 on PC
-  "james@Mixolydian" =
-    mkLinuxHomeConfig { imports = [ ./home.nix ./genericLinux.nix ]; };
+  "james@Mixolydian" = mkLinuxHomeConfig {
+    imports = [
+      ./home.nix
+      ./genericLinux.nix
+    ];
+  };
 
   # NixOS test vm
   "james@semibreve" = mkLinuxHomeConfig { imports = [ ./semibreve.nix ]; };

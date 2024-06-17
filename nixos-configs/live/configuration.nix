@@ -40,8 +40,8 @@
       EDITOR = "nvim";
     };
     systemPackages = [
-      pkgs.neovim 
-      pkgs.wget 
+      pkgs.neovim
+      pkgs.wget
     ];
   };
 

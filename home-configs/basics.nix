@@ -1,8 +1,14 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   username = "james";
   myLib = import ./myLib.nix { inherit config; };
-in {
+in
+{
   imports = [ ];
 
   nix.package = pkgs.nix;
@@ -10,7 +16,10 @@ in {
   nix.settings = {
     keep-derivations = true;
     keep-outputs = true;
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     max-jobs = "auto";
     substituters = [
       "https://cache.nixos.org"
@@ -35,11 +44,10 @@ in {
     stateVersion = "24.05";
     homeDirectory = /home + "/${username}";
 
-    activation.recordNixAndHMPaths =
-      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        $DRY_RUN_CMD echo ${config.nix.package} > ${config.home.homeDirectory}/tmp/latest-nix
-        $DRY_RUN_CMD echo ${pkgs.home-manager} > ${config.home.homeDirectory}/tmp/latest-home-manager
-      '';
+    activation.recordNixAndHMPaths = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      $DRY_RUN_CMD echo ${config.nix.package} > ${config.home.homeDirectory}/tmp/latest-nix
+      $DRY_RUN_CMD echo ${pkgs.home-manager} > ${config.home.homeDirectory}/tmp/latest-home-manager
+    '';
 
     enableNixpkgsReleaseCheck = true;
 
@@ -124,8 +132,12 @@ in {
       enable = true;
       userName = "James Sully";
       userEmail = "sullyj3@gmail.com";
-      aliases = { hash = ''show --pretty=format:"%H" --no-patch''; };
-      extraConfig = { init.defaultBranch = "main"; };
+      aliases = {
+        hash = ''show --pretty=format:"%H" --no-patch'';
+      };
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
     };
     ripgrep = {
       enable = true;
@@ -139,7 +151,9 @@ in {
         ui.default-command = "log";
         ui.pager = "bat -p";
         ui.diff-editor = ":builtin";
-        aliases = { desc = [ "describe" ]; };
+        aliases = {
+          desc = [ "describe" ];
+        };
       };
     };
   };
@@ -158,5 +172,4 @@ in {
     "git/ignore".source = myLib.xdgConf + "/git/ignore";
     "tmux/tmux.conf".source = myLib.xdgConf + "/tmux/tmux.conf";
   };
-
 }

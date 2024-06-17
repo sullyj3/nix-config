@@ -2,9 +2,16 @@
 # necessarily be included in all configs (eg remote servers).
 # For lighter configs use ./basics.nix
 
-{ config, pkgs, lib, ... }:
-let myLib = import ./myLib.nix { inherit config; };
-in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  myLib = import ./myLib.nix { inherit config; };
+in
+{
   # true by default, this is here as a reminder.
   # `man home-configuration.nix`
   manual.manpages.enable = true;
@@ -13,7 +20,7 @@ in {
   manual.html.enable = true;
 
   home = {
-    
+
     # sessionPath is currently broken. Paths are appended, rather than prepended, which means
     # that system binaries take precedence over user ones. I've moved this down to
     # fish's shellInit for now.
@@ -26,9 +33,7 @@ in {
     # ];
 
     shellAliases = {
-      nvim-test-config =
-        "nvim -u ${myLib.homeConfigLocation}/xdg-config/nvim/init.lua";
-
+      nvim-test-config = "nvim -u ${myLib.homeConfigLocation}/xdg-config/nvim/init.lua";
     };
 
     packages = with pkgs; [
@@ -71,7 +76,9 @@ in {
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-      config = { global.load_dotenv = true; };
+      config = {
+        global.load_dotenv = true;
+      };
     };
     fish = {
       shellInit = ''
@@ -92,7 +99,9 @@ in {
     nnn.enable = true;
     gh = {
       enable = true;
-      settings = { git_protocol = "ssh"; };
+      settings = {
+        git_protocol = "ssh";
+      };
     };
     fzf.enable = true;
     fzf.enableFishIntegration = true;

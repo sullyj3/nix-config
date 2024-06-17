@@ -3,14 +3,19 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./home.nix ./guiLinux.nix ];
+  imports = [
+    ./home.nix
+    ./guiLinux.nix
+  ];
 
   home = {
     sessionVariables = {
       TERMINAL = "alacritty";
       EDITOR = "nvim";
     };
-    shellAliases = { win = "alacritty --working-directory . &; disown"; };
+    shellAliases = {
+      win = "alacritty --working-directory . &; disown";
+    };
 
     packages = [
       pkgs.xclip

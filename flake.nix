@@ -19,14 +19,30 @@
     };
   };
 
-  outputs = { self, nixos-24-05, nixpkgs, systems, home-manager, niri-flake, ... }@inputs:
-  let 
-    forEachSystem = nixpkgs.lib.genAttrs (import systems);
-    in {
+  outputs =
+    {
+      self,
+      nixos-24-05,
+      nixpkgs,
+      systems,
+      home-manager,
+      niri-flake,
+      ...
+    }@inputs:
+    let
+      forEachSystem = nixpkgs.lib.genAttrs (import systems);
+    in
+    {
       nixosConfigurations = import ./nixos-configs { inherit nixpkgs nixos-24-05 niri-flake; };
       homeConfigurations = import ./home-configs inputs;
-      devShells = forEachSystem (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in { default = pkgs.mkShell { buildInputs = [ pkgs.nixfmt-rfc-style ]; }; });
+      devShells = forEachSystem (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          default = pkgs.mkShell { buildInputs = [ pkgs.nixfmt-rfc-style ]; };
+        }
+      );
     };
 }

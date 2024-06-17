@@ -2,9 +2,15 @@
 
 { config, pkgs, ... }:
 
-let myLib = import ./myLib.nix { inherit config; };
-in {
-  imports = [ ./basics.nix ./home.nix ./guiLinux.nix ];
+let
+  myLib = import ./myLib.nix { inherit config; };
+in
+{
+  imports = [
+    ./basics.nix
+    ./home.nix
+    ./guiLinux.nix
+  ];
 
   home.shellAliases = {
     nr = "nixos-rebuild";

@@ -2,16 +2,28 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, modulesPath, ... }:
+{
+  config,
+  pkgs,
+  modulesPath,
+  ...
+}:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     "${modulesPath}/profiles/qemu-guest.nix"
   ];
 
-  nix.settings.trusted-users = [ "root" "@wheel" ];
-  nix.settings.extra-experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
+  nix.settings.extra-experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -87,7 +99,10 @@
   users.users.james = {
     isNormalUser = true;
     description = "James Sully";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.fish;
     packages = with pkgs; [ midori ];
   };
@@ -102,7 +117,10 @@
       EDITOR = "nvim";
       TERMINAL = "alacritty";
     };
-    systemPackages = with pkgs; [ neovim wget ];
+    systemPackages = with pkgs; [
+      neovim
+      wget
+    ];
   };
 
   programs.fish.enable = true;
@@ -136,5 +154,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
-
 }
