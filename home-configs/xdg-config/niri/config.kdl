@@ -441,8 +441,9 @@ binds {
 
     // Switches focus between the current and the previous workspace.
     // Mod+Tab { focus-workspace-previous; }
-    Mod+Tab { focus-column-right-or-first; }
-    Mod+Shift+Tab { focus-column-left-or-last; }
+
+    // Mod+Tab { focus-column-right-or-first; }
+    // Mod+Shift+Tab { focus-column-left-or-last; }
 
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
