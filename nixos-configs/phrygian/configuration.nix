@@ -12,6 +12,8 @@
   nix.settings.trusted-users = [ "root" "@wheel" ];
   nix.settings.extra-experimental-features = [ "nix-command" "flakes" ];
 
+  nixpkgs.config.allowUnfree = true;
+
   boot.loader.systemd-boot.enable = true;
 
   networking.hostName = "phrygian"; # Define your hostname.
@@ -75,10 +77,16 @@
     pkgs.git
 
     pkgs.niri
+    pkgs.wofi
+    pkgs.wezterm
 
     pkgs.xclip
-    pkgs.wofi
+    pkgs.google-chrome
   ];
+
+  environment.shellAliases = {
+    nr = "nixos-rebuild";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
