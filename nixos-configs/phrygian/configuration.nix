@@ -97,6 +97,7 @@
 
     pkgs.xclip
     pkgs.google-chrome
+    pkgs.xfce.exo
   ];
 
   environment.shellAliases = {
