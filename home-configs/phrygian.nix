@@ -15,6 +15,10 @@ in
   home.shellAliases = {
     nr = "nixos-rebuild";
   };
+  home.packages = [
+    pkgs.swaybg
+    pkgs.waypaper
+  ];
 
   xdg.configFile = {
     systemd = {
