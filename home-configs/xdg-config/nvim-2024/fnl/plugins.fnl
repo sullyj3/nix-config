@@ -7,6 +7,7 @@
 (local plugins 
   [
     :rktjmp/hotpot.nvim
+    :tpope/vim-surround
     :atweiden/vim-fennel
     { 1   :gpanders/nvim-parinfer
       :ft [:fennel :scheme :clojure :racket :dune]}
