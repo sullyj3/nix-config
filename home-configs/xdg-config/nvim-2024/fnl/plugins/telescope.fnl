@@ -8,9 +8,7 @@
   (telescope.setup 
     {:defaults {:mappings {:i {:<C-d> telescope-actions.delete_buffer
                                :<C-u> false}
-                           :n {:<C-d> telescope-actions.delete_buffer}}
-                :extensions {:file_browser {:hijack_netrw true}}}})
-  (telescope.load_extension :file_browser)
+                           :n {:<C-d> telescope-actions.delete_buffer}}}})
   (nmap :<leader><space> #(telescope-builtin.find_files {:previewer false}))
   (nmap :<leader>b telescope-builtin.buffers)
   (nmap :<leader>g telescope-builtin.live_grep)

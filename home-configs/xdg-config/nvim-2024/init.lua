@@ -32,8 +32,4 @@ vim.opt.rtp:prepend({hotpotpath, lazypath})
 
 -- This allows us to write the rest of our config in fennel
 require 'hotpot'
-
--- Setting <leader>, which occurs in 'mappings' needs to come before any 
--- <leader> mappings in plugin configurations
-require 'mappings'
-require 'plugins'
+require 'config'
