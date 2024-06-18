@@ -89,6 +89,7 @@
   environment.systemPackages = [
     pkgs.neovim
     pkgs.git
+    pkgs.killall
 
     pkgs.wofi
     pkgs.wezterm
