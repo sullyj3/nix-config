@@ -130,7 +130,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 2
+        width 3
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -226,6 +226,8 @@ window-rule {
     // You can get away with just app-id="wezterm" if you want.
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
+    clip-to-geometry true
+    geometry-corner-radius 10
 }
 
 // Example: block out two password managers from screen capture.
@@ -441,7 +443,6 @@ binds {
 
     // Switches focus between the current and the previous workspace.
     // Mod+Tab { focus-workspace-previous; }
-
     Mod+Tab { focus-column-right-or-first; }
     Mod+Shift+Tab { focus-column-left-or-last; }
 
