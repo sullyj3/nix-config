@@ -100,10 +100,6 @@
     pkgs.xfce.exo
   ];
 
-  environment.shellAliases = {
-    nr = "nixos-rebuild";
-  };
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -113,7 +109,12 @@
   # };
 
   programs = {
-    fish.enable = true;
+    fish = {
+      enable = true;
+      interactiveShellInit = ''
+        abbr --position anywhere nr nixos-rebuild
+      '';
+    };
     niri = {
       enable = true;
       package = pkgs.niri-unstable;
