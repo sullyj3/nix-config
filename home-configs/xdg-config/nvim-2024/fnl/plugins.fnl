@@ -1,6 +1,6 @@
 (local lazy (require :lazy))
 
-(λ config-fn [module-path]
+(λ config-module [module-path]
   (λ [] (let [mod (require module-path)]
              (mod.configure))))
 
@@ -15,13 +15,25 @@
     { 1             :nvim-telescope/telescope.nvim
       :tag          :0.1.6
       :dependencies [:nvim-lua/plenary.nvim]
-      :config       (config-fn :plugins/telescope)}
+      :config       (config-module :plugins/telescope)}
     :tpope/vim-repeat
     { 1             :ggandor/leap.nvim
       :dependencies [:tpope/vim-repeat]
       :config       true}
     { 1             :ggandor/flit.nvim
       :dependencies [:ggandor/leap.nvim]
-      :config       true}])
+      :config       true}
+    { 1       :hrsh7th/nvim-cmp
+      :config (config-module :plugins/nvim-cmp)}
+    :hrsh7th/cmp-nvim-lsp
+    { 1             :neovim/nvim-lspconfig
+      :dependencies [:cmp-nvim-lsp]
+      :config (config-module :plugins/nvim-lspconfig)}
+    { 1             :SmiteshP/nvim-navbuddy 
+      :dependencies [ :neovim/nvim-lspconfig
+                      :SmiteshP/nvim-navic
+                      :MunifTanjim/nui.nvim
+                      :nvim-telescope/telescope.nvim]}]) 
+                     
 
 (lazy.setup plugins)
