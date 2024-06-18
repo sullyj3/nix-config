@@ -92,6 +92,7 @@
 
     pkgs.wofi
     pkgs.wezterm
+    pkgs.swaylock
 
     pkgs.xclip
     pkgs.google-chrome

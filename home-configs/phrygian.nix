@@ -22,4 +22,6 @@ in
       recursive = true;
     };
   };
+
+  programs.waybar.enable = true;
 }
