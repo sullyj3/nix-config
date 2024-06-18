@@ -32,5 +32,6 @@ in
 
     niri.source = myLib.link (myLib.homeConfigLocation + "/xdg-config/niri");
     waybar.source = myLib.link (myLib.homeConfigLocation + "/xdg-config/waybar");
+    wezterm.source = myLib.link (myLib.homeConfigLocation + "/xdg-config/wezterm");
   };
 }
