@@ -87,10 +87,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = [
-    pkgs.neovim
-    pkgs.git
+    # basic utilities
+    pkgs.file
     pkgs.killall
 
+    pkgs.git
+    pkgs.neovim
+
+    # gui
     pkgs.wofi
     pkgs.wezterm
     pkgs.swaylock
