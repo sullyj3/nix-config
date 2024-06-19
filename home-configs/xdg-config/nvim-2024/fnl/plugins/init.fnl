@@ -29,6 +29,8 @@
     { 1             :neovim/nvim-lspconfig
       :dependencies [:cmp-nvim-lsp]
       :config (config-module :plugins.nvim-lspconfig)}
+    { 1             :SmiteshP/nvim-navic 
+      :dependencies [ :neovim/nvim-lspconfig]}
     { 1             :SmiteshP/nvim-navbuddy 
       :dependencies [ :neovim/nvim-lspconfig
                       :SmiteshP/nvim-navic
