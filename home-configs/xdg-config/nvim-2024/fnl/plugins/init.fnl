@@ -15,7 +15,7 @@
     { 1             :nvim-telescope/telescope.nvim
       :tag          :0.1.6
       :dependencies [:nvim-lua/plenary.nvim]
-      :config       (config-module :plugins/telescope)}
+      :config       (config-module :plugins.telescope)}
     :tpope/vim-repeat
     { 1             :ggandor/leap.nvim
       :dependencies [:tpope/vim-repeat]
@@ -24,11 +24,11 @@
       :dependencies [:ggandor/leap.nvim]
       :config       true}
     { 1       :hrsh7th/nvim-cmp
-      :config (config-module :plugins/nvim-cmp)}
+      :config (config-module :plugins.nvim-cmp)}
     :hrsh7th/cmp-nvim-lsp
     { 1             :neovim/nvim-lspconfig
       :dependencies [:cmp-nvim-lsp]
-      :config (config-module :plugins/nvim-lspconfig)}
+      :config (config-module :plugins.nvim-lspconfig)}
     { 1             :SmiteshP/nvim-navbuddy 
       :dependencies [ :neovim/nvim-lspconfig
                       :SmiteshP/nvim-navic
