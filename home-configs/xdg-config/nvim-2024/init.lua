@@ -1,7 +1,7 @@
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
@@ -14,7 +14,7 @@ end
 
 -- Bootstrap hotpot (fennel compiler)
 local hotpotpath = vim.fn.stdpath("data") .. "/lazy/hotpot.nvim"
-if not vim.loop.fs_stat(hotpotpath) then
+if not vim.uv.fs_stat(hotpotpath) then
 	vim.notify("Bootstrapping hotpot.nvim...", vim.log.levels.INFO)
 	vim.fn.system({
 		"git",
