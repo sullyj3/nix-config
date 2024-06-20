@@ -5,9 +5,12 @@
              (mod.configure))))
 
 (λ configure-lean []
-  (let [lspconfig (require :plugin-config.nvim-lspconfig)
-        lean      (require :lean)]
-       (lean.setup { :lsp { :on_attach lspconfig.on-attach}
+  (let [lspconfig    (require :plugin-config.nvim-lspconfig)
+        cmp-nvim-lsp (require :cmp_nvim_lsp)
+        lean         (require :lean)
+        capabilities (cmp-nvim-lsp.default_capabilities)]
+       (lean.setup { :lsp {: capabilities
+                           :on_attach lspconfig.on-attach}
                      :mappings true})))
 
 (local plugins
