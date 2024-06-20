@@ -226,6 +226,9 @@ window-rule {
     // You can get away with just app-id="wezterm" if you want.
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
+}
+
+window-rule {
     clip-to-geometry true
     geometry-corner-radius 10
 }
