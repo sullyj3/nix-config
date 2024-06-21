@@ -16,7 +16,7 @@ in
     };
   };
 
-  home.file.".xprofile".source = myLib.link (myLib.dotfiles + "/xprofile");
+  # home.file.".xprofile".source = myLib.link (myLib.dotfiles + "/xprofile");
 
   xdg.configFile = {
     # "i3/config".source = myLib.link (myLib.xdgConf + "/i3/config");

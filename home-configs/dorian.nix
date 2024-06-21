@@ -55,33 +55,8 @@
       enable = true;
       enableFishIntegration = true; # `ya` function switches to cwd on exit
     };
-    comodoro = {
-      enable = true;
-      settings = {
-        pomodoro = {
-          preset = "pomodoro";
-          tcp-host = "localhost";
-          tcp-port = 9999;
-
-          on-server-start = "notify-send '🍅 Pomodoro' 'Server started!'";
-          on-server-stopping = "notify-send '🍅 Pomodoro' 'Server stopping…'";
-          on-server-stop = "notify-send '🍅 Pomodoro' 'Server stopped!'";
-
-          on-timer-start = "notify-send '🍅 Pomodoro' 'Timer started!'";
-          on-timer-stop = "notify-send '🍅 Pomodoro' 'Timer stopped!'";
-
-          on-work-pause = "notify-send '🍅 Pomodoro' 'Timer paused!'";
-        };
-      };
-    };
   };
 
   services = {
-    batsignal.enable = true;
-    comodoro = {
-      enable = true;
-      preset = "pomodoro";
-      protocols = [ "tcp" ];
-    };
   };
 }
