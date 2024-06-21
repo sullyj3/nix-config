@@ -153,6 +153,8 @@ in
         ui.diff-editor = ":builtin";
         aliases = {
           desc = [ "describe" ];
+          gp = [ "git" "push" ];
+          bs = [ "branch" "set" ];
         };
       };
     };
