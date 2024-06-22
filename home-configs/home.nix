@@ -65,6 +65,7 @@ in
       instaloader # instagram downloader
 
       devenv
+      rust-analyzer
     ];
   };
 
