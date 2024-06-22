@@ -34,6 +34,7 @@
 
     ; complicated utils
     { 1       :hrsh7th/nvim-cmp
+      :event  :InsertEnter
       :config (config-module :nvim-cmp)}
     :hrsh7th/cmp-nvim-lsp
     { 1             :nvim-telescope/telescope.nvim
@@ -44,8 +45,10 @@
       :dependencies [:cmp-nvim-lsp]
       :config       (config-module :nvim-lspconfig)}
     { 1             :SmiteshP/nvim-navic
+      :event        :LspAttach
       :dependencies [ :neovim/nvim-lspconfig]}
     { 1             :SmiteshP/nvim-navbuddy
+      :event        :LspAttach
       :dependencies [ :neovim/nvim-lspconfig
                       :SmiteshP/nvim-navic
                       :MunifTanjim/nui.nvim
@@ -54,11 +57,13 @@
     ; languages
     :LnL7/vim-nix
     { 1       :Julian/lean.nvim
+      :ft     :lean
       :config configure-lean}
     ; lisps
     { 1   :gpanders/nvim-parinfer
       :ft [:fennel :scheme :clojure :racket :dune]}
     :rktjmp/hotpot.nvim
-    :atweiden/vim-fennel])
+    { 1   :atweiden/vim-fennel
+      :ft :fennel}])
 
 (lazy.setup plugins)
