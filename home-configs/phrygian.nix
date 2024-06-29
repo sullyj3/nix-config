@@ -18,6 +18,10 @@ in
   home.packages = [
     pkgs.swaybg
     pkgs.waypaper
+
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+    pkgs.font-awesome
+    pkgs.mononoki
   ];
 
   home.pointerCursor = {
@@ -33,6 +37,7 @@ in
       package = pkgs.numix-cursor-theme;
     };
   };
+  fonts.fontconfig.enable = true;
 
   xdg.configFile = {
     systemd = {
