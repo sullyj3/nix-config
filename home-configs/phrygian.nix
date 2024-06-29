@@ -4,6 +4,7 @@
 
 let
   myLib = import ./myLib.nix { inherit config; };
+  packageOverrides = import ./packageOverrides { inherit pkgs; };
 in
 {
   imports = [
@@ -22,6 +23,7 @@ in
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
     pkgs.font-awesome
     pkgs.mononoki
+    packageOverrides.godot4-3-beta2
   ];
 
   home.pointerCursor = {
