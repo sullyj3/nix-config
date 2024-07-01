@@ -53,6 +53,8 @@
                       :SmiteshP/nvim-navic
                       :MunifTanjim/nui.nvim
                       :nvim-telescope/telescope.nvim]}
+    { 1 :zbirenbaum/copilot.lua
+      :config (config-module :copilot)}
 
     ; languages
     :LnL7/vim-nix
