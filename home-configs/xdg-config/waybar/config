@@ -51,7 +51,9 @@
     },
 
     "backlight": {
-        "format": "\udb80\udcdf  {percent}%"
+        "format": "\udb80\udcdf  {percent}%",
+	"on-scroll-up": "exec sudo xbacklight -inc 5",
+	"on-scroll-down": "exec sudo xbacklight -dec 5",
     },
 
     "disk": {
