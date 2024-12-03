@@ -470,3 +470,8 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
+
+environment {
+    DISPLAY ":0"
+    GTK_OVERLAY_SCROLLING "0"
+}
