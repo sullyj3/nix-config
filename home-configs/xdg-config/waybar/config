@@ -4,7 +4,7 @@
     "height": 24,
     "spacing": 5,
 
-    "modules-left": ["custom/workspaces", "group/usage"],
+    "modules-left": ["niri/workspaces", "group/usage"],
     "modules-center": ["group/clock-group"],
     "modules-right": ["wireplumber", "group/bat", "group/net", "tray"],
 
@@ -26,11 +26,6 @@
     "group/net": {
         "orientation": "horizontal",
         "modules": ["network", "bluetooth"]
-    },
-
-    "custom/workspaces": {
-        "exec": "$HOME/.config/waybar/modules/niri-workspaces.sh \"$WAYBAR_OUTPUT_NAME\"",
-        "signal": 8
     },
 
     "clock": {
