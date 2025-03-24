@@ -241,6 +241,7 @@ binds {
     Mod+Return { spawn "wezterm"; }
     Mod+D { spawn "wofi" "--show" "drun" "--allow-images" "-i"; }
     Mod+E { spawn "exo-open" "--launch" "FileManager"; }
+    Mod+O { spawn "obsidian"; }
     // Mod+W { spawn "google-chrome-stable" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
     Mod+W { spawn "firefox"; }
     Super+Alt+L { spawn "swaylock"; }
