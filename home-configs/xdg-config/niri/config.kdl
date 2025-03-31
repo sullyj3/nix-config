@@ -156,6 +156,16 @@ layout {
         // top 32
         // bottom 32
     }
+    tab-indicator {
+	place-within-column
+	hide-when-single-tab
+        gap 12
+	width 8
+	gaps-between-tabs 8
+	corner-radius 4
+	length total-proportion=0.66
+	active-color "#0F97FF"
+    }
 }
 
 // Add lines like this to spawn processes at startup.
@@ -237,6 +247,8 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
+    
+    Mod+T { toggle-column-tabbed-display; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "wezterm"; }
