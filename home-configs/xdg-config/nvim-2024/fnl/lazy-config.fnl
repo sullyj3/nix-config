@@ -28,9 +28,9 @@
       :config       true}
 
     ; ui
-    { 1             :lewis6991/gitsigns.nvim
-      :dependencies [:nvim-lua/plenary.nvim]
-      :config       true}
+    ; { 1             :lewis6991/gitsigns.nvim
+    ;   :dependencies [:nvim-lua/plenary.nvim]
+    ;   :config       true}
 
     ; complicated utils
     { 1       :hrsh7th/nvim-cmp
