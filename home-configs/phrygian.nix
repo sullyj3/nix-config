@@ -17,7 +17,7 @@ in
     nr = "nixos-rebuild";
   };
   home.packages = [
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+    pkgs.nerd-fonts.fira-code
     pkgs.font-awesome
     pkgs.mononoki
     # packageOverrides.godot4-3-beta2
