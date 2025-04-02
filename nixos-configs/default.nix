@@ -2,6 +2,7 @@
   nixpkgs,
   nixos-24-05,
   niri-flake,
+  ...
 }@inputs:
 {
   semibreve = nixpkgs.lib.nixosSystem {

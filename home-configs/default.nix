@@ -1,11 +1,11 @@
-{ nixpkgs, home-manager, ... }@inputs:
+{ nixpkgs, nixos-stable, home-manager, ... }@inputs:
 let
   overlays = with inputs; [ yyp.overlays.default ];
 
   mkLinuxHomeConfig =
     { imports }:
     home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      pkgs = nixos-stable.legacyPackages."x86_64-linux";
       modules = imports ++ [
         ./basics.nix
         ({
@@ -15,7 +15,7 @@ let
           # in user registry (~/.config/nix/registry.json)
           # I think this allows us not to have to download the nixpkgs flake every 
           # time we run eg `nix shell nixpkgs#whatever`
-          nix.registry.nixpkgs.flake = nixpkgs;
+          nix.registry.nixpkgs.flake = nixos-stable;
         })
       ];
       extraSpecialArgs = { };

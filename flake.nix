@@ -3,6 +3,7 @@
 
   inputs = {
     nixos-24-05.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixos-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     niri-flake = {
       url = "github:sodiboo/niri-flake";
     };
@@ -11,7 +12,7 @@
     systems.url = "github:nix-systems/default";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixos-stable";
     };
     yyp = {
       url = "github:sullyj3/yyp";
@@ -33,7 +34,7 @@
       forEachSystem = nixpkgs.lib.genAttrs (import systems);
     in
     {
-      nixosConfigurations = import ./nixos-configs { inherit nixpkgs nixos-24-05 niri-flake; };
+      nixosConfigurations = import ./nixos-configs inputs;
       homeConfigurations = import ./home-configs inputs;
       devShells = forEachSystem (
         system:

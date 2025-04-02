@@ -250,7 +250,7 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixos-stable"
         ]
       },
       "locked": {
@@ -352,6 +352,22 @@
       "original": {
         "owner": "nixos",
         "ref": "nixos-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixos-stable": {
+      "locked": {
+        "lastModified": 1743501102,
+        "narHash": "sha256-7PCBQ4aGVF8OrzMkzqtYSKyoQuU2jtpPi4lmABpe5X4=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "02f2af8c8a8c3b2c05028936a1e84daefa1171d4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-24.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -503,6 +519,7 @@
         "home-manager": "home-manager",
         "niri-flake": "niri-flake",
         "nixos-24-05": "nixos-24-05",
+        "nixos-stable": "nixos-stable",
         "nixpkgs": "nixpkgs_4",
         "systems": "systems_4",
         "yyp": "yyp"
