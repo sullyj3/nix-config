@@ -46,4 +46,5 @@ in
   };
 
   programs.waybar.enable = true;
+  programs.firefox.enable = true;
 }
