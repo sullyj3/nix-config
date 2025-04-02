@@ -13,7 +13,7 @@ local config = {
     keys = keys,
     hide_tab_bar_if_only_one_tab = true,
     font_size = 11,
-    window_decorations = "RESIZE"
+    window_decorations = "NONE"
 }
 
 return config
