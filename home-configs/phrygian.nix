@@ -20,7 +20,8 @@ in
     pkgs.nerd-fonts.fira-code
     pkgs.font-awesome
     pkgs.mononoki
-    # packageOverrides.godot4-3-beta2
+    # pkgs.godot
+    pkgs.godot_4_3
   ];
 
   home.pointerCursor = {
