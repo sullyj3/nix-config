@@ -1,7 +1,7 @@
 {
   nixpkgs,
   nixos-24-05,
-  niri-flake,
+  nixos-stable,
 }@inputs:
 {
   semibreve = nixpkgs.lib.nixosSystem {
@@ -19,11 +19,10 @@
     ];
   };
 
-  phrygian = nixos-24-05.lib.nixosSystem {
+  phrygian = nixos-stable.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
       ./phrygian/configuration.nix
-      niri-flake.nixosModules.niri
     ];
     specialArgs = {
       inherit inputs;

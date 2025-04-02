@@ -25,7 +25,7 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
+  nixpkgs.overlays = [  ];
 
   boot.loader.systemd-boot.enable = true;
 
@@ -58,7 +58,7 @@
     wayland = true;
   };
 
-  services.displayManager.sessionPackages = [ pkgs.niri-unstable ];
+  services.displayManager.sessionPackages = [ pkgs.niri ];
 
   services.xserver.desktopManager.gnome.enable = true;
 
@@ -121,7 +121,7 @@
     };
     niri = {
       enable = true;
-      package = pkgs.niri-unstable;
+      package = pkgs.niri;
     };
   };
 
