@@ -17,9 +17,6 @@ in
     nr = "nixos-rebuild";
   };
   home.packages = [
-    pkgs.swaybg
-    pkgs.waypaper
-
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
     pkgs.font-awesome
     pkgs.mononoki

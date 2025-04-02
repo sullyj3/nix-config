@@ -14,9 +14,11 @@ in
     shellAliases = {
       win = "open-wezterm-here";
     };
-  };
+    packages =  [
+      pkgs.swww # wayland wallpaper daemon
+    ];
 
-  # home.file.".xprofile".source = myLib.link (myLib.dotfiles + "/xprofile");
+  };
 
   xdg.configFile = {
     # "i3/config".source = myLib.link (myLib.xdgConf + "/i3/config");
