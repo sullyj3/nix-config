@@ -20,7 +20,7 @@ in
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
     pkgs.font-awesome
     pkgs.mononoki
-    # packageOverrides.godot4-3-beta2
+    pkgs.godot_4
   ];
 
   home.pointerCursor = {
