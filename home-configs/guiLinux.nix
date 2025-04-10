@@ -9,6 +9,7 @@ in
   home = {
     sessionVariables = {
       TERMINAL = "wezterm";
+      QT_QPA_PLATFORMTHEME = "qt6ct";
     };
 
     shellAliases = {
