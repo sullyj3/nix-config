@@ -42,7 +42,9 @@
         "bat": "BAT0",
         "interval": 60,
         "format": "{icon}  {capacity}%",
+        "format-charging": "{icon}  Charging ({capacity}%, {time} to full)",
         "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
+	"tooltip-format": "Health: {health}%  Capacity: {capacity}%",
     },
 
     "backlight": {
