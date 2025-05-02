@@ -3,9 +3,9 @@ let
   overlays = with inputs; [ ];
 
   mkLinuxHomeConfig =
-    { imports }:
+    { imports, which-nixpkgs }:
     home-manager.lib.homeManagerConfiguration {
-      pkgs = nixos-stable.legacyPackages."x86_64-linux";
+      pkgs = which-nixpkgs.legacyPackages."x86_64-linux";
       modules = imports ++ [
         ./basics.nix
         ({
@@ -15,7 +15,7 @@ let
           # in user registry (~/.config/nix/registry.json)
           # I think this allows us not to have to download the nixpkgs flake every 
           # time we run eg `nix shell nixpkgs#whatever`
-          nix.registry.nixpkgs.flake = nixos-stable;
+          nix.registry.nixpkgs.flake = which-nixpkgs;
         })
       ];
       extraSpecialArgs = { };
@@ -25,21 +25,37 @@ in
   basics = mkLinuxHomeConfig { imports = [ ]; };
 
   # Archlabs on laptop
-  "james@dorian" = mkLinuxHomeConfig { imports = [ ./dorian.nix ]; };
+  "james@dorian" = mkLinuxHomeConfig {
+    imports = [ ./dorian.nix ];
+    which-nixpkgs = nixpkgs;
+  };
+  
   # WSL2 on PC
   "james@Mixolydian" = mkLinuxHomeConfig {
     imports = [
       ./home.nix
       ./genericLinux.nix
     ];
+    which-nixpkgs = nixos-stable;
   };
 
   # NixOS test vm
-  "james@semibreve" = mkLinuxHomeConfig { imports = [ ./semibreve.nix ]; };
+  "james@semibreve" = mkLinuxHomeConfig { 
+    imports = [ ./semibreve.nix ];
+    which-nixpkgs = nixos-stable;
+  };
 
   # Raspberry Pi
-  "james@locrian" = mkLinuxHomeConfig { imports = [ ./locrian.nix ]; };
+  "james@locrian" = mkLinuxHomeConfig { 
+    imports = [ ./locrian.nix ];
+    which-nixpkgs = nixos-stable;
+  };
 
   # NixOS desktop
-  "james@phrygian" = mkLinuxHomeConfig { imports = [ ./phrygian.nix ]; };
+  "james@phrygian" = mkLinuxHomeConfig { 
+    imports = [ ./phrygian.nix ]; 
+    
+    # TODO upgrade
+    which-nixpkgs = nixos-stable;
+  };
 }
