@@ -107,7 +107,7 @@ in
       eza
       trash-cli
       
-      lazyjj # jujutsu tui
+      jjui # jujutsu tui
     ];
   };
 
