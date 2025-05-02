@@ -60,7 +60,7 @@ in
       nix-output-monitor
       ouch # easy to use compression tool
       choose # simple cut/awk alternative
-      oil # shell
+      oils-for-unix # shell
       tmsu # tag based file system
       instaloader # instagram downloader
 
