@@ -14,10 +14,6 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixos-stable";
     };
-    yyp = {
-      url = "github:sullyj3/yyp";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =

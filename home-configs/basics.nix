@@ -89,9 +89,6 @@ in
       bats = "bat --style=header,numbers";
       todo = "rg -i todo";
 
-      yy = "yyp yank";
-      p = "yyp put";
-
       space = "df -H|rg '/$'|tr -s ' '|cut -d ' ' -f 5";
 
       nps = "nix search nixpkgs";
@@ -111,9 +108,6 @@ in
       trash-cli
       
       lazyjj # jujutsu tui
-
-      # mine
-      yyp
     ];
   };
 
