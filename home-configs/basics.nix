@@ -109,6 +109,8 @@ in
       httpie
       eza
       trash-cli
+      
+      lazyjj # jujutsu tui
 
       # mine
       yyp
