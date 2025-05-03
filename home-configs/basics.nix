@@ -147,9 +147,11 @@ in
         ui.default-command = "log";
         ui.pager = "bat -p";
         ui.diff-editor = ":builtin";
+        ui.always-allow-large-revsets = true;
         aliases = {
           gp = [ "git" "push" ];
-          bs = [ "branch" "set" ];
+          tug = ["bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-"];
+          add-parent = ["rebase" "-s" "@" "-d" "@-" "-d"];
         };
       };
     };
