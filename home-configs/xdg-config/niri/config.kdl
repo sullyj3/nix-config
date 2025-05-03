@@ -156,6 +156,19 @@ layout {
         // top 32
         // bottom 32
     }
+    tab-indicator {
+	place-within-column
+	hide-when-single-tab
+        gap 12
+	width 8
+	gaps-between-tabs 8
+	corner-radius 4
+	length total-proportion=0.66
+	active-color "#0F97FF"
+    }
+    shadow {
+        on
+    }
 }
 
 // Add lines like this to spawn processes at startup.
@@ -237,6 +250,8 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
+    
+    Mod+T { toggle-column-tabbed-display; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "wezterm"; }
@@ -297,6 +312,9 @@ binds {
     Mod+K     { focus-window-or-workspace-up; }
     Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
     Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+
+    Mod+Alt+J { move-workspace-down; }
+    Mod+Alt+K { move-workspace-up; }
 
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
@@ -431,6 +449,8 @@ binds {
     // There are also commands that consume or expel a single window to the side.
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
+
+    Mod+Space       { toggle-window-floating; }
 
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { reset-window-height; }
