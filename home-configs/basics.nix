@@ -151,6 +151,7 @@ in
         ui.default-command = "log";
         ui.pager = "bat -p";
         ui.diff-editor = ":builtin";
+        ui.always-allow-large-revsets = true;
         aliases = {
           gp = [ "git" "push" ];
           tug = ["bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-"];
