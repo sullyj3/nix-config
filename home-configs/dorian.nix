@@ -16,7 +16,7 @@
 
   home = {
     sessionVariables = {
-      BROWSER = "google-chrome-stable";
+      BROWSER = "firefox";
     };
     shellAliases = {
       # Set keyboard backlight brightness (0,1,2)
