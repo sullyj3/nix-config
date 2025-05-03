@@ -153,7 +153,7 @@ in
         ui.diff-editor = ":builtin";
         aliases = {
           gp = [ "git" "push" ];
-          bs = [ "branch" "set" ];
+          tug = ["bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-"];
         };
       };
     };
