@@ -20,7 +20,7 @@
     ];
   };
 
-  phrygian = nixos-24-05.lib.nixosSystem {
+  phrygian = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
       ./phrygian/configuration.nix
