@@ -155,6 +155,7 @@ in
         aliases = {
           gp = [ "git" "push" ];
           tug = ["bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-"];
+          add-parent = ["rebase" "-s" "@" "-d" "@-" "-d"];
         };
       };
     };
