@@ -236,6 +236,10 @@ hotkey-overlay {
     skip-at-startup
 }
 
+overview {
+    backdrop-color "#003035"
+}
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -289,14 +293,12 @@ binds {
 
     Mod+Q { close-window; }
 
-    Mod+Left  { focus-column-left; }
-    Mod+Down  { focus-window-down; }
-    Mod+Up    { focus-window-up; }
-    Mod+Right { focus-column-right; }
-    Mod+H     { focus-column-left; }
-    // Mod+J     { focus-window-down; }
-    // Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-right; }
+	Mod+Tab { toggle-overview; }
+
+    Mod+H     { focus-column-left-or-last; }
+    Mod+J     { focus-window-or-workspace-down; }
+    Mod+K     { focus-window-or-workspace-up; }
+    Mod+L     { focus-column-right-or-first; }
 
     Mod+Ctrl+Left  { move-column-left; }
     Mod+Ctrl+Down  { move-window-down; }
@@ -309,8 +311,6 @@ binds {
 
     // Alternative commands that move across workspaces when reaching
     // the first or last window in a column.
-    Mod+J     { focus-window-or-workspace-down; }
-    Mod+K     { focus-window-or-workspace-up; }
     Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
     Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
 
@@ -436,13 +436,8 @@ binds {
     Mod+Ctrl+8 { move-column-to-workspace 8; }
     Mod+Ctrl+9 { move-column-to-workspace 9; }
 
-    // Alternatively, there are commands to move just a single window:
-    // Mod+Ctrl+1 { move-window-to-workspace 1; }
-
-    // Switches focus between the current and the previous workspace.
-    // Mod+Tab { focus-workspace-previous; }
-    Mod+Tab { focus-column-right-or-first; }
-    Mod+Shift+Tab { focus-column-left-or-last; }
+    Alt+Tab { focus-column-right-or-first; }
+    Alt+Shift+Tab { focus-column-left-or-last; }
 
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
