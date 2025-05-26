@@ -300,6 +300,11 @@ binds {
     Mod+K     { focus-window-or-workspace-up; }
     Mod+L     { focus-column-right-or-first; }
 
+    Mod+Left  { focus-column-left-or-last; }
+    Mod+Down  { focus-window-or-workspace-down; }
+    Mod+Up    { focus-window-or-workspace-up; }
+    Mod+Right { focus-column-right-or-first; }
+
     Mod+Ctrl+Left  { move-column-left; }
     Mod+Ctrl+Down  { move-window-down; }
     Mod+Ctrl+Up    { move-window-up; }
