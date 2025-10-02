@@ -41,7 +41,7 @@ in
 
   home = {
     username = username;
-    stateVersion = "24.05";
+    stateVersion = "24.11";
     homeDirectory = /home + "/${username}";
 
     activation.recordNixAndHMPaths = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
