@@ -26,22 +26,12 @@
     packages =
       with pkgs;
       [
-        # doesn't seem to work on WSL, leave it here for now
-        nodejs_20
-        signal-desktop
-        litecli
-
         texlive.combined.scheme-small
         pandoc
-        yai
-        meld
         netcat
 
         # just want this for vipe, a command that lets you edit piped text in $EDITOR
         moreutils
-
-        uiua
-        helix # text editor
       ]
       ++ [
         # specialArgs.whatever
