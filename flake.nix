@@ -9,7 +9,7 @@
       url = "github:sodiboo/niri-flake";
     };
 
-    nixpkgs.url = "github:nixos/nixpkgs/64eca23f5bca70e00ae8d65835ba241e9d1638b3";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     systems.url = "github:nix-systems/default";
     home-manager = {
       url = "github:nix-community/home-manager";
