@@ -24,6 +24,7 @@
     system = "x86_64-linux";
     modules = [
       ./phrygian/configuration.nix
+      # todo remove
       niri-flake.nixosModules.niri
     ];
     specialArgs = {

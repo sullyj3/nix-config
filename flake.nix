@@ -4,6 +4,7 @@
   inputs = {
     nixos-24-05.url = "github:nixos/nixpkgs/nixos-24.05";
     nixos-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    # todo remove
     niri-flake = {
       url = "github:sodiboo/niri-flake";
     };
@@ -23,6 +24,7 @@
       nixpkgs,
       systems,
       home-manager,
+      # todo remove
       niri-flake,
       ...
     }@inputs:
