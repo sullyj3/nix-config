@@ -29,6 +29,7 @@
         texlive.combined.scheme-small
         pandoc
         netcat
+	ugrep
 
         # just want this for vipe, a command that lets you edit piped text in $EDITOR
         moreutils
