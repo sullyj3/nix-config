@@ -30,6 +30,7 @@
         pandoc
         netcat
 	ugrep
+	gping
 
         # just want this for vipe, a command that lets you edit piped text in $EDITOR
         moreutils
