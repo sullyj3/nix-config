@@ -175,7 +175,7 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "swww-daemon"
+spawn-at-startup "awww-daemon"
 spawn-at-startup "vicinae" "server"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.

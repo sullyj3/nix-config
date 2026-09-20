@@ -41,7 +41,7 @@ in
       cbqn # array language
       just
 
-      du-dust # space usage
+      dust # space usage
       dua # space usage
       glow # console md viewer
       pgcli # postgres cli
@@ -50,7 +50,6 @@ in
 
       cheat # create cheat sheets for commands
       tealdeer # brief example driven man pages
-      sumneko-lua-language-server
       nix-tree
       miniserve # small http server
 
