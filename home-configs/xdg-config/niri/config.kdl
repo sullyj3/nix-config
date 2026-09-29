@@ -53,6 +53,12 @@ output "eDP-1" {
     scale 1.0
 }
 
+
+cursor {
+    xcursor-theme "Breeze_Light"
+    // xcursor-size 48
+}
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
