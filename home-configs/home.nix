@@ -109,7 +109,7 @@ in
   };
 
   xdg.configFile = {
-    "cheat/conf.yml".source = myLib.xdgConf + /cheat/conf.yml;
+    "cheat/conf.yml".source = config.lib.file.mkOutOfStoreSymlink (myLib.xdgConf + "/cheat/conf.yml");
     # "nvim" = {
     #   source = myLib.xdgConf + /nvim;
     #   recursive = true;

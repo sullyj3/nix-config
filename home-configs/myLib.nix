@@ -1,7 +1,6 @@
 { config, ... }:
-{
-  # Hard coding this path is not ideal. Revisit if a better solution is found.
+rec {
   homeConfigLocation = config.home.homeDirectory + "/nix-config/home-configs";
-  xdgConf = ./xdg-config;
-  dotfiles = ./dotfiles;
+  xdgConf = homeConfigLocation + "/xdg-config";
+  dotfiles = homeConfigLocation + "/dotfiles";
 }

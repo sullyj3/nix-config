@@ -150,15 +150,9 @@ in
   services.ssh-agent.enable = true;
 
   xdg.configFile = {
-    "starship.toml".source = myLib.xdgConf + "/starship.toml";
-    # Todo migrate to programs.fish.functions. Having the
-    # fish/functions directory be a store path is messing with the
-    # installation of plugins with functions via programs.fish.plugins
-    # see: https://rycee.gitlab.io/home-manager/options.html#opt-programs.fish.functions
-    # see: https://github.com/nix-community/home-manager/blob/ff5133843c26979f8abb5dd801b32f40287692fa/modules/programs/fish.nix#L32
-    # see: https://fishshell.com/docs/current/cmds/function.html
-    "fish/functions".source = myLib.xdgConf + "/fish/functions";
-    "git/ignore".source = myLib.xdgConf + "/git/ignore";
-    "tmux/tmux.conf".source = myLib.xdgConf + "/tmux/tmux.conf";
+    "starship.toml".source = config.lib.file.mkOutOfStoreSymlink (myLib.xdgConf + "/starship.toml");
+    "fish/functions".source = config.lib.file.mkOutOfStoreSymlink (myLib.xdgConf + "/fish/functions");
+    "git/ignore".source = config.lib.file.mkOutOfStoreSymlink (myLib.xdgConf + "/git/ignore");
+    "tmux/tmux.conf".source = config.lib.file.mkOutOfStoreSymlink (myLib.xdgConf + "/tmux/tmux.conf");
   };
 }
