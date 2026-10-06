@@ -10,7 +10,7 @@ in
   # "Home Manager has an option to automatically set some environment variables that will ease usage of software installed with nix on non-NixOS linux (fixing local issues, settings XDG_DATA_DIRS, etc.)"
   targets.genericLinux.enable = true;
 
-  home.file.".profile".source = myLib.link (myLib.dotfiles + "/profile");
+  home.file.".profile".source = config.lib.file.mkOutOfStoreSymlink (myLib.dotfiles + "/profile");
 
   # TODO extract to non nixOS module
   # TODO What the heck is this thing for again?

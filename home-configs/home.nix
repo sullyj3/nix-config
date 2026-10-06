@@ -115,7 +115,7 @@ in
     #   recursive = true;
     # };
     "nvim" = {
-      source = myLib.link (myLib.homeConfigLocation + "/xdg-config/nvim-2024");
+      source = config.lib.file.mkOutOfStoreSymlink (myLib.homeConfigLocation + "/xdg-config/nvim-2024");
     };
   };
 }

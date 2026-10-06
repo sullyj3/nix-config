@@ -22,7 +22,7 @@ in
   };
 
   xdg.configFile = {
-    # "i3/config".source = myLib.link (myLib.xdgConf + "/i3/config");
+    # "i3/config".source = config.lib.file.mkOutOfStoreSymlink (myLib.xdgConf + "/i3/config");
     # black system tray bug is fixed in unreleased PR
     # Issue: polybar/polybar/issues/1995
     # PR: polybar/polybar/pull/2609 (merged)
@@ -33,8 +33,8 @@ in
     #   recursive = true;
     # };
 
-    niri.source = myLib.link (myLib.homeConfigLocation + "/xdg-config/niri");
-    waybar.source = myLib.link (myLib.homeConfigLocation + "/xdg-config/waybar");
-    wezterm.source = myLib.link (myLib.homeConfigLocation + "/xdg-config/wezterm");
+    niri.source = config.lib.file.mkOutOfStoreSymlink (myLib.homeConfigLocation + "/xdg-config/niri");
+    waybar.source = config.lib.file.mkOutOfStoreSymlink (myLib.homeConfigLocation + "/xdg-config/waybar");
+    wezterm.source = config.lib.file.mkOutOfStoreSymlink (myLib.homeConfigLocation + "/xdg-config/wezterm");
   };
 }
