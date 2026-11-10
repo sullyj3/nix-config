@@ -18,8 +18,8 @@
 }
 
 #workspaces button {
-    padding-left: 1em;
-    padding-right: 1.3em;
+    padding-left: 0.6em;
+    padding-right: 0.9em;
 }
 
 #workspaces button.empty {
