@@ -17,6 +17,7 @@ in
     };
     packages =  [
       pkgs.awww # wayland wallpaper daemon
+      pkgs.overskride # bluetooth manager GUI
     ];
 
   };

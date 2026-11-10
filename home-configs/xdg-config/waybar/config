@@ -2,6 +2,7 @@
     "layer": "top",
     "position": "top",
     "height": 24,
+    "width": 1920,
     "spacing": 5,
 
     "modules-left": ["niri/workspaces", "group/usage"],
@@ -89,7 +90,7 @@
         "tooltip-format": "{controller_alias}\t{controller_address}",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-        "on-click": "blueberry"
+        "on-click": "overskride"
     },
 
     "hyprland/language": {
