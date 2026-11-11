@@ -46,5 +46,6 @@
   };
 
   services = {
+    pueue.enable = true;
   };
 }
