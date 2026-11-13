@@ -69,6 +69,7 @@ in
       pull = "git pull";
 
       hm = "home-manager";
+      k = "kubectl";
       ls = "eza";
       l = "eza";
       la = "eza -a";
