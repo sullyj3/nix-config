@@ -40,6 +40,11 @@
       ];
   };
 
+  # Build aarch64 natively via qemu-user binfmt (Arch's qemu-user-static-binfmt)
+  # so builds for the Pi get cache.nixos.org hits instead of cross-compiling.
+  # Forwarded to the daemon since we're a trusted user.
+  nix.settings.extra-platforms = [ "aarch64-linux" ];
+
   programs = {
     nushell.enable = true;
     zoxide.enableNushellIntegration = true;
