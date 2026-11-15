@@ -6,10 +6,7 @@ $localip\
 $shlvl\
 $directory\
 
-$git_branch\
-$git_state\
-$git_metrics\
-$git_status\
+$vcs\
 
 $nix_shell\
 $direnv\
@@ -34,6 +31,10 @@ format = '[$user]($style)@'
 
 [git_metrics]
 disabled = false
+
+# jj repos are usually colocated with git, so check for jj first
+[vcs]
+order = ["jj", "git", "hg", "pijul", "fossil"]
 
 [[battery.display]]
 threshold = 20
