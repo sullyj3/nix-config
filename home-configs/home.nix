@@ -38,30 +38,21 @@ in
 
     packages = with pkgs; [
       cachix
-      cbqn # array language
       just
 
       dust # space usage
       dua # space usage
       glow # console md viewer
-      pgcli # postgres cli
       difftastic
       tomb # encryption
 
       cheat # create cheat sheets for commands
       tealdeer # brief example driven man pages
-      nix-tree
-      miniserve # small http server
-
-      scc # source code line counter
 
       streamlink
       nix-output-monitor
-      ouch # easy to use compression tool
       choose # simple cut/awk alternative
-      oils-for-unix # shell
       tmsu # tag based file system
-      instaloader # instagram downloader
 
       devenv
       rust-analyzer
