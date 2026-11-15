@@ -61,8 +61,6 @@ in
 
   programs = {
     aria2.enable = true;
-    broot.enable = true;
-    broot.enableFishIntegration = true;
     jq.enable = true;
     direnv = {
       enable = true;
@@ -72,10 +70,6 @@ in
       };
     };
     fish = {
-      shellInit = ''
-        # ocaml env setup
-        source /home/james/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-      '';
       interactiveShellInit = ''
         git_check ${myLib.homeConfigLocation} 'Nix config repository'
         git_check ${config.home.homeDirectory}/.config/cheat/cheatsheets/personal 'Cheatsheets'
@@ -87,7 +81,6 @@ in
         fish_add_path '~/.elan/bin'
       '';
     };
-    nnn.enable = true;
     gh = {
       enable = true;
       settings = {
