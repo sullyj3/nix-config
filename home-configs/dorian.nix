@@ -26,7 +26,6 @@
     packages =
       with pkgs;
       [
-        texlive.combined.scheme-small
         pandoc
         netcat
 	ugrep
