@@ -38,8 +38,4 @@
   # so builds for the Pi get cache.nixos.org hits instead of cross-compiling.
   # Forwarded to the daemon since we're a trusted user.
   nix.settings.extra-platforms = [ "aarch64-linux" ];
-
-  services = {
-    pueue.enable = true;
-  };
 }

@@ -99,6 +99,10 @@ in
     btop.enable = true;
   };
 
+  services = {
+    pueue.enable = true;
+  };
+
   xdg.configFile = {
     "cheat/conf.yml".source = config.lib.file.mkOutOfStoreSymlink (myLib.xdgConf + "/cheat/conf.yml");
     # "nvim" = {
